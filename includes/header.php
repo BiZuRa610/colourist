@@ -31,7 +31,11 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
   <link rel="canonical" href="<?= e($canonical_url) ?>">
 
   <!-- Base tag so relative links resolve cleanly when on /experience/slug -->
-  <base href="/makeup/">
+  <?php
+    // On Vercel: base = "/", on Laragon local: base = "/makeup/"
+    $base_href = defined('VERCEL_ROUTER') ? '/' : '/makeup/';
+  ?>
+  <base href="<?= $base_href ?>">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">

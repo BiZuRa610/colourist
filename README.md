@@ -57,17 +57,27 @@ Kelola daftar transformasi klien dan studio secara visual melalui `http://localh
 
 ## 5. Panduan Deploy ke Vercel
 
-Terdapat dua opsi deployment ke Vercel:
+### Arsitektur Serverless
 
-### Opsi A: Serverless PHP Runtime (Vercel PHP)
-Konfigurasi `vercel.json` telah disediakan dengan runtime `vercel-php@0.7.2` dan aturan rewrite clean URL.
+Semua request di-route melalui **`api/index.php`** (single entry-point):
+- Clean URL → dipetakan ke file halaman PHP di root (`/about` → `about.php`, dll.)
+- `/experience/{slug}` → `experience.php` dengan `$_GET['service'] = slug`
+- Path tidak dikenal → `404.php` dengan status 404
+
+Konfigurasi `vercel.json` menggunakan runtime `vercel-php@0.7.3`. File media besar (video, gambar) disajikan sebagai static assets dan **tidak** masuk ke fungsi serverless untuk menjaga ukuran di bawah limit.
+
+> **⚠️ Catatan: `data/` bersifat read-only di Vercel.**
+> Admin panel (`/admin`) dapat membaca `data/transformation.json` di Vercel, tetapi **tidak bisa menulis** karena filesystem serverless bersifat read-only. Fitur tulis (tambah/edit/hapus item transformasi) hanya berfungsi di lokal (Laragon/Apache). Untuk production, pertimbangkan migrasi ke database eksternal atau Vercel KV/Blob.
+
+### Deploy
+
 1. Pastikan ukuran video di bawah limit Git/Vercel (gunakan `tools/optimize.sh` jika perlu).
 2. Deploy langsung melalui Vercel CLI:
    ```bash
    vercel
    ```
 
-### Opsi B: Static Build Generator (`/dist`)
+### Opsi Alternatif: Static Build Generator (`/dist`)
 Jika ingin hosting sepenuhnya statis (zero-server / CDN statis):
 1. Jalankan generator build lokal:
    ```bash
@@ -97,6 +107,8 @@ Jika ingin hosting sepenuhnya statis (zero-server / CDN statis):
 ├── admin.php              # Admin Dashboard (Kelola data/transformation.json)
 ├── 404.php                # Halaman 404 Not Found
 ├── build.php              # Static Site Generator ke /dist
+├── api/
+│   └── index.php          # Vercel serverless router (single entry-point)
 ├── vercel.json            # Konfigurasi routing & PHP runtime Vercel
 ├── .htaccess              # Rewrite rule clean URL untuk Apache/Laragon
 ├── .gitignore             # Ignore reference, dist, bak, and doc_extracted

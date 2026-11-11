@@ -2,3 +2,4 @@ Asset/doc_extracted/
 *.bak
 reference/
 dist/
+legacy/
