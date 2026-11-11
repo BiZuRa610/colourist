@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "functions": {
+    "api/*.php": { "runtime": "vercel-php@0.7.2" },
+    "*.php": { "runtime": "vercel-php@0.7.2" }
+  },
+  "routes": [
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/about", "dest": "/about.php" },
+    { "src": "/experiences", "dest": "/experiences.php" },
+    { "src": "/experience", "dest": "/experience.php" },
+    { "src": "/transformation", "dest": "/transformation.php" },
+    { "src": "/workshop", "dest": "/workshop.php" },
+    { "src": "/collaboration", "dest": "/collaboration.php" },
+    { "src": "/partners", "dest": "/partners.php" },
+    { "src": "/book", "dest": "/book.php" },
+    { "src": "/admin", "dest": "/admin.php" },
+    { "src": "/(.*).php", "dest": "/$1.php" },
+    { "src": "/(.*)", "dest": "/index.php" }
+  ]
+}
+

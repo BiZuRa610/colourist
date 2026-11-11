@@ -1,0 +1,82 @@
+[
+    {
+        "media": {
+            "type": "video",
+            "url": "assets/media/trans_1.mp4",
+            "alt": "Colourist Transformation Video 1",
+            "position": "50% 50%"
+        },
+        "category": "Transformation",
+        "caption": "Personal Color Transformation 01"
+    },
+    {
+        "media": {
+            "type": "video",
+            "url": "assets/media/trans_2.mp4",
+            "alt": "Colourist Transformation Video 2",
+            "position": "50% 50%"
+        },
+        "category": "Transformation",
+        "caption": "Personal Color Transformation 02"
+    },
+    {
+        "media": {
+            "type": "video",
+            "url": "assets/media/trans_3.mp4",
+            "alt": "Colourist Transformation Video 3",
+            "position": "50% 50%"
+        },
+        "category": "Transformation",
+        "caption": "Personal Color Transformation 03"
+    },
+    {
+        "media": {
+            "type": "video",
+            "url": "assets/media/1029.mp4",
+            "alt": "Colourist Transformation Video 4",
+            "position": "50% 50%"
+        },
+        "category": "Transformation",
+        "caption": "Colourist Signature Experience"
+    },
+    {
+        "media": {
+            "type": "image",
+            "url": "assets/media/nagita_colourist.jpg",
+            "alt": "Nagita Slavina Personal Color Analysis",
+            "position": "50% 50%"
+        },
+        "category": "Public Figure",
+        "caption": "Nagita Slavina — Spring Palette Analysis"
+    },
+    {
+        "media": {
+            "type": "image",
+            "url": "assets/media/tasya_farasya_color.jpg",
+            "alt": "Tasya Farasya Personal Color Analysis",
+            "position": "50% 50%"
+        },
+        "category": "Public Figure",
+        "caption": "Tasya Farasya — Personal Color Discovery"
+    },
+    {
+        "media": {
+            "type": "image",
+            "url": "assets/media/femaledaily_colourist.jpg",
+            "alt": "Female Daily Network Personal Color Consultation",
+            "position": "50% 50%"
+        },
+        "category": "Media",
+        "caption": "Female Daily — Indonesia's 1st Color Consultant"
+    },
+    {
+        "media": {
+            "type": "image",
+            "url": "assets/media/ashta_studio_tour.jpg",
+            "alt": "ASHTA District 8 Colourist Studio Tour",
+            "position": "50% 50%"
+        },
+        "category": "Atelier",
+        "caption": "Inside the Colourist Atelier at ASHTA"
+    }
+]

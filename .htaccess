@@ -1,0 +1,26 @@
+# Colourist by Zerlinda — Apache Rewrite Configuration
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /makeup/
+
+  # Security: Block sensitive directories and files
+  RewriteRule ^(\.git|reference|tools|data|legacy)/ - [F,L]
+  RewriteRule \.(bak|config|env|log)$ - [F,L]
+
+  # Service detail clean URL: /experience/slug → experience.php?service=slug
+  RewriteRule ^experience/([a-z0-9-]+)/?$ experience.php?service=$1 [L,QSA]
+
+  # Allow direct access to existing files and directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Clean URLs: Map /page to page.php
+  RewriteCond %{DOCUMENT_ROOT}/makeup/$1.php -f
+  RewriteRule ^([a-z0-9-]+)/?$ $1.php [L,QSA]
+
+  # Fallback 404 error page
+  ErrorDocument 404 /makeup/404.php
+</IfModule>
