@@ -30,7 +30,7 @@ if (isset($_POST['admin_login'])) {
     $password = $_POST['password'] ?? '';
     if (password_verify($password, $site['admin_password_hash']) || $password === $site['admin_default_pass']) {
         $_SESSION['colourist_admin'] = true;
-        header('Location: admin.php');
+        header('Location: ' . (defined('VERCEL_ROUTER') ? '/admin' : 'admin.php'));
         exit;
     } else {
         $login_error = 'Password salah. Silakan coba lagi.';

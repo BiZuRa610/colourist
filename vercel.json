@@ -1,12 +1,6 @@
 {
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.7.3",
-      "includeFiles": "{*.php,includes/**,data/**,assets/css/**,assets/js/**,assets/fonts/**,assets/media/journey/**,assets/media/logo.png}"
-    }
-  },
-  "routes": [
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/(.*)", "dest": "/api/index.php" }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "outputDirectory": "dist",
+  "buildCommand": null
 }

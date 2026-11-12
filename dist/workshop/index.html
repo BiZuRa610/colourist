@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Colourist Workshops — Learn the Language of Colour</title>
+  <meta name="description" content="Small-group sessions to master colour, styling and makeup with our expert Colour Analysts. Book your seat or join the waitlist.">
+  <link rel="canonical" href="https://colouristbyzerlinda.com/workshop">
+
+  <!-- Base tag so relative links resolve cleanly across nested routes -->
+    <base href="/">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Colourist Workshops — Learn the Language of Colour">
+  <meta property="og:description" content="Small-group sessions to master colour, styling and makeup with our expert Colour Analysts. Book your seat or join the waitlist.">
+  <meta property="og:url" content="https://colouristbyzerlinda.com/workshop">
+  <meta property="og:image" content="https://colouristbyzerlinda.com/assets/media/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/media/logo.png">
+  <link rel="apple-touch-icon" href="assets/media/logo.png">
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Backdrop overlay for mega menu -->
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+  <!-- Header Section -->
+  <header class="site-header">
+    <div class="nav">
+      <!-- Left: Burger Toggle -->
+      <button class="burger-btn" id="burgerBtn" aria-label="Buka Navigasi" aria-expanded="false"
+        aria-controls="megaNavPanel">
+        <span class="burger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <!-- Center: Logo -->
+      <a href="" class="logo" aria-label="Colourist by Zerlinda Home">
+        COLOURIST
+        <small>BY ZERLINDA</small>
+      </a>
+
+      <!-- Right: Balance Spacer -->
+      <div class="nav-spacer" aria-hidden="true"></div>
+    </div>
+
+    <!-- Mega Menu Panel (Aman-inspired) -->
+    <nav class="mega-panel" id="megaNavPanel" aria-label="Menu Utama">
+      <div class="mega-panel-inner">
+        <!-- Left Column: Primary Navigation Items -->
+        <div class="mega-col-left">
+                                    <div>
+                <a href="about" class="menu-link ">
+                  About                </a>
+              </div>
+                                                <div class="menu-item-group">
+                <button type="button"
+                  class="menu-item-btn "
+                  id="expNavBtn" aria-expanded="false" aria-controls="desktopSubmenuCol expMobileSubmenu">
+                  <span class="txt">Experiences</span>
+                  <span class="chevron-arrow" id="expChevron" aria-hidden="true">&rsaquo;</span>
+                </button>
+
+                <!-- Mobile Accordion Submenu -->
+                <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
+                                                          <a href="experience/personal-color-analysis" class="menu-link ">
+                      Personal Color Analysis                    </a>
+                                                          <a href="experience/private-styling" class="menu-link ">
+                      Private Styling                    </a>
+                                                          <a href="experience/makeup-masterclass" class="menu-link ">
+                      Makeup Masterclass                    </a>
+                                                          <a href="experience/custom-lipstick" class="menu-link ">
+                      Custom Lipstick                    </a>
+                                  </div>
+              </div>
+                                                <div>
+                <a href="transformation" class="menu-link ">
+                  Transformation                </a>
+              </div>
+                                                <div>
+                <a href="workshop" class="menu-link active-link">
+                  Workshop                </a>
+              </div>
+                                                <div>
+                <a href="collaboration" class="menu-link ">
+                  Collaboration                </a>
+              </div>
+                                                <div>
+                <a href="partners" class="menu-link ">
+                  Partners                </a>
+              </div>
+                                                <div>
+                <a href="book" class="menu-link ">
+                  Book Now                </a>
+              </div>
+                              </div>
+
+        <!-- Right Column: Submenu (Desktop, shown ONLY when Experiences is clicked) -->
+        <div class="mega-col-right" id="desktopSubmenuCol" aria-label="Detail Experiences">
+          <span class="sub-eyebrow">EXPERIENCES</span>
+                                  <a href="experience/personal-color-analysis" class="menu-link ">
+              Personal Color Analysis            </a>
+                                  <a href="experience/private-styling" class="menu-link ">
+              Private Styling            </a>
+                                  <a href="experience/makeup-masterclass" class="menu-link ">
+              Makeup Masterclass            </a>
+                                  <a href="experience/custom-lipstick" class="menu-link ">
+              Custom Lipstick            </a>
+                  </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Wrapper Container -->
+  <main class="site-wrapper" id="mainContent">
+<!-- Workshop Header -->
+<section class="sec" aria-labelledby="workshopHeading">
+  <span class="eyebrow">Workshop</span>
+  <h1 id="workshopHeading" style="font-size: 34px; margin: 6px 0 12px;">Learn the language of colour</h1>
+  <p>Small-group sessions to master colour, styling and makeup with our expert Colour Analysts.</p>
+</section>
+
+<!-- Workshop Cards Grid (3 Columns) -->
+<section style="padding: 0 28px 44px;" aria-label="Available Workshops">
+  <div class="cards-wk">
+          <article class="wk">
+        <div class="wk-media">
+          <video muted loop playsinline preload="metadata" class="lazy-video" data-src="assets/media/service_color_analysis.mp4" src="assets/media/service_color_analysis.mp4" style="aspect-ratio: 4/3; object-fit: cover;" aria-label="Personal Color Masterclass &amp; Draping Clinic"><source src="assets/media/service_color_analysis.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </div>
+
+        <div class="tag ">
+          Upcoming        </div>
+
+        <h3>Personal Color Masterclass &amp; Draping Clinic</h3>
+
+        <div class="m">
+          Saturday, 28 Nov 2026 &middot; 3 Hours                      &middot; Kuota 6 seats                  </div>
+
+        <div class="p">
+          <span>IDR 1.850.000</span>
+                      <a href="book?type=workshop&workshop=Personal+Color+Masterclass+%26+Draping+Clinic" class="btn btn-solid" style="margin: 0; padding: 6px 14px; font-size: 8px;">
+              Daftar
+            </a>
+                  </div>
+      </article>
+          <article class="wk">
+        <div class="wk-media">
+          <video muted loop playsinline preload="metadata" class="lazy-video" data-src="assets/media/service_private_styling.mp4" src="assets/media/service_private_styling.mp4" style="aspect-ratio: 4/3; object-fit: cover;" aria-label="Executive Presence &amp; Color Styling Intensive"><source src="assets/media/service_private_styling.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </div>
+
+        <div class="tag ">
+          Upcoming        </div>
+
+        <h3>Executive Presence &amp; Color Styling Intensive</h3>
+
+        <div class="m">
+          Saturday, 12 Dec 2026 &middot; 4 Hours                      &middot; Kuota 8 seats                  </div>
+
+        <div class="p">
+          <span>IDR 2.400.000</span>
+                      <a href="book?type=workshop&workshop=Executive+Presence+%26+Color+Styling+Intensive" class="btn btn-solid" style="margin: 0; padding: 6px 14px; font-size: 8px;">
+              Daftar
+            </a>
+                  </div>
+      </article>
+          <article class="wk">
+        <div class="wk-media">
+          <img src="assets/media/nagita_makeup_class.jpg" alt="Celebrity Glam &amp; Seasonal Makeup with Zerlinda" loading="lazy" class="media-img" style="aspect-ratio: 4/3; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">        </div>
+
+        <div class="tag sold">
+          Sold out        </div>
+
+        <h3>Celebrity Glam &amp; Seasonal Makeup with Zerlinda</h3>
+
+        <div class="m">
+          Sunday, 15 Nov 2026 &middot; 3.5 Hours                  </div>
+
+        <div class="p">
+          <span>IDR 3.200.000</span>
+                      <a href="book?type=waitlist&workshop=Celebrity+Glam+%26+Seasonal+Makeup+with+Zerlinda" class="btn" style="margin: 0; padding: 6px 14px; font-size: 8px; color: var(--mut); border-color: var(--line);">
+              Waitlist
+            </a>
+                  </div>
+      </article>
+      </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-logo">COLOURIST</div>
+    <p style="margin: 0 auto 12px; max-width: 500px;">
+      Asia &amp; Indonesia's No. 1 Color Expert.<br>
+      ASHTA District 8, Level 1, SCBD Lot 28, Jl. Jend. Sudirman Kav 52-53, Jakarta Selatan 12190    </p>
+
+    <div class="footer-links">
+      <a href="about">About</a>
+      <a href="experiences">Experiences</a>
+      <a href="transformation">Transformation</a>
+      <a href="workshop">Workshop</a>
+      <a href="collaboration">Collaboration</a>
+      <a href="partners">Partners</a>
+      <a href="book">Book Now</a>
+    </div>
+
+    <p style="margin-top: 16px; font-size: 10px; color: var(--mut);">
+      &copy; 2026 Colourist by Zerlinda. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

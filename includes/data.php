@@ -25,6 +25,7 @@ $site = [
     'studio_address' => 'ASHTA District 8, Level 1, SCBD Lot 28, Jl. Jend. Sudirman Kav 52-53, Jakarta Selatan 12190',
     'studio_location_short' => 'ASHTA District 8, SCBD, Jakarta',
     'operating_hours' => 'Mon – Sun: 10:00 – 21:00 WIB (By Appointment Only)',
+    'formspree_id' => 'XXXX', // Ganti dengan Formspree Form ID Anda (contoh: 'xpznvqwz')
     // Admin password hash: default is 'colourist2026'
     // To change, generate password_hash('your_new_password', PASSWORD_DEFAULT);
     'admin_password_hash' => '$2y$10$w0s6h2H9w5yH1z2N0k1A7u4x9O7M.gX3M0yT8zK3W5F7D0gG4J2rO', // 'colourist2026'

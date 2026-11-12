@@ -24,7 +24,6 @@ if (!defined('APP_INIT')) {
       <a href="collaboration">Collaboration</a>
       <a href="partners">Partners</a>
       <a href="book">Book Now</a>
-      <a href="admin.php">Admin</a>
     </div>
 
     <p style="margin-top: 16px; font-size: 10px; color: var(--mut);">

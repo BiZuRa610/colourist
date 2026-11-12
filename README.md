@@ -55,39 +55,26 @@ Kelola daftar transformasi klien dan studio secara visual melalui `http://localh
 
 ---
 
-## 5. Panduan Deploy ke Vercel
+## 5. Panduan Deploy ke Vercel (Static Export)
 
-### Arsitektur Serverless
+Deployment ke Vercel menggunakan strategi **Static Export** (`/dist`), sehingga Vercel tidak perlu menjalankan PHP runtime serverless (zero-maintenance, performa CDN tercepat, aman, dan tanpa batasan durasi/memori fungsi).
 
-Semua request di-route melalui **`api/index.php`** (single entry-point):
-- Clean URL → dipetakan ke file halaman PHP di root (`/about` → `about.php`, dll.)
-- `/experience/{slug}` → `experience.php` dengan `$_GET['service'] = slug`
-- Path tidak dikenal → `404.php` dengan status 404
+### Alur Kerja & Deploy
 
-Konfigurasi `vercel.json` menggunakan runtime `vercel-php@0.7.3`. File media besar (video, gambar) disajikan sebagai static assets dan **tidak** masuk ke fungsi serverless untuk menjaga ukuran di bawah limit.
-
-> **⚠️ Catatan: `data/` bersifat read-only di Vercel.**
-> Admin panel (`/admin`) dapat membaca `data/transformation.json` di Vercel, tetapi **tidak bisa menulis** karena filesystem serverless bersifat read-only. Fitur tulis (tambah/edit/hapus item transformasi) hanya berfungsi di lokal (Laragon/Apache). Untuk production, pertimbangkan migrasi ke database eksternal atau Vercel KV/Blob.
-
-### Deploy
-
-1. Pastikan ukuran video di bawah limit Git/Vercel (gunakan `tools/optimize.sh` jika perlu).
-2. Deploy langsung melalui Vercel CLI:
-   ```bash
-   vercel
-   ```
-
-### Opsi Alternatif: Static Build Generator (`/dist`)
-Jika ingin hosting sepenuhnya statis (zero-server / CDN statis):
-1. Jalankan generator build lokal:
+1. Lakukan perubahan teks, kontak, atau konfigurasi di `includes/data.php` (atau file PHP lainnya).
+2. **Setelah edit data.php, jalankan php build.php, lalu commit dan push.**
    ```bash
    php build.php
+   git add .
+   git commit -m "build: update static export"
+   git push
    ```
-2. Seluruh halaman PHP akan di-render menjadi HTML statis di dalam folder `/dist` beserta seluruh aset dan data JSON.
-3. Deploy folder `/dist` ke Vercel atau platform hosting statis apa pun:
-   ```bash
-   vercel ./dist
-   ```
+3. Vercel akan otomatis menyajikan folder `dist` secara statis dengan clean URL aktif (`vercel.json` outputDirectory: "dist").
+
+### Fitur Interaktif pada Static Export
+- **Booking**: Berjalan 100% via client-side JavaScript yang langsung menyusun format pesan dan mengarahkan ke WhatsApp resmi Colourist.
+- **Form Inquiry Kolaborasi**: Menggunakan Formspree (`action="https://formspree.io/f/XXXX"`) dengan fallback `mailto:` langsung ke email resmi, sehingga pengiriman pesan tidak membutuhkan backend PHP. Form ID dapat diedit di `includes/data.php` (`$site['formspree_id']`).
+- **Admin Panel**: Hanya dijalankan pada environment PHP lokal (Laragon). File `admin.php` sengaja tidak di-export ke dalam folder `/dist`.
 
 ---
 

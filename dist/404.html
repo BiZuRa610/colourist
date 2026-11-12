@@ -1,0 +1,176 @@
+
+Warning: http_response_code(): Cannot set response code - headers already sent (output started at D:\Laragon\www\makeup\build.php:13) in D:\Laragon\www\makeup\404.php on line 8
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>404 Page Not Found — Colourist by Zerlinda</title>
+  <meta name="description" content="Halaman yang Anda cari tidak ditemukan.">
+  <link rel="canonical" href="https://colouristbyzerlinda.com/404">
+
+  <!-- Base tag so relative links resolve cleanly across nested routes -->
+    <base href="/">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="404 Page Not Found — Colourist by Zerlinda">
+  <meta property="og:description" content="Halaman yang Anda cari tidak ditemukan.">
+  <meta property="og:url" content="https://colouristbyzerlinda.com/404">
+  <meta property="og:image" content="https://colouristbyzerlinda.com/assets/media/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/media/logo.png">
+  <link rel="apple-touch-icon" href="assets/media/logo.png">
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Backdrop overlay for mega menu -->
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+  <!-- Header Section -->
+  <header class="site-header">
+    <div class="nav">
+      <!-- Left: Burger Toggle -->
+      <button class="burger-btn" id="burgerBtn" aria-label="Buka Navigasi" aria-expanded="false"
+        aria-controls="megaNavPanel">
+        <span class="burger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <!-- Center: Logo -->
+      <a href="" class="logo" aria-label="Colourist by Zerlinda Home">
+        COLOURIST
+        <small>BY ZERLINDA</small>
+      </a>
+
+      <!-- Right: Balance Spacer -->
+      <div class="nav-spacer" aria-hidden="true"></div>
+    </div>
+
+    <!-- Mega Menu Panel (Aman-inspired) -->
+    <nav class="mega-panel" id="megaNavPanel" aria-label="Menu Utama">
+      <div class="mega-panel-inner">
+        <!-- Left Column: Primary Navigation Items -->
+        <div class="mega-col-left">
+                                    <div>
+                <a href="about" class="menu-link ">
+                  About                </a>
+              </div>
+                                                <div class="menu-item-group">
+                <button type="button"
+                  class="menu-item-btn "
+                  id="expNavBtn" aria-expanded="false" aria-controls="desktopSubmenuCol expMobileSubmenu">
+                  <span class="txt">Experiences</span>
+                  <span class="chevron-arrow" id="expChevron" aria-hidden="true">&rsaquo;</span>
+                </button>
+
+                <!-- Mobile Accordion Submenu -->
+                <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
+                                                          <a href="experience/personal-color-analysis" class="menu-link ">
+                      Personal Color Analysis                    </a>
+                                                          <a href="experience/private-styling" class="menu-link ">
+                      Private Styling                    </a>
+                                                          <a href="experience/makeup-masterclass" class="menu-link ">
+                      Makeup Masterclass                    </a>
+                                                          <a href="experience/custom-lipstick" class="menu-link ">
+                      Custom Lipstick                    </a>
+                                  </div>
+              </div>
+                                                <div>
+                <a href="transformation" class="menu-link ">
+                  Transformation                </a>
+              </div>
+                                                <div>
+                <a href="workshop" class="menu-link ">
+                  Workshop                </a>
+              </div>
+                                                <div>
+                <a href="collaboration" class="menu-link ">
+                  Collaboration                </a>
+              </div>
+                                                <div>
+                <a href="partners" class="menu-link ">
+                  Partners                </a>
+              </div>
+                                                <div>
+                <a href="book" class="menu-link ">
+                  Book Now                </a>
+              </div>
+                              </div>
+
+        <!-- Right Column: Submenu (Desktop, shown ONLY when Experiences is clicked) -->
+        <div class="mega-col-right" id="desktopSubmenuCol" aria-label="Detail Experiences">
+          <span class="sub-eyebrow">EXPERIENCES</span>
+                                  <a href="experience/personal-color-analysis" class="menu-link ">
+              Personal Color Analysis            </a>
+                                  <a href="experience/private-styling" class="menu-link ">
+              Private Styling            </a>
+                                  <a href="experience/makeup-masterclass" class="menu-link ">
+              Makeup Masterclass            </a>
+                                  <a href="experience/custom-lipstick" class="menu-link ">
+              Custom Lipstick            </a>
+                  </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Wrapper Container -->
+  <main class="site-wrapper" id="mainContent">
+<section class="sec" style="padding: 100px 28px;">
+  <span class="eyebrow accent">404 Error</span>
+  <h1 style="font-size: 38px; margin: 12px 0 16px;">Page Not Found</h1>
+  <p style="max-width: 480px; margin: 0 auto 28px; color: var(--mut);">
+    Halaman atau layanan yang Anda cari tidak tersedia atau tautan telah berpindah.
+  </p>
+  <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+    <a href="" class="btn btn-solid">Return Home</a>
+    <a href="experiences" class="btn">Explore Experiences</a>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-logo">COLOURIST</div>
+    <p style="margin: 0 auto 12px; max-width: 500px;">
+      Asia &amp; Indonesia's No. 1 Color Expert.<br>
+      ASHTA District 8, Level 1, SCBD Lot 28, Jl. Jend. Sudirman Kav 52-53, Jakarta Selatan 12190    </p>
+
+    <div class="footer-links">
+      <a href="about">About</a>
+      <a href="experiences">Experiences</a>
+      <a href="transformation">Transformation</a>
+      <a href="workshop">Workshop</a>
+      <a href="collaboration">Collaboration</a>
+      <a href="partners">Partners</a>
+      <a href="book">Book Now</a>
+    </div>
+
+    <p style="margin-top: 16px; font-size: 10px; color: var(--mut);">
+      &copy; 2026 Colourist by Zerlinda. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

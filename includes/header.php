@@ -30,10 +30,11 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
   <meta name="description" content="<?= e($page_description) ?>">
   <link rel="canonical" href="<?= e($canonical_url) ?>">
 
-  <!-- Base tag so relative links resolve cleanly when on /experience/slug -->
+  <!-- Base tag so relative links resolve cleanly across nested routes -->
   <?php
-    // On Vercel: base = "/", on Laragon local: base = "/makeup/"
-    $base_href = defined('VERCEL_ROUTER') ? '/' : '/makeup/';
+    // In static export / Vercel build, base href is '/'
+    // In Laragon local server, base href is '/makeup/'
+    $base_href = (defined('STATIC_EXPORT') || defined('VERCEL_ROUTER')) ? '/' : '/makeup/';
   ?>
   <base href="<?= $base_href ?>">
 
