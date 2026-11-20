@@ -9,6 +9,9 @@ DirectoryIndex index.php
   RewriteRule ^(\.git|reference|tools|data|legacy)/ - [F,L]
   RewriteRule \.(bak|config|env|log)$ - [F,L]
 
+  # Transformation Story clean URL: /transformation/slug → story.php?story=slug
+  RewriteRule ^transformation/([a-z0-9-]+)/?$ story.php?story=$1 [L,QSA]
+
   # Service detail clean URL: /experience/slug → experience.php?service=slug
   RewriteRule ^experience/([a-z0-9-]+)/?$ experience.php?service=$1 [L,QSA]
 

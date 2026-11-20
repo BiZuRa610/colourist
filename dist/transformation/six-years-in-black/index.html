@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Six Years in Black. — Colourist Transformation Story</title>
+  <meta name="description" content="After six years of struggling with acne, I thought wearing black was the only way to feel comfortable in my own skin">
+  <link rel="canonical" href="https://colouristbyzerlinda.com/story">
+
+  <!-- Base tag so relative links resolve cleanly across nested routes -->
+    <base href="/">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Six Years in Black. — Colourist Transformation Story">
+  <meta property="og:description" content="After six years of struggling with acne, I thought wearing black was the only way to feel comfortable in my own skin">
+  <meta property="og:url" content="https://colouristbyzerlinda.com/story">
+  <meta property="og:image" content="https://colouristbyzerlinda.com/assets/media/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/media/logo.png">
+  <link rel="apple-touch-icon" href="assets/media/logo.png">
+
+  <!-- Google Fonts: Cormorant Garamond (400, 500) & Poppins (300, 400, 500) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Backdrop overlay for mega menu -->
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+  <!-- Header Section -->
+  <header class="site-header">
+    <div class="nav">
+      <!-- Left: Burger Toggle -->
+      <button class="burger-btn" id="burgerBtn" aria-label="Buka Navigasi" aria-expanded="false"
+        aria-controls="megaNavPanel">
+        <span class="burger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <!-- Center: Logo -->
+      <a href="" class="logo" aria-label="Colourist by Zerlinda Home">
+        COLOURIST
+        <small>BY ZERLINDA</small>
+      </a>
+
+      <!-- Right: User Account and Shopping Bag / Cart -->
+      <div class="header-actions">
+        <a href="account" class="header-icon-btn" aria-label="Akun Saya" title="Account">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+        <a href="cart" class="header-icon-btn" aria-label="Keranjang Belanja" title="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+            <path d="M3 6h18"></path>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mega Menu Panel (Aman-inspired) -->
+    <nav class="mega-panel" id="megaNavPanel" aria-label="Menu Utama">
+      <div class="mega-panel-inner">
+        <!-- Left Column: Primary Navigation Items -->
+        <div class="mega-col-left">
+                                    <div>
+                <a href="about" class="menu-link ">
+                  About                </a>
+              </div>
+                                                <div class="menu-item-group">
+                <button type="button"
+                  class="menu-item-btn "
+                  id="expNavBtn" aria-expanded="false" aria-controls="desktopSubmenuCol expMobileSubmenu">
+                  <span class="txt">Experiences</span>
+                  <span class="chevron-arrow" id="expChevron" aria-hidden="true">&rsaquo;</span>
+                </button>
+
+                <!-- Mobile Accordion Submenu -->
+                <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
+                                                          <a href="experience/personal-color-analysis" class="menu-link ">
+                      Personal Color Analysis                    </a>
+                                                          <a href="experience/signature-experience" class="menu-link ">
+                      Signature Experience                    </a>
+                                                          <a href="experience/private-styling" class="menu-link ">
+                      Private Styling                    </a>
+                                                          <a href="experience/makeup-masterclass" class="menu-link ">
+                      Makeup Masterclass                    </a>
+                                                          <a href="experience/custom-lipstick" class="menu-link ">
+                      Custom Lipstick                    </a>
+                                  </div>
+              </div>
+                                                <div>
+                <a href="transformation" class="menu-link ">
+                  Transformation                </a>
+              </div>
+                                                <div>
+                <a href="workshop" class="menu-link ">
+                  Workshop                </a>
+              </div>
+                                                <div>
+                <a href="collaboration" class="menu-link ">
+                  Collaboration                </a>
+              </div>
+                                                <div>
+                <a href="partners" class="menu-link ">
+                  Partners                </a>
+              </div>
+                                                <div>
+                <a href="book" class="menu-link ">
+                  Book Now                </a>
+              </div>
+                              </div>
+
+        <!-- Right Column: Submenu (Desktop, shown ONLY when Experiences is clicked) -->
+        <div class="mega-col-right" id="desktopSubmenuCol" aria-label="Detail Experiences">
+          <span class="sub-eyebrow">EXPERIENCES</span>
+                                  <a href="experience/personal-color-analysis" class="menu-link ">
+              Personal Color Analysis            </a>
+                                  <a href="experience/signature-experience" class="menu-link ">
+              Signature Experience            </a>
+                                  <a href="experience/private-styling" class="menu-link ">
+              Private Styling            </a>
+                                  <a href="experience/makeup-masterclass" class="menu-link ">
+              Makeup Masterclass            </a>
+                                  <a href="experience/custom-lipstick" class="menu-link ">
+              Custom Lipstick            </a>
+                  </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Wrapper Container -->
+  <main class="site-wrapper" id="mainContent">
+
+<!-- 1. Hero Image / Media -->
+<div class="story-hero-wrapper" aria-label="Transformation Hero">
+      <img src="assets/media/story_six_years_in_black.jpg" alt="Six Years in Black." loading="lazy" class="media-img story-hero-img" style="aspect-ratio: 16/9; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">  </div>
+
+<!-- 2. Story Article Content -->
+<article class="story-article-container">
+  <header class="story-header text-center">
+    <h1 class="story-title">Six Years in Black.</h1>
+          <p class="story-subtitle"><em>A Colourist Client Story</em></p>
+      </header>
+
+  <div class="story-body">
+                  <section class="story-section">
+                      <h2 class="story-section-heading">The story behind the color</h2>
+          
+                                    <p class="story-p">For six years, black was the only color she felt comfortable wearing.</p>
+                          <p class="story-p">Not because it was her favorite color. Not because it reflected her personality.</p>
+                          <p class="story-p">But because she was struggling with acne.</p>
+                          <p class="story-p">She was afraid that wearing other colors would make the redness in her skin more noticeable. So she gradually built her wardrobe around black. Black tops, black dresses, black outfits. It became her safe choice.</p>
+                          <p class="story-p">Over time, she stopped experimenting with color. She stopped considering what she might look beautiful in. She had found a way to dress without drawing attention to the part of herself she felt most conscious about.</p>
+                          <p class="story-p">When she came to Colourist, we discovered something unexpected.</p>
+                          <p class="story-p">She was a Spring.</p>
+                          <p class="story-p">Her natural coloring was beautifully complemented by warm, light and clear colors: the delicate shades of spring flowers, fresh peach, soft coral, butter yellow, light aqua and fresh greens.</p>
+                          <p class="story-p">Colors that were almost the complete opposite of the black she had spent six years wearing.</p>
+                      
+          
+                  </section>
+              <section class="story-section">
+                      <h2 class="story-section-heading">What color theory revealed</h2>
+          
+                                    <p class="story-p">Black is an extremely dark, highly contrasting color. When worn close to the face, it can create a strong value contrast against the complexion.</p>
+                          <p class="story-p">For someone whose natural coloring is light, warm and clear, this contrast can become visually overpowering. It can draw attention to the difference between the garment and the skin, rather than allowing the natural features to harmonize.</p>
+                          <p class="story-p">There is another important consideration: simultaneous contrast.</p>
+                          <p class="story-p">The colors surrounding our skin influence how we visually perceive its complexion. A very dark, stark color can make variations in skin tone, shadows and redness appear more pronounced by comparison.</p>
+                          <p class="story-p">For her, Spring colors created a different visual effect.</p>
+                      
+                      <ul class="story-bullets">
+                              <li>Lightness: Colors with more white in them create a gentler transition between the clothing and her complexion.</li>
+                              <li>Warmth: Peach, warm coral and golden tones harmonize with her warm undertone.</li>
+                              <li>Clarity: Fresh, clear colors complement the brightness of Spring coloring instead of overwhelming it with excessive darkness.</li>
+                              <li>Color harmony: Rather than creating a stark contrast, the right colors allow the face to become the focal point.</li>
+                          </ul>
+          
+                                    <p class="story-p">Importantly, clothing doesn&#039;t treat acne or physically remove redness. What it can change is how the complexion is visually perceived.</p>
+                              </section>
+              <section class="story-section">
+                      <h2 class="story-section-heading">More than finding her colors</h2>
+          
+                                    <p class="story-p">The most beautiful part of this transformation wasn&#039;t simply seeing her in the right colors.</p>
+                          <p class="story-p">It was watching her become comfortable wearing colors she had avoided for six years.</p>
+                          <p class="story-p">She no longer needed to make black her uniform. She could explore, experiment and express herself through color.</p>
+                          <p class="story-p">She came to Colourist thinking she needed to find colors that would help her hide.</p>
+                          <p class="story-p">Instead, she discovered colors that helped her feel seen.</p>
+                          <p class="story-p">She didn&#039;t just find her colors. She found a little more of herself.</p>
+                          <p class="story-p">Because sometimes, the right color doesn&#039;t change who you are.</p>
+                          <p class="story-p">It reminds you of who you have been all along.</p>
+                      
+          
+                  </section>
+            </div>
+
+  <!-- End of Article Actions -->
+  <footer class="story-footer">
+    <div class="story-cta-wrap">
+      <a href="book" class="btn btn-solid" style="padding: 12px 36px; font-size: 10px;">Book Now</a>
+    </div>
+
+    <div class="story-nav-links">
+      <div class="story-nav-prev">
+                  <a href="transformation/she-spent-12-years" class="story-arrow-link">&larr; She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident?</a>
+              </div>
+      <div class="story-nav-center">
+        <a href="transformation" class="story-all-link">&larr; All transformations</a>
+      </div>
+      <div class="story-nav-next">
+                  <a href="transformation/finding-confidence" class="story-arrow-link">Finding confidence beyond the workplace &rarr;</a>
+              </div>
+    </div>
+  </footer>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-logo">COLOURIST</div>
+    <p style="margin: 0 auto 12px; max-width: 500px;">
+      Asia &amp; Indonesia's No. 1 Color Expert.<br>
+      ASHTA District 8, Level 1, SCBD Lot 28, Jl. Jend. Sudirman Kav 52-53, Jakarta Selatan 12190    </p>
+
+    <div class="footer-links">
+      <a href="about">About</a>
+      <a href="experiences">Experiences</a>
+      <a href="transformation">Transformation</a>
+      <a href="workshop">Workshop</a>
+      <a href="collaboration">Collaboration</a>
+      <a href="partners">Partners</a>
+      <a href="book">Book Now</a>
+    </div>
+
+    <p style="margin-top: 16px; font-size: 10px; color: var(--mut);">
+      &copy; 2026 Colourist by Zerlinda. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+

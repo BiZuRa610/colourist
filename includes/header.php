@@ -1,7 +1,7 @@
 <?php
 /**
  * Header Template — Colourist by Zerlinda
- * Accessible burger navigation, 2-column mega panel with Aman-inspired submenus, dynamic SEO metadata
+ * Accessible burger navigation, Cormorant Garamond headings, Black Mango logo, account & cart icons
  */
 
 if (!defined('APP_INIT')) {
@@ -13,6 +13,7 @@ if (!defined('APP_INIT')) {
 $current_page = basename($_SERVER['PHP_SELF'] ?? 'index.php');
 $clean_current = str_replace('.php', '', $current_page);
 $current_service = $_GET['service'] ?? '';
+$current_story = $_GET['story'] ?? '';
 
 // Page SEO metadata defaults
 $page_title = $page_title ?? $site['title_default'];
@@ -32,8 +33,6 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
 
   <!-- Base tag so relative links resolve cleanly across nested routes -->
   <?php
-    // In static export / Vercel build, base href is '/'
-    // In Laragon local server, base href is '/makeup/'
     $base_href = (defined('STATIC_EXPORT') || defined('VERCEL_ROUTER')) ? '/' : '/makeup/';
   ?>
   <base href="<?= $base_href ?>">
@@ -50,11 +49,11 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
   <link rel="icon" type="image/png" href="<?= e($media['brand.logo']) ?>">
   <link rel="apple-touch-icon" href="<?= e($media['brand.logo']) ?>">
 
-  <!-- Google Fonts: Poppins -->
+  <!-- Google Fonts: Cormorant Garamond (400, 500) & Poppins (300, 400, 500) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
     rel="stylesheet">
 
   <!-- Main Stylesheet -->
@@ -85,8 +84,22 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
         <small>BY ZERLINDA</small>
       </a>
 
-      <!-- Right: Balance Spacer -->
-      <div class="nav-spacer" aria-hidden="true"></div>
+      <!-- Right: User Account and Shopping Bag / Cart -->
+      <div class="header-actions">
+        <a href="account" class="header-icon-btn" aria-label="Akun Saya" title="Account">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+        <a href="cart" class="header-icon-btn" aria-label="Keranjang Belanja" title="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+            <path d="M3 6h18"></path>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </a>
+      </div>
     </div>
 
     <!-- Mega Menu Panel (Aman-inspired) -->

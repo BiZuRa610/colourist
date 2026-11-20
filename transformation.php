@@ -1,80 +1,74 @@
 <?php
 /**
  * Transformation Page — Colourist by Zerlinda
- * Real client transformations, video carousel, and "Why Colourist?"
+ * 5 Real Client Stories with Category Filter (Real Clients, Experts, Celebrities)
  */
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
 
-$page_title = 'Colourist Transformation — Inspiring Beauty & Confidence';
+$page_title = 'Colourist Transformation — Authentic Stories & Confidence';
 $page_description = 'Every person deserves to feel confident in their own skin. Discover authentic transformations from thousands of clients across Asia.';
-
-// Load transformation videos
-$trans_items = [
-    [
-        'slot'  => 'transformation.1',
-        'label' => 'trans_1'
-    ],
-    [
-        'slot'  => 'transformation.2',
-        'label' => 'trans_2'
-    ],
-    [
-        'slot'  => 'transformation.3',
-        'label' => 'trans_3'
-    ],
-    [
-        'slot'  => 'transformation.4',
-        'label' => 'trans_4'
-    ],
-];
 
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- 1. Transformation Split + Horizontal Video Carousel -->
-<section class="trans" aria-labelledby="transTitle">
-  <div>
-    <span class="eyebrow accent">Transformation</span>
-    <h1 id="transTitle">Colourist Transformation</h1>
-    <p>
-      Every person deserves to feel confident in their own skin. From discovering the colours that complement you to seeing yourself in a whole new light, sometimes the smallest discovery can inspire the most beautiful transformation.
-    </p>
-    <div style="margin-top: 20px;">
-      <a href="book" class="btn btn-solid">Reserve Your Session</a>
-    </div>
-  </div>
+<!-- 1. Page Header -->
+<section class="sec" style="padding-bottom: 24px;">
+  <h1 style="font-size: 34px; margin-bottom: 24px;">Colourist Transformation</h1>
 
-  <div class="strip" aria-label="Transformation Videos Carousel">
-    <?php foreach ($trans_items as $item): ?>
-      <div class="strip-item">
-        <?= media($item['slot'], [
-            'aspect' => '9/16',
-            'alt'    => 'Colourist Transformation Video',
-            'label'  => $item['label']
-        ]) ?>
-      </div>
+  <!-- 3 Solid Black Category Filter Buttons -->
+  <div class="filter-btn-group" role="tablist" aria-label="Filter Kategori Transformasi">
+    <button type="button" class="trans-filter-btn active" data-category="real-clients">
+      REAL CLIENTS
+    </button>
+    <button type="button" class="trans-filter-btn" data-category="experts">
+      EXPERTS
+    </button>
+    <button type="button" class="trans-filter-btn" data-category="celebrities">
+      CELEBRITIES
+    </button>
+  </div>
+</section>
+
+<!-- 2. Stories Zigzag-Sejajar Listing (5 items) -->
+<section class="trans-stories-sec" aria-label="Daftar Cerita Transformasi">
+  <div class="trans-stories-list" id="transStoriesList">
+    <?php foreach ($stories as $st): ?>
+      <article class="trans-story-row" data-category="<?= e($st['category']) ?>">
+        <div class="trans-story-media">
+          <a href="transformation/<?= e($st['slug']) ?>" aria-label="<?= e($st['title']) ?>">
+            <?php if (!empty($st['media_slot']) && !empty($media[$st['media_slot']])): ?>
+              <?= media($st['media_slot'], [
+                  'aspect' => '16/9',
+                  'alt'    => $st['title'],
+                  'class'  => 'trans-row-img'
+              ]) ?>
+            <?php else: ?>
+              <div class="ph" style="aspect-ratio: 16/9; width: 100%; min-height: 220px;" role="img" aria-label="<?= e($st['title']) ?>">
+                <span><?= e($st['title']) ?></span>
+              </div>
+            <?php endif; ?>
+          </a>
+        </div>
+
+        <div class="trans-story-content">
+          <h2 class="trans-story-title">
+            <a href="transformation/<?= e($st['slug']) ?>">
+              <?= e($st['title']) ?>
+            </a>
+          </h2>
+          <p class="trans-story-quote">
+            &ldquo;<?= e($st['quote']) ?>&rdquo;
+          </p>
+          <div>
+            <a href="transformation/<?= e($st['slug']) ?>" class="trans-story-link">
+              Read the full story
+            </a>
+          </div>
+        </div>
+      </article>
     <?php endforeach; ?>
   </div>
 </section>
 
-<!-- 2. Why Colourist? Section -->
-<section class="sec why" style="border-top: 1px solid var(--line); margin-top: 20px;" aria-labelledby="whyTitle">
-  <span class="eyebrow">The Standard</span>
-  <h2 id="whyTitle">Why Colourist?</h2>
-  
-  <p>Colourist is Asia's Leading &amp; No.1 Color Expert.</p>
-  <p>Located in ASHTA &amp; Kuala Lumpur, we are dedicated to make Indonesians feel confident in their unique color.</p>
-  <p>Trusted by thousands of clients, brands, and publications globally and locally, we deliver real transformations through the power of color.</p>
-
-  <!-- Talent Image with Gradient Mask Fade -->
-  <div class="faces-container">
-    <?= media('why.image', [
-        'alt'    => 'Miss Indonesia & Miss World delegates and Colourist clients',
-        'label'  => 'why_faces.png'
-    ]) ?>
-  </div>
-</section>
-
 <?php include __DIR__ . '/includes/footer.php'; ?>
-

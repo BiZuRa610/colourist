@@ -1,7 +1,7 @@
 <?php
 /**
  * Service Detail Page — Colourist by Zerlinda
- * Reusable dynamic template for the 4 core experiences (/experience/{slug} or ?service=slug)
+ * Reusable dynamic template for the 5 core experiences (/experience/{slug} or ?service=slug)
  */
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
@@ -20,8 +20,8 @@ $srv = $services[$slug];
 $page_title = $srv['title'] . ' — Colourist by Zerlinda';
 $page_description = $srv['description'];
 
-// Determine other 3 unique services
-$unique_slugs = ['personal-color-analysis', 'private-styling', 'makeup-masterclass', 'custom-lipstick'];
+// Determine other 4 unique services
+$unique_slugs = ['personal-color-analysis', 'signature-experience', 'private-styling', 'makeup-masterclass', 'custom-lipstick'];
 $canonical_slug = ($slug === 'color-analysis') ? 'personal-color-analysis' : $slug;
 $other_services = [];
 foreach ($unique_slugs as $u_slug) {
@@ -83,12 +83,12 @@ include __DIR__ . '/includes/header.php';
   </div>
 </article>
 
-<!-- 2. Other Experiences Section -->
+<!-- 2. Other Experiences Section (4 other services) -->
 <section class="sec pt-0" style="border-top: 1px solid var(--line); margin-top: 20px; padding-top: 40px;" aria-labelledby="otherExpHeading">
   <span class="eyebrow" id="otherExpHeading">Discover More</span>
   <h2 style="font-size: 24px; margin: 6px 0 20px;">Other Experiences</h2>
 
-  <div class="cards" style="grid-template-columns: repeat(3, 1fr);">
+  <div class="cards" style="grid-template-columns: repeat(4, 1fr);">
     <?php foreach ($other_services as $other): ?>
       <a href="experience/<?= e($other['slug']) ?>" class="card">
         <div class="card-media">

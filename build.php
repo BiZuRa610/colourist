@@ -94,9 +94,10 @@ foreach ($pages as $route => $config) {
     write_dist_html($config['dest'], $html);
 }
 
-// 2. The 4 Service Detail Pages: /experience/{slug}
+// 2. The 5 Service Detail Pages: /experience/{slug}
 $distinct_slugs = [
     'personal-color-analysis',
+    'signature-experience',
     'private-styling',
     'makeup-masterclass',
     'custom-lipstick'
@@ -134,6 +135,23 @@ $alias_html = <<<HTML
 </html>
 HTML;
 write_dist_html($alias_dest, $alias_html);
+
+// 3. Transformation Stories: /transformation/{slug} (5 stories)
+foreach ($stories as $slug => $st) {
+    $route = "/transformation/{$slug}";
+    $dest = $dist_dir . "/transformation/{$slug}/index.html";
+    echo "  -> Rendering story {$route}...\n";
+
+    $_GET = ['story' => $slug];
+    $_SERVER['PHP_SELF'] = '/story.php';
+    $_SERVER['REQUEST_URI'] = $route;
+
+    ob_start();
+    include __DIR__ . '/story.php';
+    $html = ob_get_clean();
+
+    write_dist_html($dest, $html);
+}
 
 echo "==> [4/4] Static export completed successfully!\n";
 echo "Output files ready in /dist.\n";

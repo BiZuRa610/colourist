@@ -21,9 +21,26 @@ Buka peramban di `http://localhost:8000`. Jika menggunakan Laragon / Apache, cle
 Semua data teks, nomor kontak, jadwal, layanan, workshop, dan testimoni dipusatkan di `includes/data.php`:
 - **Informasi Kontak & Studio**: Ubah nomor WhatsApp (`$site['whatsapp']`), alamat, jam operasional, dan email.
 - **Menu Navigasi**: Kelola item menu dan submenu di array `$nav_menu`.
-- **Layanan (4 Layanan Utama)**: Edit durasi, harga, dan deskripsi di array `$services`.
-- **Workshop**: Tambah jadwal workshop, kuota, harga, dan status di array `$workshops`.
-- **Testimoni & Mitra**: Kelola quote klien dan nama mitra di array `$testimonials` dan `$partners`.
+- **Layanan (5 Layanan Utama)**: Kelola 5 layanan utama di array `$services`:
+  - `personal-color-analysis`
+  - `signature-experience`
+  - `private-styling`
+  - `makeup-masterclass`
+  - `custom-lipstick`
+- **Cerita Transformasi (Transformation Stories)**:
+  - Dikelola di array `$stories` di `includes/data.php`.
+  - Untuk menambah cerita baru:
+    1. Tambahkan slug baru sebagai key di `$stories` (misal: `'my-new-story'`).
+    2. Isi `title`, `quote`, `category` (`'real-clients'`, `'experts'`, atau `'celebrities'`), `category_label`, `subtitle`, `media_slot`, `has_content` (`true`), dan `content` (array section berisi `heading`, `paragraphs`, serta `bullets` opsional).
+    3. Tambahkan slot gambar di `$media` (misal: `'story.my-new-story' => 'assets/media/my_story.jpg'`).
+    4. Jalankan `php build.php` untuk merender static export `dist/transformation/my-new-story/index.html`.
+- **Mitra / Partner Brands**:
+  - Dikelola di array `$partner_brands` di `includes/data.php`.
+  - Untuk menambah logo partner:
+    1. Tambahkan item di `$partner_brands`, contoh: `['name' => 'Brand Name', 'logo' => 'assets/media/brands/logo.png']`.
+    2. Jika path `logo` dikosongkan (`''`), sistem otomatis merender wordmark tipografi luxury dengan filter monokrom.
+    3. Jalankan `php build.php` setelah selesai.
+- **Testimoni & Mitra**: Kelola quote klien dan mitra di array `$testimonials` dan `$partners`.
 
 ---
 

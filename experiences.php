@@ -1,17 +1,18 @@
 <?php
 /**
  * Experiences Page — Colourist by Zerlinda
- * Zigzag listing of 4 core bespoke services
+ * 5 Rows Zigzag: 9:16 media (±220px) and centered text
  */
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
 
-$page_title = 'Colourist Experience — Personal Color, Styling, Masterclass & Custom Lipstick';
-$page_description = 'Explore our private consultations at ASHTA District 8, SCBD: 60-minute Personal Color Analysis, 90-minute Private Styling, Makeup Masterclass, and Custom Lipstick formulation.';
+$page_title = 'Colourist Experience — 5 Bespoke Services';
+$page_description = 'Explore our private consultations at ASHTA District 8, SCBD: Personal Color Analysis, Signature Experience, Private Styling, Makeup Masterclass, and Custom Lipstick formulation.';
 
-// Distinct 4 services in intended order
-$distinct_services = [
+// 5 services in intended order
+$ordered_services = [
     $services['personal-color-analysis'],
+    $services['signature-experience'],
     $services['private-styling'],
     $services['makeup-masterclass'],
     $services['custom-lipstick']
@@ -20,42 +21,35 @@ $distinct_services = [
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Experiences Header -->
-<section class="sec" style="padding-bottom: 20px;">
-  <span class="eyebrow">Our Services</span>
-  <h1 style="font-size: 34px; margin-top: 6px;">Colourist Experience</h1>
-  <p style="color: var(--mut); max-width: 540px; margin: 12px auto 0; font-size: 13px;">
-    Every private consultation is curated to help you discover the shades, silhouettes, and beauty formulations that reflect your true self.
-  </p>
-</section>
-
-<!-- Zigzag Services Listing -->
-<section class="exlist" aria-label="Services List">
-  <?php foreach ($distinct_services as $srv): ?>
-    <div class="row" id="<?= e($srv['slug']) ?>">
-      <div class="row-media">
+<!-- Zigzag 5 Services Listing -->
+<section class="exp-zigzag-sec" aria-label="Experiences List">
+  <?php foreach ($ordered_services as $idx => $srv): ?>
+    <?php $is_even = ($idx % 2 === 1); ?>
+    <div class="exp-zigzag-row <?= $is_even ? 'row-reverse' : '' ?>" id="<?= e($srv['slug']) ?>">
+      <!-- Media Column (9:16 approx 220px width) -->
+      <div class="exp-media-col">
         <a href="experience/<?= e($srv['slug']) ?>" aria-label="View <?= e($srv['title']) ?> details">
           <?= media($srv['media_slot'], [
-              'aspect' => '1/1',
-              'alt'    => $srv['title'] . ' Session',
-              'label'  => $srv['media_slot']
+              'aspect' => '9/16',
+              'alt'    => $srv['title'],
+              'class'  => 'exp-card-media'
           ]) ?>
         </a>
       </div>
-      <div class="txt">
-        <span class="eyebrow"><?= e($srv['eyebrow']) ?></span>
-        <h2>
+
+      <!-- Text Column (Centered content) -->
+      <div class="exp-text-col">
+        <h2 class="exp-title">
           <a href="experience/<?= e($srv['slug']) ?>">
             <?= e($srv['title']) ?>
           </a>
         </h2>
-        <p><?= e($srv['description']) ?></p>
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-          <a href="book?service=<?= e($srv['slug']) ?>" class="btn btn-solid" style="margin-top: 0;">
-            Book Now
-          </a>
-          <a href="experience/<?= e($srv['slug']) ?>" class="btn" style="margin-top: 0;">
-            View Details
+        <p class="exp-desc">
+          <?= e($srv['description']) ?>
+        </p>
+        <div>
+          <a href="book?service=<?= e($srv['slug']) ?>" class="btn btn-exp-outline">
+            BOOK NOW
           </a>
         </div>
       </div>

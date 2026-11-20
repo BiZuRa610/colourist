@@ -23,11 +23,11 @@
   <link rel="icon" type="image/png" href="assets/media/logo.png">
   <link rel="apple-touch-icon" href="assets/media/logo.png">
 
-  <!-- Google Fonts: Poppins -->
+  <!-- Google Fonts: Cormorant Garamond (400, 500) & Poppins (300, 400, 500) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
     rel="stylesheet">
 
   <!-- Main Stylesheet -->
@@ -58,8 +58,22 @@
         <small>BY ZERLINDA</small>
       </a>
 
-      <!-- Right: Balance Spacer -->
-      <div class="nav-spacer" aria-hidden="true"></div>
+      <!-- Right: User Account and Shopping Bag / Cart -->
+      <div class="header-actions">
+        <a href="account" class="header-icon-btn" aria-label="Akun Saya" title="Account">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+        <a href="cart" class="header-icon-btn" aria-label="Keranjang Belanja" title="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+            <path d="M3 6h18"></path>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </a>
+      </div>
     </div>
 
     <!-- Mega Menu Panel (Aman-inspired) -->
@@ -83,6 +97,8 @@
                 <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
                                                           <a href="experience/personal-color-analysis" class="menu-link ">
                       Personal Color Analysis                    </a>
+                                                          <a href="experience/signature-experience" class="menu-link ">
+                      Signature Experience                    </a>
                                                           <a href="experience/private-styling" class="menu-link ">
                       Private Styling                    </a>
                                                           <a href="experience/makeup-masterclass" class="menu-link ">
@@ -118,6 +134,8 @@
           <span class="sub-eyebrow">EXPERIENCES</span>
                                   <a href="experience/personal-color-analysis" class="menu-link ">
               Personal Color Analysis            </a>
+                                  <a href="experience/signature-experience" class="menu-link ">
+              Signature Experience            </a>
                                   <a href="experience/private-styling" class="menu-link ">
               Private Styling            </a>
                                   <a href="experience/makeup-masterclass" class="menu-link ">
@@ -131,6 +149,7 @@
 
   <!-- Page Wrapper Container -->
   <main class="site-wrapper" id="mainContent">
+
 <!-- 1. Hero Video Section -->
 <section class="hero-wrapper" aria-label="Hero Video">
   <video muted loop playsinline preload="metadata" class="lazy-video hero-video-bg" data-src="assets/media/hero_portrait.mp4" src="assets/media/hero_portrait.mp4" style="aspect-ratio: 16/9; object-fit: cover;" aria-label="Colourist by Zerlinda Studio Experience"><source src="assets/media/hero_portrait.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>  <div class="hero-overlay">
@@ -212,9 +231,9 @@
 
 <!-- 3. Experiences Cards Section (9:16 Video Cards) -->
 <section class="sec pt-0" aria-labelledby="experiencesHeading">
-  <span class="eyebrow" id="experiencesHeading">Experiences</span>
+  <h2 id="experiencesHeading" style="font-size: 32px; margin-bottom: 24px;">Colourist Experience</h2>
 
-  <div class="cards">
+  <div class="cards" style="grid-template-columns: repeat(4, 1fr);">
           <a href="experience/personal-color-analysis" class="card">
         <div class="card-media">
           <video muted loop playsinline preload="metadata" class="lazy-video" data-src="assets/media/service_color_analysis.mp4" src="assets/media/service_color_analysis.mp4" style="aspect-ratio: 9/16; object-fit: cover;" aria-label="Personal Color Analysis Video Experience"><source src="assets/media/service_color_analysis.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </div>
@@ -236,6 +255,134 @@
         <p>Custom Lipstick</p>
       </a>
       </div>
+
+  <div style="margin-top: 36px; text-align: center;">
+    <a href="experiences" class="btn" style="padding: 11px 28px; font-size: 9px; letter-spacing: .2em;">
+      Explore Experiences
+    </a>
+  </div>
+</section>
+
+<!-- 4. Asia's Leading Color Expert Section -->
+<section class="sec" style="padding-top: 30px; padding-bottom: 40px;" aria-labelledby="leaderHeading">
+  <h2 id="leaderHeading" style="font-size: 32px; margin-bottom: 8px;">Asia's Leading Color Expert</h2>
+  <p style="color: var(--fg); font-size: 13px; max-width: 600px; margin: 0 auto 32px; letter-spacing: .02em;">
+    The expert in Personal Color Analysis, Styling, and Beauty Transformation
+  </p>
+
+  <!-- Centered 9:16 video / poster -->
+  <div class="home-leader-video-wrap">
+    <video muted loop playsinline preload="metadata" 
+           class="lazy-video home-leader-video" 
+           poster="assets/media/home_leader_video_poster.jpg"
+           data-src="assets/media/hero_portrait.mp4" 
+           src="assets/media/hero_portrait.mp4" 
+           aria-label="Asia's Leading Color Expert Experience">
+      <source src="assets/media/hero_portrait.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
+</section>
+
+<!-- 5. Transformations Section (3 Before/After Cards) -->
+<section class="sec" style="padding-top: 30px; padding-bottom: 50px;" aria-labelledby="homeTransHeading">
+  <h2 id="homeTransHeading" style="font-size: 32px; margin-bottom: 6px;">Transformations</h2>
+  <p style="color: var(--mut); font-size: 13px; margin: 0 auto 36px;">
+    Every transformation begins with color.
+  </p>
+
+    <div class="home-trans-cards">
+          <article class="home-trans-card">
+        <!-- Before / After Side-by-Side (3:4 ratio each) -->
+        <div class="ba-pair">
+          <div class="ba-item">
+                          <img src="assets/media/story_1_before.jpg" alt="She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident? Before" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+          <div class="ba-item">
+                          <img src="assets/media/story_1_after.jpg" alt="She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident? After" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+        </div>
+
+        <h3 class="home-trans-title">
+          <a href="transformation/she-spent-12-years">
+            She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident?          </a>
+        </h3>
+
+        <p class="home-trans-quote">
+          &ldquo;12 years of feeling insecure about my appearance, I never imagined that discovering the right colours could help me see myself differently.&rdquo;
+        </p>
+
+        <a href="transformation/she-spent-12-years" class="home-trans-link">
+          Read the full story
+        </a>
+      </article>
+          <article class="home-trans-card">
+        <!-- Before / After Side-by-Side (3:4 ratio each) -->
+        <div class="ba-pair">
+          <div class="ba-item">
+                          <img src="assets/media/story_2_before.jpg" alt="Six Years in Black. Before" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+          <div class="ba-item">
+                          <img src="assets/media/story_2_after.jpg" alt="Six Years in Black. After" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+        </div>
+
+        <h3 class="home-trans-title">
+          <a href="transformation/six-years-in-black">
+            Six Years in Black.          </a>
+        </h3>
+
+        <p class="home-trans-quote">
+          &ldquo;After six years of struggling with acne, I thought wearing black was the only way to feel comfortable in my own skin&rdquo;
+        </p>
+
+        <a href="transformation/six-years-in-black" class="home-trans-link">
+          Read the full story
+        </a>
+      </article>
+          <article class="home-trans-card">
+        <!-- Before / After Side-by-Side (3:4 ratio each) -->
+        <div class="ba-pair">
+          <div class="ba-item">
+                          <img src="assets/media/story_3_before.jpg" alt="Finding confidence beyond the workplace Before" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+          <div class="ba-item">
+                          <img src="assets/media/story_3_after.jpg" alt="Finding confidence beyond the workplace After" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+        </div>
+
+        <h3 class="home-trans-title">
+          <a href="transformation/finding-confidence">
+            Finding confidence beyond the workplace          </a>
+        </h3>
+
+        <p class="home-trans-quote">
+          &ldquo;I was tired of being underestimated at work. I wanted the way I presented myself to reflect my capabilities and the confidence I knew I had.&rdquo;
+        </p>
+
+        <a href="transformation/finding-confidence" class="home-trans-link">
+          Read the full story
+        </a>
+      </article>
+      </div>
+</section>
+
+<!-- 6. Why Colourist? Section (3 Italic Lines Centered) -->
+<section class="sec why-sec" aria-labelledby="homeWhyHeading">
+  <h2 id="homeWhyHeading" style="font-size: 32px; margin-bottom: 28px;">Why Colourist?</h2>
+  <div class="why-text-block">
+    <p class="why-line">Colourist is Asia's Leading &amp; No.1 Color Expert.</p>
+    <p class="why-line">Located in ASHTA &amp; Kuala Lumpur, we are dedicated to make Indonesians feel confident in their unique color.</p>
+    <p class="why-line">Trusted by thousands of clients, brands, and publications globally and locally, we deliver real transformations through the power of color.</p>
+  </div>
+</section>
+
+<!-- 7. Fullwidth CTA Section -->
+<section class="home-cta-sec" aria-labelledby="ctaHeading">
+  <div class="home-cta-bg-wrap">
+    <img src="assets/media/home_cta_bg.jpg" alt="Colourist Atelier Ambience" loading="lazy" class="media-img home-cta-bg-img" style="object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">  </div>
+  <div class="home-cta-overlay">
+    <h2 id="ctaHeading" class="home-cta-title">Your Transformation Journey Begins Here</h2>
+    <div>
+      <a href="book" class="btn btn-outline-cta">
+        BOOK NOW
+      </a>
+    </div>
+  </div>
 </section>
 
   </main>
@@ -265,5 +412,4 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-
 

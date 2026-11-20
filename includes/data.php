@@ -26,14 +26,11 @@ $site = [
     'studio_location_short' => 'ASHTA District 8, SCBD, Jakarta',
     'operating_hours' => 'Mon – Sun: 10:00 – 21:00 WIB (By Appointment Only)',
     'formspree_id' => 'XXXX', // Ganti dengan Formspree Form ID Anda (contoh: 'xpznvqwz')
-    // Admin password hash: default is 'colourist2026'
-    // To change, generate password_hash('your_new_password', PASSWORD_DEFAULT);
     'admin_password_hash' => '$2y$10$w0s6h2H9w5yH1z2N0k1A7u4x9O7M.gX3M0yT8zK3W5F7D0gG4J2rO', // 'colourist2026'
     'admin_default_pass' => 'colourist2026'
 ];
 
 // Media Slots Configuration
-// All assets reference this array. Update file paths or placeholders here.
 $media = [
     // Brand & Seals
     'brand.logo' => 'assets/media/logo.png',
@@ -48,14 +45,32 @@ $media = [
 
     // Home
     'hero.home' => 'assets/media/hero_portrait.mp4',
+    'home.leader_video' => 'assets/media/hero_portrait.mp4',
+    'home.leader_video_poster' => 'assets/media/home_leader_video_poster.jpg',
+    'home.cta_bg' => 'assets/media/home_cta_bg.jpg',
 
     // Services (Cards & Detail)
     'service.color-analysis' => 'assets/media/service_color_analysis.mp4',
+    'service.signature-experience' => 'assets/media/service_signature_experience_poster.jpg',
     'service.private-styling' => 'assets/media/service_private_styling.mp4',
     'service.makeup-masterclass' => 'assets/media/service_makeup_masterclass.mp4',
     'service.custom-lipstick' => 'assets/media/service_custom_lipstick.mp4',
 
-    // Transformations
+    // Story 1..3 Photos & Before/After
+    'story.she-spent-12-years' => 'assets/media/story_she_spent_12_years.jpg',
+    'story.six-years-in-black' => 'assets/media/story_six_years_in_black.jpg',
+    'story.finding-confidence' => 'assets/media/story_finding_confidence.jpg',
+    'story.rediscovering-herself' => '',
+    'story.felt-invisible' => '',
+
+    'story.1.before' => 'assets/media/story_1_before.jpg',
+    'story.1.after'  => 'assets/media/story_1_after.jpg',
+    'story.2.before' => 'assets/media/story_2_before.jpg',
+    'story.2.after'  => 'assets/media/story_2_after.jpg',
+    'story.3.before' => 'assets/media/story_3_before.jpg',
+    'story.3.after'  => 'assets/media/story_3_after.jpg',
+
+    // Transformations (Legacy Videos)
     'transformation.1' => 'assets/media/trans_1.mp4',
     'transformation.2' => 'assets/media/trans_2.mp4',
     'transformation.3' => 'assets/media/trans_3.mp4',
@@ -64,27 +79,23 @@ $media = [
 
     // About
     'about.hero' => 'assets/media/colourist_official.jpg',
-    'about.story' => 'assets/media/76c60e282c78588fbb41bba6c9e69e4c.jpg', // Zerlinda Master Consultation
+    'about.story' => 'assets/media/76c60e282c78588fbb41bba6c9e69e4c.jpg',
     'about.studio.1' => 'assets/media/ashta_studio_tour.jpg',
     'about.studio.2' => 'assets/media/a078afb1-5988-4495-9f79-e99accf47c6f.png',
     'about.studio.3' => 'assets/media/de1bc2dba489e4a3206531c28e7d1d0e.jpg',
     'about.studio.4' => 'assets/media/1c528e59-624d-4e95-bd54-f92ff7a03c77.png',
 
-    // Workshops
-    'workshop.1' => 'assets/media/service_color_analysis.mp4',
-    'workshop.2' => 'assets/media/service_private_styling.mp4',
-    'workshop.3' => 'assets/media/nagita_makeup_class.jpg',
+    // Workshop
+    'workshop.hero' => 'assets/media/workshop_hero.jpg',
+    'workshop.video' => 'assets/media/workshop_video_poster.jpg',
+    'workshop.group' => 'assets/media/workshop_group.jpg',
 
     // Collaboration & Partners
     'collab.hero' => 'assets/media/colourist_official.jpg',
-    'partners.1' => '', // Blank = graceful gradient placeholder
-    'partners.2' => '',
-    'partners.3' => '',
-    'partners.4' => '',
-    'partners.5' => '',
-    'partners.6' => '',
-    'partners.7' => '',
-    'partners.8' => '',
+    'partners.celebs.1' => '',
+    'partners.celebs.2' => '',
+    'partners.celebs.3' => '',
+    'partners.celebs.4' => '',
 ];
 
 // Press Coverage Strip (About Page)
@@ -151,6 +162,11 @@ $nav_menu = [
                 'label' => 'Personal Color Analysis',
                 'url' => 'experience/personal-color-analysis',
                 'slug' => 'personal-color-analysis'
+            ],
+            [
+                'label' => 'Signature Experience',
+                'url' => 'experience/signature-experience',
+                'slug' => 'signature-experience'
             ],
             [
                 'label' => 'Private Styling',
@@ -235,7 +251,7 @@ $journey_steps = [
     ]
 ];
 
-// Services Data (4 primary services)
+// Services Data (5 services)
 $services = [
     'personal-color-analysis' => [
         'slug' => 'personal-color-analysis',
@@ -248,7 +264,7 @@ $services = [
         'price_num' => 2500000,
         'media_slot' => 'service.color-analysis',
         'aspect' => '4/5',
-        'description' => 'A private 60-minute colour analysis with our expert Colour Analysts, helping you understand what truly suits you — from the clothes you wear to the makeup and accessories you choose every day.',
+        'description' => '60 minutes that change the way you see colour — and the way you shop, dress and present yourself.',
         'full_text' => 'Through our proprietary 12-season color drape methodology under standardized 5500K daylight lighting, we determine your skin\'s undertone, value, and chroma. You will receive a bespoke seasonal color swatch, personalized makeup shade recommendations, and styling guidelines that highlight your natural beauty.',
         'what_to_expect' => [
             'Professional 12-season color draping under calibrated 5500K daylight to determine your exact undertone, value, and chroma.',
@@ -256,19 +272,38 @@ $services = [
             'Personalized makeup shade recommendations and styling guidelines tailored to your unique palette.'
         ]
     ],
+    'signature-experience' => [
+        'slug' => 'signature-experience',
+        'title' => 'Signature Experience',
+        'short_title' => 'Signature Experience',
+        'eyebrow' => '90 minutes',
+        'duration' => '90 minutes',
+        'location' => 'ASHTA District 8, SCBD, Jakarta',
+        'price' => 'IDR 4.200.000',
+        'price_num' => 4200000,
+        'media_slot' => 'service.signature-experience',
+        'aspect' => '4/5',
+        'description' => '90 minutes to stop guessing, start feeling confident, and finally understand what color & style works for you',
+        'full_text' => 'Our flagship holistic consultation combining our comprehensive Personal Color Analysis with Private Styling Architecture. Understand both your optimal seasonal palette and the silhouette, fabric weight, and accessory proportions engineered for your facial geometry and body architecture.',
+        'what_to_expect' => [
+            'Complete Personal Color Analysis with precision 12-season draping under standardized 5500K daylight.',
+            'Bespoke silhouette, necklines, eyewear, and facial geometry assessment for everyday and formal styling.',
+            'Personalized seasonal fabric swatch booklet and comprehensive digital styling dossier.'
+        ]
+    ],
     'private-styling' => [
         'slug' => 'private-styling',
         'title' => 'Private Styling',
         'short_title' => 'Private Styling',
-        'eyebrow' => '90 minutes',
-        'duration' => '90 minutes',
+        'eyebrow' => '60 minutes',
+        'duration' => '60 minutes',
         'location' => 'ASHTA District 8, SCBD, Jakarta',
         'price' => 'IDR 3.800.000',
         'price_num' => 3800000,
         'media_slot' => 'service.private-styling',
         'aspect' => '4/5',
-        'description' => 'In this private 90-minute session, discover the colours that bring out your natural beauty, the silhouettes that flatter your body, and the details that complement your face — from glasses and accessories to hairstyles and patterns. Stop spending on pieces that never quite feel right, and start making choices that truly work for you. Because looking your best should feel effortless, not like guesswork.',
-        'full_text' => 'Comprehensive body architecture and facial geometry assessment combined with your personal color palette. Learn silhouette balancing, neckline curation, eyewear fitting, and wardrobe editing strategies that elevate your everyday presence.',
+        'description' => '60 minutes to turn your personal style into something more intentional, effortless and distinctly you.',
+        'full_text' => 'In this private 60-minute session, discover the colours that bring out your natural beauty, the silhouettes that flatter your body, and the details that complement your face — from glasses and accessories to hairstyles and patterns. Stop spending on pieces that never quite feel right, and start making choices that truly work for you.',
         'what_to_expect' => [
             'Complete body architecture assessment — silhouette balancing, neckline curation, and proportion mapping for your frame.',
             'Facial geometry analysis covering eyewear fitting, accessories, hairstyle recommendations, and pattern matching.',
@@ -279,15 +314,15 @@ $services = [
         'slug' => 'makeup-masterclass',
         'title' => 'Makeup Masterclass',
         'short_title' => 'Makeup Class',
-        'eyebrow' => 'Masterclass',
-        'duration' => '120 minutes',
+        'eyebrow' => '60 minutes',
+        'duration' => '60 minutes',
         'location' => 'ASHTA District 8, SCBD, Jakarta',
         'price' => 'IDR 3.000.000',
         'price_num' => 3000000,
         'media_slot' => 'service.makeup-masterclass',
         'aspect' => '4/5',
-        'description' => 'An intensive hands-on masterclass designed to elevate your personal beauty routine. Master colour theory for makeup, bespoke foundation matching, eyeshadow techniques for your unique eye shape, and flawless daily application tailored to your personal seasonal palette.',
-        'full_text' => 'Learn step-by-step master techniques directly from our lead analysts. Bring your personal makeup pouch for a complete audit: discard conflicting shades and discover how to blend formulas that enhance your features effortlessly.',
+        'description' => '60 minutes to stop copying makeup trends and discover what truly brings out your beauty.',
+        'full_text' => 'An intensive hands-on masterclass designed to elevate your personal beauty routine. Master colour theory for makeup, bespoke foundation matching, eyeshadow techniques for your unique eye shape, and flawless daily application tailored to your personal seasonal palette.',
         'what_to_expect' => [
             'Hands-on colour theory for makeup — learn which pigment families harmonize with your seasonal palette.',
             'Bespoke foundation matching and eyeshadow techniques tailored to your unique eye shape and skin undertone.',
@@ -298,15 +333,15 @@ $services = [
         'slug' => 'custom-lipstick',
         'title' => 'Custom Lipstick',
         'short_title' => 'Custom Lipstick',
-        'eyebrow' => 'Signature',
-        'duration' => '45 minutes',
+        'eyebrow' => '60 minutes',
+        'duration' => '60 minutes',
         'location' => 'ASHTA District 8, SCBD, Jakarta',
         'price' => 'IDR 1.200.000',
         'price_num' => 1200000,
         'media_slot' => 'service.custom-lipstick',
         'aspect' => '4/5',
-        'description' => 'Create your signature shade from scratch with our master colorists. From undertone calibration to custom scent, texture, and finish — craft a one-of-a-kind lip formula that complements your natural complexion and skin tone flawlessly.',
-        'full_text' => 'Sit at our formulation bar and watch pigments blend in real time. Choose from satin, matte, velvet, or glossy finishes, infuse with organic nourishing botanical oils, and engrave your custom lipstick case with your initials.',
+        'description' => '60 minutes to turn your perfect lip colour into a signature shade made exclusively for you.',
+        'full_text' => 'Create your signature shade from scratch with our master colorists. From undertone calibration to custom scent, texture, and finish — craft a one-of-a-kind lip formula that complements your natural complexion and skin tone flawlessly.',
         'what_to_expect' => [
             'Live pigment blending at our formulation bar — watch your signature shade come to life in real time.',
             'Choose your finish (satin, matte, velvet, or glossy) and infuse with organic nourishing botanical oils.',
@@ -314,47 +349,212 @@ $services = [
         ]
     ]
 ];
-// Alias for backwards compatibility if needed
+// Backwards compatibility alias
 $services['color-analysis'] = &$services['personal-color-analysis'];
 
-// Workshops List (Workshop Page)
-$workshops = [
-    [
-        'id' => 1,
-        'tag' => 'Upcoming',
-        'title' => 'Personal Color Masterclass & Draping Clinic',
-        'media_slot' => 'workshop.1',
-        'date' => 'Saturday, 28 Nov 2026',
-        'duration' => '3 Hours',
-        'quota' => '6 seats',
-        'price' => 'IDR 1.850.000',
-        'sold_out' => false,
-        'description' => 'Intimate small-group workshop covering seasonal color theory, undertone draping, and capsule wardrobe curation.'
+// 5 Transformation Stories
+$stories = [
+    'she-spent-12-years' => [
+        'slug' => 'she-spent-12-years',
+        'title' => 'She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident?',
+        'quote' => '12 years of feeling insecure about my appearance, I never imagined that discovering the right colours could help me see myself differently.',
+        'category' => 'real-clients',
+        'category_label' => 'Real Clients',
+        'subtitle' => 'Insecurity may change the way you see yourself. But so does confidence.',
+        'media_slot' => 'story.she-spent-12-years',
+        'before_slot' => 'story.1.before',
+        'after_slot' => 'story.1.after',
+        'has_content' => true,
+        'content' => [
+            [
+                'heading' => 'Twelve Years of Feeling Insecure',
+                'paragraphs' => [
+                    'For twelve years, she struggled with insecurity. What started as self-doubt slowly grew into a constant feeling of not being enough.',
+                    'Like many women, she often compared herself to others, worried that she wasn\'t pretty enough, successful enough, or confident enough. She overthought every little detail — her appearance, her choices, even the way she carried herself.',
+                    'But how do you feel beautiful when you\'re constantly doubting yourself?'
+                ]
+            ],
+            [
+                'heading' => 'Beauty Is More Than Perfection',
+                'paragraphs' => [
+                    'That\'s why she came to Colourist — not just to find her best colours, but to rediscover the confidence she had lost along the way.',
+                    'Through professional Personal Colour Analysis, she learned that beauty isn\'t about being perfect, but about finding the colours that make her look and feel like the best version of herself.',
+                    'From discovering her most flattering shades to exploring colours that complement her natural features, she experienced a shift. She no longer felt the need to hide or follow what others considered beautiful. Instead, she began embracing what made her unique.',
+                    'More importantly, she learned that she didn\'t have to become someone else to feel beautiful.',
+                    'Instead of endlessly comparing herself to others, she started appreciating her own beauty and expressing her individuality with confidence.'
+                ]
+            ],
+            [
+                'heading' => 'THE TRANSFORMATION — She Chose Confidence',
+                'paragraphs' => [
+                    'Her journey with Colourist was not just about finding the right colours. It was about finding herself again.',
+                    'She rediscovered her confidence, learned to appreciate her reflection, and became more comfortable expressing who she truly was.',
+                    'Because women deserve to feel beautiful without having to meet someone else\'s standards.',
+                    'You don\'t have to become someone else to feel beautiful. Sometimes, you just need to rediscover what makes you uniquely you.',
+                    'At Colourist, everything starts with understanding your colours'
+                ]
+            ]
+        ]
     ],
-    [
-        'id' => 2,
-        'tag' => 'Upcoming',
-        'title' => 'Executive Presence & Color Styling Intensive',
-        'media_slot' => 'workshop.2',
-        'date' => 'Saturday, 12 Dec 2026',
-        'duration' => '4 Hours',
-        'quota' => '8 seats',
-        'price' => 'IDR 2.400.000',
-        'sold_out' => false,
-        'description' => 'Professional styling workshop tailored for business leaders, founders, and executives seeking wardrobe confidence.'
+    'six-years-in-black' => [
+        'slug' => 'six-years-in-black',
+        'title' => 'Six Years in Black.',
+        'quote' => 'After six years of struggling with acne, I thought wearing black was the only way to feel comfortable in my own skin',
+        'category' => 'real-clients',
+        'category_label' => 'Real Clients',
+        'subtitle' => 'A Colourist Client Story',
+        'media_slot' => 'story.six-years-in-black',
+        'before_slot' => 'story.2.before',
+        'after_slot' => 'story.2.after',
+        'has_content' => true,
+        'content' => [
+            [
+                'heading' => 'The story behind the color',
+                'paragraphs' => [
+                    'For six years, black was the only color she felt comfortable wearing.',
+                    'Not because it was her favorite color. Not because it reflected her personality.',
+                    'But because she was struggling with acne.',
+                    'She was afraid that wearing other colors would make the redness in her skin more noticeable. So she gradually built her wardrobe around black. Black tops, black dresses, black outfits. It became her safe choice.',
+                    'Over time, she stopped experimenting with color. She stopped considering what she might look beautiful in. She had found a way to dress without drawing attention to the part of herself she felt most conscious about.',
+                    'When she came to Colourist, we discovered something unexpected.',
+                    'She was a Spring.',
+                    'Her natural coloring was beautifully complemented by warm, light and clear colors: the delicate shades of spring flowers, fresh peach, soft coral, butter yellow, light aqua and fresh greens.',
+                    'Colors that were almost the complete opposite of the black she had spent six years wearing.'
+                ]
+            ],
+            [
+                'heading' => 'What color theory revealed',
+                'paragraphs' => [
+                    'Black is an extremely dark, highly contrasting color. When worn close to the face, it can create a strong value contrast against the complexion.',
+                    'For someone whose natural coloring is light, warm and clear, this contrast can become visually overpowering. It can draw attention to the difference between the garment and the skin, rather than allowing the natural features to harmonize.',
+                    'There is another important consideration: simultaneous contrast.',
+                    'The colors surrounding our skin influence how we visually perceive its complexion. A very dark, stark color can make variations in skin tone, shadows and redness appear more pronounced by comparison.',
+                    'For her, Spring colors created a different visual effect.'
+                ],
+                'bullets' => [
+                    'Lightness: Colors with more white in them create a gentler transition between the clothing and her complexion.',
+                    'Warmth: Peach, warm coral and golden tones harmonize with her warm undertone.',
+                    'Clarity: Fresh, clear colors complement the brightness of Spring coloring instead of overwhelming it with excessive darkness.',
+                    'Color harmony: Rather than creating a stark contrast, the right colors allow the face to become the focal point.'
+                ],
+                'after_bullets' => [
+                    'Importantly, clothing doesn\'t treat acne or physically remove redness. What it can change is how the complexion is visually perceived.'
+                ]
+            ],
+            [
+                'heading' => 'More than finding her colors',
+                'paragraphs' => [
+                    'The most beautiful part of this transformation wasn\'t simply seeing her in the right colors.',
+                    'It was watching her become comfortable wearing colors she had avoided for six years.',
+                    'She no longer needed to make black her uniform. She could explore, experiment and express herself through color.',
+                    'She came to Colourist thinking she needed to find colors that would help her hide.',
+                    'Instead, she discovered colors that helped her feel seen.',
+                    'She didn\'t just find her colors. She found a little more of herself.',
+                    'Because sometimes, the right color doesn\'t change who you are.',
+                    'It reminds you of who you have been all along.'
+                ]
+            ]
+        ]
     ],
-    [
-        'id' => 3,
-        'tag' => 'Sold out',
-        'title' => 'Celebrity Glam & Seasonal Makeup with Zerlinda',
-        'media_slot' => 'workshop.3',
-        'date' => 'Sunday, 15 Nov 2026',
-        'duration' => '3.5 Hours',
-        'quota' => 'Sold out',
-        'price' => 'IDR 3.200.000',
-        'sold_out' => true,
-        'description' => 'Exclusive intimate masterclass hosted by Zerlinda focusing on camera-ready personal seasonal makeup.'
+    'finding-confidence' => [
+        'slug' => 'finding-confidence',
+        'title' => 'Finding confidence beyond the workplace',
+        'quote' => 'I was tired of being underestimated at work. I wanted the way I presented myself to reflect my capabilities and the confidence I knew I had.',
+        'category' => 'real-clients',
+        'category_label' => 'Real Clients',
+        'subtitle' => 'A Colourist Client Story',
+        'media_slot' => 'story.finding-confidence',
+        'before_slot' => 'story.3.before',
+        'after_slot' => 'story.3.after',
+        'has_content' => true,
+        'content' => [
+            [
+                'heading' => 'The story behind the transformation',
+                'paragraphs' => [
+                    'She worked hard, took responsibility and always tried to prove her capabilities.',
+                    'Yet, in her corporate environment, she often felt underestimated. Her ideas were overlooked, and she sometimes felt that her hard work wasn\'t enough to earn the recognition she deserved.',
+                    'It affected her confidence.',
+                    'She wanted to feel more assured when entering meetings, expressing her opinions and presenting herself professionally.',
+                    'She knew what she was capable of. She just wanted her appearance to reflect that confidence, too.',
+                    'That\'s what brought her to Colourist.'
+                ]
+            ],
+            [
+                'heading' => 'What colour theory revealed',
+                'paragraphs' => [
+                    'Through professional Personal Colour Analysis, we examined her natural colouring through comparative colour draping.',
+                    'We discovered that she was a True Autumn, complemented by warm temperature, medium-to-deep depth, and muted clarity',
+                    'We identified colours that harmonised with her complexion, brought definition to her features and created a more balanced appearance.',
+                    'For her professional wardrobe, we focused on finding shades that made her look polished and confident without losing her individuality.',
+                    'Because professional doesn\'t have to mean wearing the same colours as everyone else.'
+                ]
+            ],
+            [
+                'heading' => 'More than a change in appearance',
+                'paragraphs' => [
+                    'With her personalised colour palette, she discovered new ways to dress for work.',
+                    'Colours she had never considered became part of her wardrobe, helping her feel more confident and intentional about her appearance.',
+                    'The transformation wasn\'t about becoming someone else.',
+                    'It was about seeing herself differently and feeling more confident in the way she presented herself.',
+                    'Her capabilities had always been there. Now, she had another way to express them'
+                ]
+            ],
+            [
+                'heading' => 'The person behind the transformation',
+                'paragraphs' => [
+                    'Behind this story is a woman building her career in the corporate world.',
+                    'Like many women, she wanted to be recognised not only for the work she did, but also for the confidence she carried.',
+                    'Her journey reminds us that sometimes, transformation begins with something as simple as discovering the colours that make us feel more like ourselves.',
+                    'At Colourist, we believe the right colours can do more than complement your appearance. They can help you express your confidence, individuality and personal presence.',
+                    '*You don\'t need to become someone else to be taken seriously. You just need to feel confident being yourself.'
+                ]
+            ]
+        ]
+    ],
+    'rediscovering-herself' => [
+        'slug' => 'rediscovering-herself',
+        'title' => 'Rediscovering Herself After Motherhood',
+        'quote' => 'After becoming a mother, so much of my attention went to my baby. Somewhere along the way, I stopped prioritising myself. I wanted to feel beautiful and confident again, not just as a mother, but as a woman.',
+        'category' => 'real-clients',
+        'category_label' => 'Real Clients',
+        'subtitle' => 'A Colourist Client Story',
+        'media_slot' => 'story.rediscovering-herself',
+        'before_slot' => '',
+        'after_slot' => '',
+        'has_content' => false
+    ],
+    'felt-invisible' => [
+        'slug' => 'felt-invisible',
+        'title' => 'She Felt Invisible in Every Room',
+        'quote' => 'I always felt like I blended into the background. I wanted to feel more confident being seen.',
+        'category' => 'real-clients',
+        'category_label' => 'Real Clients',
+        'subtitle' => 'A Colourist Client Story',
+        'media_slot' => 'story.felt-invisible',
+        'before_slot' => '',
+        'after_slot' => '',
+        'has_content' => false
     ]
+];
+
+// Partner Brands (Tab 5 - 8 Luxury Brands)
+$partner_brands = [
+    ['name' => 'Ferragamo', 'logo' => ''],
+    ['name' => 'The Langham Jakarta', 'logo' => ''],
+    ['name' => 'Dior', 'logo' => ''],
+    ['name' => 'Burberry', 'logo' => ''],
+    ['name' => 'Miss World', 'logo' => ''],
+    ['name' => 'Miss Indonesia', 'logo' => ''],
+    ['name' => 'Plaza Indonesia', 'logo' => ''],
+    ['name' => 'Laura Mercier', 'logo' => '']
+];
+
+// Celebrities Cards
+$celebrity_cards = [
+    ['name' => 'Celebrity Client 1', 'slot' => 'partners.celebs.1', 'role' => 'Public Figure'],
+    ['name' => 'Celebrity Client 2', 'slot' => 'partners.celebs.2', 'role' => 'Artist & Talent'],
+    ['name' => 'Celebrity Client 3', 'slot' => 'partners.celebs.3', 'role' => 'Beauty Icon'],
+    ['name' => 'Celebrity Client 4', 'slot' => 'partners.celebs.4', 'role' => 'Fashion Editor'],
 ];
 
 // Stats (About Page)
@@ -380,7 +580,7 @@ $collab_pillars = [
     ]
 ];
 
-// Testimonials (Partners & About)
+// Testimonials (About)
 $testimonials = [
     [
         'quote' => 'Colourist completely transformed how I see my own wardrobe. Finding my exact seasonal palette brought an effortless confidence that saves me hours every week.',
@@ -398,16 +598,3 @@ $testimonials = [
         'role' => 'Media Partner'
     ]
 ];
-
-// Partner Brands
-$partners = [
-    ['name' => 'Female Daily Network', 'category' => 'Media'],
-    ['name' => 'RANS Entertainment', 'category' => 'Production & Talent'],
-    ['name' => 'Kompas TV', 'category' => 'Broadcast'],
-    ['name' => 'Liputan6', 'category' => 'Media'],
-    ['name' => 'ASHTA District 8', 'category' => 'Venue Partner'],
-    ['name' => 'Miss Indonesia Org', 'category' => 'Pageant & Talent'],
-    ['name' => 'Harper\'s Bazaar ID', 'category' => 'Publication'],
-    ['name' => 'Sephora Indonesia', 'category' => 'Beauty Partner']
-];
-
