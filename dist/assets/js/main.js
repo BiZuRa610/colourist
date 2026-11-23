@@ -1,5 +1,5 @@
 /**
- * Colourist by Zerlinda — Main JavaScript
+ * Colourist — Main JavaScript
  * Minimalist interaction logic, video viewport autoplay, and accessible mega navigation
  */
 
@@ -14,6 +14,19 @@
   const expMobileSubmenu = document.getElementById('expMobileSubmenu');
   const expChevron = document.getElementById('expChevron');
   const desktopSubmenuCol = document.getElementById('desktopSubmenuCol');
+  const siteHeader = document.querySelector('.site-header');
+
+  // Handle header scroll state on transparent hero
+  function checkHeaderScroll() {
+    if (!siteHeader) return;
+    if (window.scrollY > 40) {
+      siteHeader.classList.add('is-scrolled');
+    } else {
+      siteHeader.classList.remove('is-scrolled');
+    }
+  }
+  window.addEventListener('scroll', checkHeaderScroll, { passive: true });
+  checkHeaderScroll();
 
   function openMenu() {
     if (!megaPanel || !burgerBtn) return;
@@ -21,6 +34,7 @@
     megaPanel.classList.add('open');
     if (navBackdrop) navBackdrop.classList.add('open');
     document.body.classList.add('menu-open');
+    if (siteHeader) siteHeader.classList.add('menu-open');
   }
 
   function closeMenu() {
@@ -29,6 +43,7 @@
     megaPanel.classList.remove('open');
     if (navBackdrop) navBackdrop.classList.remove('open');
     document.body.classList.remove('menu-open');
+    if (siteHeader) siteHeader.classList.remove('menu-open');
 
     // Reset Experiences submenu state on menu close
     if (expNavBtn) {
@@ -121,7 +136,91 @@
     });
   }
 
-  // 2. Video Viewport Autoplay (IntersectionObserver)
+  // 2. Olaplex-style Unified Video Player Controller (Home, Experiences, Workshop)
+  const videoPlayers = document.querySelectorAll('[data-video-player]');
+  videoPlayers.forEach(function (player) {
+    const video = player.querySelector('video');
+    const playBtn = player.querySelector('.vcp-play-btn');
+    const muteBtn = player.querySelector('.vcp-mute-btn');
+    if (!video) return;
+
+    function pausePlayer() {
+      video.pause();
+      player.classList.remove('is-playing');
+      if (muteBtn) muteBtn.style.display = 'none';
+    }
+
+    function playPlayer() {
+      // Pause all other players on page and return to poster
+      videoPlayers.forEach(function (other) {
+        if (other !== player) {
+          const otherVid = other.querySelector('video');
+          if (otherVid) {
+            otherVid.pause();
+            otherVid.currentTime = 0;
+            otherVid.load();
+          }
+          other.classList.remove('is-playing');
+          const otherMute = other.querySelector('.vcp-mute-btn');
+          if (otherMute) otherMute.style.display = 'none';
+        }
+      });
+
+      // Play this with sound enabled
+      video.muted = false;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(function () {
+          player.classList.add('is-playing');
+          if (muteBtn) muteBtn.style.display = 'flex';
+        }).catch(function () {
+          // If browser blocks unmuted play, fallback to muted
+          video.muted = true;
+          video.play();
+          player.classList.add('is-playing');
+          if (muteBtn) {
+            muteBtn.style.display = 'flex';
+            updateMuteIcons(true);
+          }
+        });
+      }
+    }
+
+    player.addEventListener('click', function (e) {
+      if (e.target.closest('.vcp-mute-btn')) return;
+      if (video.paused) {
+        playPlayer();
+      } else {
+        pausePlayer();
+      }
+    });
+
+    if (muteBtn) {
+      muteBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        updateMuteIcons(video.muted);
+      });
+    }
+
+    function updateMuteIcons(isMuted) {
+      if (!muteBtn) return;
+      const unmutedIcon = muteBtn.querySelector('.icon-unmuted');
+      const mutedIcon = muteBtn.querySelector('.icon-muted');
+      if (unmutedIcon && mutedIcon) {
+        unmutedIcon.style.display = isMuted ? 'none' : 'block';
+        mutedIcon.style.display = isMuted ? 'block' : 'none';
+      }
+    }
+
+    video.addEventListener('ended', function () {
+      pausePlayer();
+      video.currentTime = 0;
+      video.load();
+    });
+  });
+
+  // 3. Video Viewport Autoplay (IntersectionObserver)
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (!isReducedMotion && 'IntersectionObserver' in window) {
@@ -194,8 +293,21 @@
   const partnersTrack = document.getElementById('partnersTrack');
   const partnersFadeLeft = document.getElementById('partnersFadeLeft');
   const partnersFadeRight = document.getElementById('partnersFadeRight');
+  const partnerPrev = document.getElementById('partnerPrev');
+  const partnerNext = document.getElementById('partnerNext');
 
   if (partnersTrack) {
+    if (partnerPrev) {
+      partnerPrev.addEventListener('click', function () {
+        partnersTrack.scrollBy({ left: -220, behavior: 'smooth' });
+      });
+    }
+    if (partnerNext) {
+      partnerNext.addEventListener('click', function () {
+        partnersTrack.scrollBy({ left: 220, behavior: 'smooth' });
+      });
+    }
+
     function updatePartnersFades() {
       const scrollLeft = partnersTrack.scrollLeft;
       const maxScroll = partnersTrack.scrollWidth - partnersTrack.clientWidth;
@@ -336,14 +448,13 @@
 
       // Format WhatsApp message
       const text =
-        "Halo Colourist by Zerlinda,\n" +
+        "Halo Colourist,\n" +
         "Saya ingin reservasi pengalaman sesi:\n\n" +
         "• Layanan: " + service + "\n" +
         (date ? "• Tanggal: " + date + "\n" : "") +
         (time ? "• Waktu: " + time + "\n" : "") +
         "• Nama: " + name + "\n" +
         "• WhatsApp: " + clientWa + "\n" +
-        (notes ? "• Catatan: " + notes + "\n" : "") +
         "\nMohon info ketersediaan jadwal. Terima kasih.";
 
       const url = "https://wa.me/" + waNumber.replace(/[^0-9]/g, '') + "?text=" + encodeURIComponent(text);

@@ -4,19 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Our Partners, Celebrities &amp; Collaboration — Colourist by Zerlinda</title>
+  <title>Our Partners &amp; Celebrities — Colourist</title>
   <meta name="description" content="Colourist partners with leading luxury brands, celebrities, and creative institutions across Asia.">
-  <link rel="canonical" href="https://colouristbyzerlinda.com/partners">
+  <link rel="canonical" href="https://colourist.id/partners">
 
   <!-- Base tag so relative links resolve cleanly across nested routes -->
     <base href="/">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Our Partners, Celebrities &amp; Collaboration — Colourist by Zerlinda">
+  <meta property="og:title" content="Our Partners &amp; Celebrities — Colourist">
   <meta property="og:description" content="Colourist partners with leading luxury brands, celebrities, and creative institutions across Asia.">
-  <meta property="og:url" content="https://colouristbyzerlinda.com/partners">
-  <meta property="og:image" content="https://colouristbyzerlinda.com/assets/media/logo.png">
+  <meta property="og:url" content="https://colourist.id/partners">
+  <meta property="og:image" content="https://colourist.id/assets/media/logo.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon -->
@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="">
 
   <!-- Backdrop overlay for mega menu -->
   <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
@@ -53,9 +53,8 @@
       </button>
 
       <!-- Center: Logo -->
-      <a href="" class="logo" aria-label="Colourist by Zerlinda Home">
+      <a href="" class="logo" aria-label="Colourist Home">
         COLOURIST
-        <small>BY ZERLINDA</small>
       </a>
 
       <!-- Right: User Account and Shopping Bag / Cart -->
@@ -83,7 +82,7 @@
         <div class="mega-col-left">
                                     <div>
                 <a href="about" class="menu-link ">
-                  About                </a>
+                  What is it?                </a>
               </div>
                                                 <div class="menu-item-group">
                 <button type="button"
@@ -95,15 +94,15 @@
 
                 <!-- Mobile Accordion Submenu -->
                 <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
-                                                          <a href="experience/personal-color-analysis" class="menu-link ">
+                                      <a href="experiences#personal-color-analysis" class="menu-link">
                       Personal Color Analysis                    </a>
-                                                          <a href="experience/signature-experience" class="menu-link ">
+                                      <a href="experiences#signature-experience" class="menu-link">
                       Signature Experience                    </a>
-                                                          <a href="experience/private-styling" class="menu-link ">
+                                      <a href="experiences#private-styling" class="menu-link">
                       Private Styling                    </a>
-                                                          <a href="experience/makeup-masterclass" class="menu-link ">
+                                      <a href="experiences#makeup-masterclass" class="menu-link">
                       Makeup Masterclass                    </a>
-                                                          <a href="experience/custom-lipstick" class="menu-link ">
+                                      <a href="experiences#custom-lipstick" class="menu-link">
                       Custom Lipstick                    </a>
                                   </div>
               </div>
@@ -132,15 +131,15 @@
         <!-- Right Column: Submenu (Desktop, shown ONLY when Experiences is clicked) -->
         <div class="mega-col-right" id="desktopSubmenuCol" aria-label="Detail Experiences">
           <span class="sub-eyebrow">EXPERIENCES</span>
-                                  <a href="experience/personal-color-analysis" class="menu-link ">
+                      <a href="experiences#personal-color-analysis" class="menu-link">
               Personal Color Analysis            </a>
-                                  <a href="experience/signature-experience" class="menu-link ">
+                      <a href="experiences#signature-experience" class="menu-link">
               Signature Experience            </a>
-                                  <a href="experience/private-styling" class="menu-link ">
+                      <a href="experiences#private-styling" class="menu-link">
               Private Styling            </a>
-                                  <a href="experience/makeup-masterclass" class="menu-link ">
+                      <a href="experiences#makeup-masterclass" class="menu-link">
               Makeup Masterclass            </a>
-                                  <a href="experience/custom-lipstick" class="menu-link ">
+                      <a href="experiences#custom-lipstick" class="menu-link">
               Custom Lipstick            </a>
                   </div>
       </div>
@@ -154,35 +153,39 @@
 <section class="sec partners-logo-sec" aria-labelledby="partnersHeading">
   <h1 id="partnersHeading" style="font-size: 32px; margin-bottom: 28px;">Partners</h1>
 
-  <div class="partners-carousel-wrapper">
-    <div class="carousel-fade fade-left" id="partnersFadeLeft" aria-hidden="true"></div>
-    <div class="partners-track" id="partnersTrack">
-              <div class="partner-logo-item">
-                      <span class="partner-wordmark">Ferragamo</span>
-                  </div>
-              <div class="partner-logo-item">
-                      <span class="partner-wordmark">The Langham Jakarta</span>
-                  </div>
-              <div class="partner-logo-item">
-                      <span class="partner-wordmark">Dior</span>
-                  </div>
-              <div class="partner-logo-item">
-                      <span class="partner-wordmark">Burberry</span>
-                  </div>
-              <div class="partner-logo-item">
-                      <span class="partner-wordmark">Miss World</span>
-                  </div>
-              <div class="partner-logo-item">
-                      <span class="partner-wordmark">Miss Indonesia</span>
-                  </div>
-              <div class="partner-logo-item">
-                      <span class="partner-wordmark">Plaza Indonesia</span>
-                  </div>
-              <div class="partner-logo-item">
-                      <span class="partner-wordmark">Laura Mercier</span>
-                  </div>
-          </div>
-    <div class="carousel-fade fade-right" id="partnersFadeRight" aria-hidden="true"></div>
+  <div class="partners-carousel-container">
+    <button type="button" class="partner-arrow arrow-prev" id="partnerPrev" aria-label="Previous partner logo">&lt;</button>
+    <div class="partners-carousel-wrapper">
+      <div class="carousel-fade fade-left" id="partnersFadeLeft" aria-hidden="true"></div>
+      <div class="partners-track" id="partnersTrack">
+                  <div class="partner-logo-item">
+                          <img src="assets/media/partners/ferragamo.svg" alt="Ferragamo" class="partner-img" height="36">
+                      </div>
+                  <div class="partner-logo-item">
+                          <img src="assets/media/partners/the_langham.svg" alt="The Langham Jakarta" class="partner-img" height="36">
+                      </div>
+                  <div class="partner-logo-item">
+                          <img src="assets/media/partners/dior.svg" alt="Dior" class="partner-img" height="36">
+                      </div>
+                  <div class="partner-logo-item">
+                          <img src="assets/media/partners/burberry.svg" alt="Burberry" class="partner-img" height="36">
+                      </div>
+                  <div class="partner-logo-item">
+                          <img src="assets/media/partners/miss_world.svg" alt="Miss World" class="partner-img" height="36">
+                      </div>
+                  <div class="partner-logo-item">
+                          <img src="assets/media/partners/miss_indonesia.svg" alt="Miss Indonesia" class="partner-img" height="36">
+                      </div>
+                  <div class="partner-logo-item">
+                          <img src="assets/media/partners/plaza_indonesia.svg" alt="Plaza Indonesia" class="partner-img" height="36">
+                      </div>
+                  <div class="partner-logo-item">
+                          <img src="assets/media/partners/laura_mercier.svg" alt="Laura Mercier" class="partner-img" height="36">
+                      </div>
+              </div>
+      <div class="carousel-fade fade-right" id="partnersFadeRight" aria-hidden="true"></div>
+    </div>
+    <button type="button" class="partner-arrow arrow-next" id="partnerNext" aria-label="Next partner logo">&gt;</button>
   </div>
 </section>
 
@@ -192,81 +195,23 @@
 
   <div class="celebs-carousel-container">
     <button type="button" class="celeb-arrow arrow-prev" id="celebPrev" aria-label="Previous celebrity">&lt;</button>
-    
+
     <div class="celebs-track-wrap">
       <div class="celebs-track" id="celebsTrack">
                   <div class="celeb-card">
-                          <div class="ph celeb-ph" style="aspect-ratio: 4/5; width: 100%;">
-                <span>Celebrity Client 1</span>
-              </div>
-                      </div>
+                          <img src="assets/media/partners_celeb_1.jpg" alt="Celebrity Client 1" loading="lazy" class="media-img" style="aspect-ratio: 4/5; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
                   <div class="celeb-card">
-                          <div class="ph celeb-ph" style="aspect-ratio: 4/5; width: 100%;">
-                <span>Celebrity Client 2</span>
-              </div>
-                      </div>
+                          <img src="assets/media/partners_celeb_2.jpg" alt="Celebrity Client 2" loading="lazy" class="media-img" style="aspect-ratio: 4/5; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
                   <div class="celeb-card">
-                          <div class="ph celeb-ph" style="aspect-ratio: 4/5; width: 100%;">
-                <span>Celebrity Client 3</span>
-              </div>
-                      </div>
+                          <img src="assets/media/partners_celeb_3.jpg" alt="Celebrity Client 3" loading="lazy" class="media-img" style="aspect-ratio: 4/5; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
                   <div class="celeb-card">
-                          <div class="ph celeb-ph" style="aspect-ratio: 4/5; width: 100%;">
-                <span>Celebrity Client 4</span>
-              </div>
-                      </div>
+                          <img src="assets/media/partners_celeb_4.jpg" alt="Celebrity Client 4" loading="lazy" class="media-img" style="aspect-ratio: 4/5; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
               </div>
       <div class="carousel-fade fade-right" id="celebsFadeRight" aria-hidden="true"></div>
     </div>
 
     <button type="button" class="celeb-arrow arrow-next" id="celebNext" aria-label="Next celebrity">&gt;</button>
   </div>
-</section>
-
-<!-- 3. Collaboration Inquiry Form Section -->
-<section class="sec pt-0 collab-form-sec" aria-labelledby="collabHeading">
-  <h2 id="collabHeading" style="font-size: 32px; margin-bottom: 32px;">Collaboration</h2>
-
-  <form method="POST" action="https://formspree.io/f/XXXX" class="form-box" id="partnersCollabForm">
-    <!-- Formspree subject & anti-spam honeypot -->
-    <input type="hidden" name="_subject" value="New Collaboration Inquiry via Partners Page">
-    <div style="display: none;" aria-hidden="true">
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-      <input type="text" name="website" tabindex="-1" autocomplete="off">
-    </div>
-
-    <div class="form-group">
-      <label for="collabName">Name *</label>
-      <input type="text" id="collabName" name="name" required placeholder="Nama Lengkap">
-    </div>
-
-    <div class="form-group">
-      <label for="collabCompany">Brand / Company *</label>
-      <input type="text" id="collabCompany" name="company" required placeholder="Nama Perusahaan atau Instansi">
-    </div>
-
-    <div class="form-group">
-      <label for="collabEmail">Email *</label>
-      <input type="email" id="collabEmail" name="email" required placeholder="nama@perusahaan.com">
-    </div>
-
-    <div class="form-group">
-      <label for="collabMessage">Message *</label>
-      <textarea id="collabMessage" name="message" required placeholder="Ceritakan konsep atau rencana kolaborasi Anda..."></textarea>
-    </div>
-
-    <div style="text-align: center; margin-top: 14px;">
-      <button type="submit" name="submit_collab" class="btn btn-solid" style="padding: 11px 36px; font-size: 9px; letter-spacing: .2em;">
-        Send Inquiry
-      </button>
-    </div>
-  </form>
-
-  <p style="margin-top: 24px; font-size: 11px; color: var(--mut); text-align: center;">
-    Atau hubungi kami langsung via email: 
-    <a href="mailto:inquiry@colourist.id?subject=Collaboration%20Inquiry" style="text-decoration: underline;">
-      inquiry@colourist.id    </a>
-  </p>
 </section>
 
   </main>
@@ -278,7 +223,7 @@
       ASHTA District 8, Level 1, SCBD Lot 28, Jl. Jend. Sudirman Kav 52-53, Jakarta Selatan 12190    </p>
 
     <div class="footer-links">
-      <a href="about">About</a>
+      <a href="about">What is it?</a>
       <a href="experiences">Experiences</a>
       <a href="transformation">Transformation</a>
       <a href="workshop">Workshop</a>
@@ -288,7 +233,7 @@
     </div>
 
     <p style="margin-top: 16px; font-size: 10px; color: var(--mut);">
-      &copy; 2026 Colourist by Zerlinda. All rights reserved.
+      &copy; 2026 Colourist. All rights reserved.
     </p>
   </footer>
 

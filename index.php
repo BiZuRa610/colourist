@@ -1,40 +1,47 @@
 <?php
 /**
- * Home Page — Colourist by Zerlinda
+ * Home Page — Colourist
  * Asia & Indonesia's No. 1 Color Expert
  */
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
 
-$page_title = 'Colourist by Zerlinda — Asia & Indonesia\'s No.1 Color Expert';
+$page_title = 'Colourist — Asia & Indonesia\'s No.1 Color Expert';
 $page_description = 'Helping people feel confident through best colors. Discover your true seasonal palette, private styling, makeup masterclass, and custom lipstick at ASHTA District 8 SCBD.';
 
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- 1. Hero Video Section -->
-<section class="hero-wrapper" aria-label="Hero Video">
+<!-- 1. Hero Fullpage 100svh Section (Hermes Style) -->
+<section class="hero-wrapper hero-fullpage" aria-label="Hero Video">
   <?= media('hero.home', [
-      'class'    => 'hero-video-bg',
-      'aspect'   => '16/9',
-      'alt'      => 'Colourist by Zerlinda Studio Experience',
-      'label'    => 'video: hero_portrait.mp4'
+    'class' => 'hero-video-bg',
+    'aspect' => '',
+    'alt' => 'Colourist Studio Experience',
+    'label' => 'video: hero_portrait.mp4'
   ]) ?>
-  <div class="hero-overlay">
-    <h2>Helping people feel <b>confident</b> through best colors.</h2>
-    <p>ASIA &amp; INDONESIA'S NO.1 COLOR EXPERT</p>
+  <div class="hero-overlay-hermes">
+    <h1 class="hero-title">Helping people feel <b>confident</b> through best colors.</h1>
+    <p class="hero-subtitle">ASIA &amp; INDONESIA'S NO.1 COLOR EXPERT</p>
   </div>
+  <a href="#journeySection" class="hero-scroll-indicator" aria-label="Scroll to Colourist Journey">
+    <span class="scroll-text">SCROLL</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  </a>
 </section>
 
 <!-- 2. The Colourist Journey Section -->
-<section class="sec journey-sec" aria-labelledby="journeyHeading">
+<section class="sec journey-sec" id="journeySection" aria-labelledby="journeyHeading">
   <span class="eyebrow" style="letter-spacing: .3em;">WELCOME TO THE</span>
   <h2 id="journeyHeading" class="journey-main-title">COLOURIST</h2>
   <span class="journey-subtitle">JOURNEY</span>
 
   <div class="journey">
     <?php foreach ($journey_steps as $step): ?>
-      <a href="experience/<?= e($step['slug']) ?>" class="step" aria-label="<?= e($step['alt']) ?>">
+      <a href="experiences#<?= e($step['slug']) ?>" class="step" aria-label="<?= e($step['alt']) ?>">
         <div class="step-icon-wrap">
           <img src="<?= e($step['icon']) ?>" alt="" class="step-icon" width="36" height="36" loading="lazy">
         </div>
@@ -49,7 +56,8 @@ include __DIR__ . '/includes/header.php';
           <?php endif; ?>
         </div>
         <div class="step-seal-wrap">
-          <img src="<?= e($step['seal']) ?>" alt="<?= e($step['alt']) ?> Stamp" class="step-seal-img" width="58" height="58" loading="lazy">
+          <img src="<?= e($step['seal']) ?>" alt="<?= e($step['alt']) ?> Stamp" class="step-seal-img" width="58"
+            height="58" loading="lazy">
         </div>
       </a>
     <?php endforeach; ?>
@@ -61,7 +69,7 @@ include __DIR__ . '/includes/header.php';
   <h2 id="experiencesHeading" style="font-size: 32px; margin-bottom: 24px;">Colourist Experience</h2>
 
   <div class="cards" style="grid-template-columns: repeat(4, 1fr);">
-    <?php 
+    <?php
     // Show 4 representative service cards on home
     $home_services = [
       $services['personal-color-analysis'],
@@ -69,18 +77,17 @@ include __DIR__ . '/includes/header.php';
       $services['makeup-masterclass'],
       $services['custom-lipstick']
     ];
-    foreach ($home_services as $srv): 
-    ?>
-      <a href="experience/<?= e($srv['slug']) ?>" class="card">
+    foreach ($home_services as $srv):
+      ?>
+      <div class="card">
         <div class="card-media">
-          <?= media($srv['media_slot'], [
-              'aspect' => '9/16',
-              'alt'    => $srv['title'] . ' Video Experience',
-              'label'  => 'video 9:16'
+          <?= video_player($srv['media_slot'], [
+            'aspect' => '9/16',
+            'alt' => $srv['title'] . ' Video Experience'
           ]) ?>
         </div>
-        <p><?= e($srv['title']) ?></p>
-      </a>
+        <p><a href="experiences#<?= e($srv['slug']) ?>"><?= e($srv['title']) ?></a></p>
+      </div>
     <?php endforeach; ?>
   </div>
 
@@ -100,12 +107,9 @@ include __DIR__ . '/includes/header.php';
 
   <!-- Centered 9:16 video / poster -->
   <div class="home-leader-video-wrap">
-    <video muted loop playsinline preload="metadata" 
-           class="lazy-video home-leader-video" 
-           poster="<?= e($media['home.leader_video_poster']) ?>"
-           data-src="<?= e($media['home.leader_video']) ?>" 
-           src="<?= e($media['home.leader_video']) ?>" 
-           aria-label="Asia's Leading Color Expert Experience">
+    <video muted loop playsinline preload="metadata" class="lazy-video home-leader-video"
+      poster="<?= e($media['home.leader_video_poster']) ?>" data-src="<?= e($media['home.leader_video']) ?>"
+      src="<?= e($media['home.leader_video']) ?>" aria-label="Asia's Leading Color Expert Experience">
       <source src="<?= e($media['home.leader_video']) ?>" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
@@ -126,20 +130,20 @@ include __DIR__ . '/includes/header.php';
   <div class="home-trans-cards">
     <?php foreach ($home_stories as $st): ?>
       <article class="home-trans-card">
-        <!-- Before / After Side-by-Side (3:4 ratio each) -->
+        <!-- Before / After Side-by-Side (1:1 ratio each, grid 2 col, gap 8px) -->
         <div class="ba-pair">
           <div class="ba-item">
             <?php if (!empty($st['before_slot']) && !empty($media[$st['before_slot']])): ?>
-              <?= media($st['before_slot'], ['aspect' => '3/4', 'alt' => $st['title'] . ' Before']) ?>
+              <img src="<?= e($media[$st['before_slot']]) ?>" alt="<?= e($st['title']) ?> Before" loading="lazy">
             <?php else: ?>
-              <div class="ph" style="aspect-ratio: 3/4; width: 100%;"><span style="font-size: 9px;">before</span></div>
+              <span class="ba-empty-label">before</span>
             <?php endif; ?>
           </div>
           <div class="ba-item">
             <?php if (!empty($st['after_slot']) && !empty($media[$st['after_slot']])): ?>
-              <?= media($st['after_slot'], ['aspect' => '3/4', 'alt' => $st['title'] . ' After']) ?>
+              <img src="<?= e($media[$st['after_slot']]) ?>" alt="<?= e($st['title']) ?> After" loading="lazy">
             <?php else: ?>
-              <div class="ph" style="aspect-ratio: 3/4; width: 100%;"><span style="font-size: 9px;">after</span></div>
+              <span class="ba-empty-label">after</span>
             <?php endif; ?>
           </div>
         </div>
@@ -154,9 +158,11 @@ include __DIR__ . '/includes/header.php';
           &ldquo;<?= e($st['quote']) ?>&rdquo;
         </p>
 
-        <a href="transformation/<?= e($st['slug']) ?>" class="home-trans-link">
-          Read the full story
-        </a>
+        <div>
+          <a href="transformation/<?= e($st['slug']) ?>" class="home-trans-link">
+            Read the full story
+          </a>
+        </div>
       </article>
     <?php endforeach; ?>
   </div>
@@ -167,23 +173,21 @@ include __DIR__ . '/includes/header.php';
   <h2 id="homeWhyHeading" style="font-size: 32px; margin-bottom: 28px;">Why Colourist?</h2>
   <div class="why-text-block">
     <p class="why-line">Colourist is Asia's Leading &amp; No.1 Color Expert.</p>
-    <p class="why-line">Located in ASHTA &amp; Kuala Lumpur, we are dedicated to make Indonesians feel confident in their unique color.</p>
-    <p class="why-line">Trusted by thousands of clients, brands, and publications globally and locally, we deliver real transformations through the power of color.</p>
+    <p class="why-line">Located in ASHTA &amp; Kuala Lumpur, we are dedicated to make Indonesians feel confident in
+      their unique color.</p>
+    <p class="why-line">Trusted by thousands of clients, brands, and publications globally and locally, we deliver real
+      transformations through the power of color.</p>
   </div>
 </section>
 
 <!-- 7. Fullwidth CTA Section -->
 <section class="home-cta-sec" aria-labelledby="ctaHeading">
-  <div class="home-cta-bg-wrap">
-    <?= media('home.cta_bg', [
-        'class' => 'home-cta-bg-img',
-        'alt'   => 'Colourist Atelier Ambience'
-    ]) ?>
-  </div>
-  <div class="home-cta-overlay">
-    <h2 id="ctaHeading" class="home-cta-title">Your Transformation Journey Begins Here</h2>
+  <div class="home-cta-content">
+    <h2 id="ctaHeading" class="home-cta-title">
+      Your Transformation Journey<br>Begins Here
+    </h2>
     <div>
-      <a href="book" class="btn btn-outline-cta">
+      <a href="book" class="btn btn-cta-outline">
         BOOK NOW
       </a>
     </div>

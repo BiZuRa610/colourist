@@ -1,6 +1,6 @@
 <?php
 /**
- * Story Detail Page — Colourist by Zerlinda
+ * Story Detail Page — Colourist
  * Template for /transformation/{slug}
  */
 require_once __DIR__ . '/includes/data.php';
@@ -24,7 +24,7 @@ $prev_slug = ($current_idx > 0) ? $story_slugs[$current_idx - 1] : null;
 $next_slug = ($current_idx < count($story_slugs) - 1) ? $story_slugs[$current_idx + 1] : null;
 
 $page_title = $story['title'] . ' — Colourist Transformation Story';
-$page_description = $story['quote'] ?? 'Read the full transformation story at Colourist by Zerlinda.';
+$page_description = $story['quote'] ?? 'Read the full transformation story at Colourist.';
 
 include __DIR__ . '/includes/header.php';
 ?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Footer Template — Colourist by Zerlinda
+ * Footer Template — Colourist
  * Clean minimalist footer with site links, location details, and script inclusions
  */
 if (!defined('APP_INIT')) {
@@ -17,7 +17,7 @@ if (!defined('APP_INIT')) {
     </p>
 
     <div class="footer-links">
-      <a href="about">About</a>
+      <a href="about">What is it?</a>
       <a href="experiences">Experiences</a>
       <a href="transformation">Transformation</a>
       <a href="workshop">Workshop</a>

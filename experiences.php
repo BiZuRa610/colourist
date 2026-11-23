@@ -1,6 +1,6 @@
 <?php
 /**
- * Experiences Page — Colourist by Zerlinda
+ * Experiences Page — Colourist
  * 5 Rows Zigzag: 9:16 media (±220px) and centered text
  */
 require_once __DIR__ . '/includes/data.php';
@@ -28,21 +28,17 @@ include __DIR__ . '/includes/header.php';
     <div class="exp-zigzag-row <?= $is_even ? 'row-reverse' : '' ?>" id="<?= e($srv['slug']) ?>">
       <!-- Media Column (9:16 approx 220px width) -->
       <div class="exp-media-col">
-        <a href="experience/<?= e($srv['slug']) ?>" aria-label="View <?= e($srv['title']) ?> details">
-          <?= media($srv['media_slot'], [
-              'aspect' => '9/16',
-              'alt'    => $srv['title'],
-              'class'  => 'exp-card-media'
-          ]) ?>
-        </a>
+        <?= video_player($srv['media_slot'], [
+            'aspect' => '9/16',
+            'alt'    => $srv['title'],
+            'class'  => 'exp-card-media'
+        ]) ?>
       </div>
 
       <!-- Text Column (Centered content) -->
       <div class="exp-text-col">
         <h2 class="exp-title">
-          <a href="experience/<?= e($srv['slug']) ?>">
-            <?= e($srv['title']) ?>
-          </a>
+          <?= e($srv['title']) ?>
         </h2>
         <p class="exp-desc">
           <?= e($srv['description']) ?>

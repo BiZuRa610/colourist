@@ -1,6 +1,6 @@
 <?php
 /**
- * Static Build Generator — Colourist by Zerlinda
+ * Static Build Generator — Colourist
  * 
  * Renders all PHP pages using output buffering into static HTML files
  * formatted for cleanUrls: true on Vercel or any static CDN.
@@ -39,7 +39,7 @@ function copy_directory($src, $dst) {
     @mkdir($dst, 0755, true);
     $dir = opendir($src);
     while (false !== ($file = readdir($dir))) {
-        if ($file === '.' || $file === '..') continue;
+        if ($file === '.' || $file === '..' || $file === 'incoming') continue;
         $src_file = $src . DIRECTORY_SEPARATOR . $file;
         $dst_file = $dst . DIRECTORY_SEPARATOR . $file;
         if (is_dir($src_file)) {
@@ -94,49 +94,7 @@ foreach ($pages as $route => $config) {
     write_dist_html($config['dest'], $html);
 }
 
-// 2. The 5 Service Detail Pages: /experience/{slug}
-$distinct_slugs = [
-    'personal-color-analysis',
-    'signature-experience',
-    'private-styling',
-    'makeup-masterclass',
-    'custom-lipstick'
-];
-
-foreach ($distinct_slugs as $slug) {
-    $route = "/experience/{$slug}";
-    $dest = $dist_dir . "/experience/{$slug}/index.html";
-    echo "  -> Rendering {$route}...\n";
-
-    $_GET = ['service' => $slug];
-    $_SERVER['PHP_SELF'] = '/experience.php';
-    $_SERVER['REQUEST_URI'] = $route;
-
-    ob_start();
-    include __DIR__ . '/experience.php';
-    $html = ob_get_clean();
-
-    write_dist_html($dest, $html);
-}
-
-// Backward compatibility alias for color-analysis -> personal-color-analysis
-echo "  -> Creating redirect for legacy /experience/color-analysis...\n";
-$alias_dest = $dist_dir . "/experience/color-analysis/index.html";
-$alias_html = <<<HTML
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=/experience/personal-color-analysis">
-  <link rel="canonical" href="/experience/personal-color-analysis">
-  <script>window.location.replace('/experience/personal-color-analysis');</script>
-</head>
-<body><p>Redirecting to <a href="/experience/personal-color-analysis">Personal Color Analysis</a>...</p></body>
-</html>
-HTML;
-write_dist_html($alias_dest, $alias_html);
-
-// 3. Transformation Stories: /transformation/{slug} (5 stories)
+// 2. Transformation Stories: /transformation/{slug} (5 stories)
 foreach ($stories as $slug => $st) {
     $route = "/transformation/{$slug}";
     $dest = $dist_dir . "/transformation/{$slug}/index.html";

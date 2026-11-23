@@ -1,13 +1,13 @@
 <?php
 /**
- * 404 Not Found — Colourist by Zerlinda
+ * 404 Not Found — Colourist
  */
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
 
 http_response_code(404);
 
-$page_title = '404 Page Not Found — Colourist by Zerlinda';
+$page_title = '404 Page Not Found — Colourist';
 $page_description = 'Halaman yang Anda cari tidak ditemukan.';
 
 include __DIR__ . '/includes/header.php';

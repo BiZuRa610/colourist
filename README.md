@@ -1,6 +1,6 @@
-# Colourist by Zerlinda — Website Official
+# Colourist — Website Official
 
-Website native PHP untuk **Colourist by Zerlinda** (Asia & Indonesia's No. 1 Color Expert, studio di ASHTA District 8 SCBD, Jakarta & Kuala Lumpur). Dibangun secara native tanpa framework dan tanpa build tool, mengusung estetika minimalis luxury dengan tipografi Black Mango & Poppins, aksen `#b5654f`, responsive mobile-first, dan dark mode otomatis (`prefers-color-scheme`).
+Website native PHP untuk **Colourist** (Asia & Indonesia's No. 1 Color Expert, studio di ASHTA District 8 SCBD, Jakarta). Dibangun secara native tanpa framework dan tanpa build tool, mengusung estetika minimalis luxury dengan tipografi Cormorant Garamond, Black Mango & Poppins, aksen `#b5654f`, video interaktif portrait (9:16) bersuara gaya Olaplex, hero full-page 100svh bergaya Hermes, responsive mobile-first, dan dark mode otomatis (`prefers-color-scheme`).
 
 ---
 
@@ -99,37 +99,31 @@ Deployment ke Vercel menggunakan strategi **Static Export** (`/dist`), sehingga 
 
 ```
 /
-├── index.php              # Halaman Home (Hero video, Journey seals, Cards 9:16)
-├── about.php              # Halaman About (Our story, Stats, Studio atelier, Press)
-├── experiences.php        # Halaman Layanan (Zigzag list 4 layanan)
-├── experience.php         # Detail Layanan (?service=slug + Other Experiences)
-├── transformation.php     # Halaman Transformasi (Video carousel + Why Colourist)
-├── workshop.php           # Halaman Workshop (Upcoming & Sold out cards)
-├── collaboration.php      # Halaman Kolaborasi (Brand, Media, Talent + Form)
-├── partners.php           # Halaman Partners (Grid logo + Quote slider)
-├── book.php               # Halaman Book Now (Studio info + WhatsApp booking)
-├── admin.php              # Admin Dashboard (Kelola data/transformation.json)
+├── index.php              # Halaman Home (Hero 100svh Hermes, Journey seals, Cards 9:16 Olaplex)
+├── about.php              # Halaman "What is it?" (Story, Stats, Studio atelier, Press)
+├── experiences.php        # Halaman Layanan (Zigzag 5 layanan dengan video interaktif)
+├── transformation.php     # Halaman Transformasi (Video carousel + Stories)
+├── workshop.php           # Halaman Workshop (Sertifikasi, video suara, alumni carousel)
+├── collaboration.php      # Halaman Kolaborasi (Inquiry form & email)
+├── partners.php           # Halaman Partners (Carousel logo SVG + Trusted Celebrities)
+├── book.php               # Halaman Book Now (5 layanan, WhatsApp booking)
+├── admin.php              # Admin Dashboard lokal (Kelola data/transformation.json)
 ├── 404.php                # Halaman 404 Not Found
 ├── build.php              # Static Site Generator ke /dist
-├── api/
-│   └── index.php          # Vercel serverless router (single entry-point)
-├── vercel.json            # Konfigurasi routing & PHP runtime Vercel
+├── vercel.json            # Konfigurasi deployment statis Vercel
 ├── .htaccess              # Rewrite rule clean URL untuk Apache/Laragon
-├── .gitignore             # Ignore reference, dist, bak, and doc_extracted
 ├── includes/
 │   ├── data.php           # Konfigurasi pusat: teks, kontak, slot media, layanan
-│   ├── media.php          # Helper responsif media() dan escape e()
+│   ├── media.php          # Helper responsif media(), video_player(), escape e()
 │   ├── header.php         # Header navigasi & mega menu Aman-inspired
 │   └── footer.php         # Footer minimalis & script inclusion
 ├── assets/
-│   ├── css/style.css      # CSS styling, tokens, Black Mango & Poppins, dark mode
-│   ├── js/main.js         # Mega menu, mobile accordion, video autoplay, booking WA
+│   ├── css/style.css      # CSS styling, tokens, Cormorant Garamond, Poppins, responsive
+│   ├── js/main.js         # Mega menu, Olaplex video controller, carousels, booking WA
 │   ├── fonts/             # BlackMango.woff & BlackMango.woff2
-│   └── media/             # Foto, video, dan logo Colourist
+│   └── media/             # Foto, video, logo, dan SVG partners
 ├── data/
 │   └── transformation.json# Database JSON portfolio transformasi
-├── tools/
-│   └── optimize.sh        # Script optimasi ffmpeg
-└── reference/             # Wireframe mockup acuan visual
+└── reference/             # Wireframe mockup dan aset acuan visual
 ```
 

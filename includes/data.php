@@ -1,6 +1,6 @@
 <?php
 /**
- * Colourist by Zerlinda — Central Data Configuration
+ * Colourist — Central Data Configuration
  * Asia & Indonesia's No. 1 Color Expert
  * Studio: ASHTA District 8, SCBD, Jakarta & Kuala Lumpur
  */
@@ -11,12 +11,12 @@ if (!defined('APP_INIT')) {
 
 // Global Site Information
 $site = [
-    'name' => 'Colourist by Zerlinda',
-    'title_default' => 'Colourist by Zerlinda — Asia & Indonesia\'s No.1 Color Expert',
+    'name' => 'Colourist',
+    'title_default' => 'Colourist — Asia & Indonesia\'s No.1 Color Expert',
     'tagline' => 'Asia & Indonesia\'s No.1 Color Expert',
     'hero_headline' => 'Helping people feel confident through best colors.',
     'description' => 'Asia & Indonesia\'s No. 1 Color Expert located at ASHTA District 8, SCBD, Jakarta. Private color analysis, styling, makeup masterclasses, and bespoke lipstick formulation.',
-    'url' => 'https://colouristbyzerlinda.com',
+    'url' => 'https://colourist.id',
     'whatsapp' => '628111925828', // Standard international format without '+'
     'whatsapp_display' => '+62 811-1925-828',
     'email' => 'inquiry@colourist.id',
@@ -24,7 +24,7 @@ $site = [
     'tiktok' => 'https://tiktok.com/@colourist_official',
     'studio_address' => 'ASHTA District 8, Level 1, SCBD Lot 28, Jl. Jend. Sudirman Kav 52-53, Jakarta Selatan 12190',
     'studio_location_short' => 'ASHTA District 8, SCBD, Jakarta',
-    'operating_hours' => 'Mon – Sun: 10:00 – 21:00 WIB (By Appointment Only)',
+    'operating_hours' => 'Mon - Fri: 10 - 8pm | Sat - Sun: 10 - 6pm',
     'formspree_id' => 'XXXX', // Ganti dengan Formspree Form ID Anda (contoh: 'xpznvqwz')
     'admin_password_hash' => '$2y$10$w0s6h2H9w5yH1z2N0k1A7u4x9O7M.gX3M0yT8zK3W5F7D0gG4J2rO', // 'colourist2026'
     'admin_default_pass' => 'colourist2026'
@@ -44,17 +44,23 @@ $media = [
     'journey.icon_lipstick' => 'assets/media/journey/journey_icon_lipstick.svg',
 
     // Home
-    'hero.home' => 'assets/media/hero_portrait.mp4',
+    'hero.home' => 'assets/media/hero_full.mp4',
+    'hero.home_poster' => 'assets/media/hero_full_poster.jpg',
     'home.leader_video' => 'assets/media/hero_portrait.mp4',
     'home.leader_video_poster' => 'assets/media/home_leader_video_poster.jpg',
-    'home.cta_bg' => 'assets/media/home_cta_bg.jpg',
+    'home.cta_bg' => 'assets/media/cta_bg.jpg',
 
     // Services (Cards & Detail)
     'service.color-analysis' => 'assets/media/service_color_analysis.mp4',
-    'service.signature-experience' => 'assets/media/service_signature_experience_poster.jpg',
+    'service.color-analysis_poster' => 'assets/media/service_color_analysis_poster.jpg',
+    'service.signature-experience' => 'assets/media/service_signature_experience.mp4',
+    'service.signature-experience_poster' => 'assets/media/service_signature_experience_poster.jpg',
     'service.private-styling' => 'assets/media/service_private_styling.mp4',
+    'service.private-styling_poster' => 'assets/media/service_private_styling_poster.jpg',
     'service.makeup-masterclass' => 'assets/media/service_makeup_masterclass.mp4',
+    'service.makeup-masterclass_poster' => 'assets/media/service_makeup_masterclass_poster.jpg',
     'service.custom-lipstick' => 'assets/media/service_custom_lipstick.mp4',
+    'service.custom-lipstick_poster' => 'assets/media/service_custom_lipstick_poster.jpg',
 
     // Story 1..3 Photos & Before/After
     'story.she-spent-12-years' => 'assets/media/story_she_spent_12_years.jpg',
@@ -64,11 +70,11 @@ $media = [
     'story.felt-invisible' => '',
 
     'story.1.before' => 'assets/media/story_1_before.jpg',
-    'story.1.after'  => 'assets/media/story_1_after.jpg',
-    'story.2.before' => 'assets/media/story_2_before.jpg',
-    'story.2.after'  => 'assets/media/story_2_after.jpg',
-    'story.3.before' => 'assets/media/story_3_before.jpg',
-    'story.3.after'  => 'assets/media/story_3_after.jpg',
+    'story.1.after'  => '',
+    'story.2.before' => '',
+    'story.2.after'  => '',
+    'story.3.before' => '',
+    'story.3.after'  => '',
 
     // Transformations (Legacy Videos)
     'transformation.1' => 'assets/media/trans_1.mp4',
@@ -87,15 +93,16 @@ $media = [
 
     // Workshop
     'workshop.hero' => 'assets/media/workshop_hero.jpg',
-    'workshop.video' => 'assets/media/workshop_video_poster.jpg',
+    'workshop.video' => 'assets/media/workshop_video.mp4',
+    'workshop.video_poster' => 'assets/media/workshop_video_poster.jpg',
     'workshop.group' => 'assets/media/workshop_group.jpg',
 
     // Collaboration & Partners
     'collab.hero' => 'assets/media/colourist_official.jpg',
-    'partners.celebs.1' => '',
-    'partners.celebs.2' => '',
-    'partners.celebs.3' => '',
-    'partners.celebs.4' => '',
+    'partners.celebs.1' => 'assets/media/partners_celeb_1.jpg',
+    'partners.celebs.2' => 'assets/media/partners_celeb_2.jpg',
+    'partners.celebs.3' => 'assets/media/partners_celeb_3.jpg',
+    'partners.celebs.4' => 'assets/media/partners_celeb_4.jpg',
 ];
 
 // Press Coverage Strip (About Page)
@@ -147,10 +154,10 @@ $press = [
     ],
 ];
 
-// Navigation Menu (order: About, Experiences ›, Transformation, Workshop, Collaboration, Partners, Book Now)
+// Navigation Menu (order: What is it?, Experiences ›, Transformation, Workshop, Collaboration, Partners, Book Now)
 $nav_menu = [
     [
-        'label' => 'About',
+        'label' => 'What is it?',
         'url' => 'about',
     ],
     [
@@ -160,27 +167,27 @@ $nav_menu = [
         'children' => [
             [
                 'label' => 'Personal Color Analysis',
-                'url' => 'experience/personal-color-analysis',
+                'url' => 'experiences#personal-color-analysis',
                 'slug' => 'personal-color-analysis'
             ],
             [
                 'label' => 'Signature Experience',
-                'url' => 'experience/signature-experience',
+                'url' => 'experiences#signature-experience',
                 'slug' => 'signature-experience'
             ],
             [
                 'label' => 'Private Styling',
-                'url' => 'experience/private-styling',
+                'url' => 'experiences#private-styling',
                 'slug' => 'private-styling'
             ],
             [
                 'label' => 'Makeup Masterclass',
-                'url' => 'experience/makeup-masterclass',
+                'url' => 'experiences#makeup-masterclass',
                 'slug' => 'makeup-masterclass'
             ],
             [
                 'label' => 'Custom Lipstick',
-                'url' => 'experience/custom-lipstick',
+                'url' => 'experiences#custom-lipstick',
                 'slug' => 'custom-lipstick'
             ]
         ]
@@ -349,8 +356,6 @@ $services = [
         ]
     ]
 ];
-// Backwards compatibility alias
-$services['color-analysis'] = &$services['personal-color-analysis'];
 
 // 5 Transformation Stories
 $stories = [
@@ -539,14 +544,14 @@ $stories = [
 
 // Partner Brands (Tab 5 - 8 Luxury Brands)
 $partner_brands = [
-    ['name' => 'Ferragamo', 'logo' => ''],
-    ['name' => 'The Langham Jakarta', 'logo' => ''],
-    ['name' => 'Dior', 'logo' => ''],
-    ['name' => 'Burberry', 'logo' => ''],
-    ['name' => 'Miss World', 'logo' => ''],
-    ['name' => 'Miss Indonesia', 'logo' => ''],
-    ['name' => 'Plaza Indonesia', 'logo' => ''],
-    ['name' => 'Laura Mercier', 'logo' => '']
+    ['name' => 'Ferragamo', 'logo' => 'assets/media/partners/ferragamo.svg'],
+    ['name' => 'The Langham Jakarta', 'logo' => 'assets/media/partners/the_langham.svg'],
+    ['name' => 'Dior', 'logo' => 'assets/media/partners/dior.svg'],
+    ['name' => 'Burberry', 'logo' => 'assets/media/partners/burberry.svg'],
+    ['name' => 'Miss World', 'logo' => 'assets/media/partners/miss_world.svg'],
+    ['name' => 'Miss Indonesia', 'logo' => 'assets/media/partners/miss_indonesia.svg'],
+    ['name' => 'Plaza Indonesia', 'logo' => 'assets/media/partners/plaza_indonesia.svg'],
+    ['name' => 'Laura Mercier', 'logo' => 'assets/media/partners/laura_mercier.svg']
 ];
 
 // Celebrities Cards
@@ -593,7 +598,7 @@ $testimonials = [
         'role' => 'Beauty Influencer & Entrepreneur'
     ],
     [
-        'quote' => 'Zerlinda and her team deliver an international-grade analysis in the most luxurious atelier setting at ASHTA. The standard in color consulting.',
+        'quote' => 'The Colourist team delivers an international-grade analysis in the most luxurious atelier setting at ASHTA. The standard in color consulting.',
         'author' => 'Female Daily Editorial',
         'role' => 'Media Partner'
     ]

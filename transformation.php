@@ -1,6 +1,6 @@
 <?php
 /**
- * Transformation Page — Colourist by Zerlinda
+ * Transformation Page — Colourist
  * 5 Real Client Stories with Category Filter (Real Clients, Experts, Celebrities)
  */
 require_once __DIR__ . '/includes/data.php';

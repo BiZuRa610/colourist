@@ -1,6 +1,6 @@
 <?php
 /**
- * Collaboration Page — Colourist by Zerlinda
+ * Collaboration Page — Colourist
  * Partnerships with Brands, Media, and Public Figures
  */
 require_once __DIR__ . '/includes/data.php';
@@ -53,39 +53,9 @@ $formspree_action = !empty($site['formspree_id']) && $site['formspree_id'] !== '
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- 1. Short Hero Section -->
-<section class="hero-wrapper" style="height: 260px;" aria-label="Collaboration Hero">
-  <?= media('collab.hero', [
-      'class'    => 'hero-video-bg',
-      'aspect'   => '16/9',
-      'alt'      => 'Colourist Collaboration',
-      'label'    => 'collab.hero'
-  ]) ?>
-  <div class="hero-overlay">
-    <h1>Collaboration</h1>
-    <p>BRANDS &middot; MEDIA &middot; TALENT</p>
-  </div>
-</section>
-
-<!-- 2. Three Pillars Section -->
-<section class="sec" aria-labelledby="collabHeading">
-  <span class="eyebrow">Let's create together</span>
-  <h2 id="collabHeading">Work with Colourist</h2>
-  <p>From brand activations to editorial and talent styling, we bring colour expertise to every partnership.</p>
-
-  <div class="three">
-    <?php foreach ($collab_pillars as $pillar): ?>
-      <div>
-        <h3><?= e($pillar['title']) ?></h3>
-        <p><?= e($pillar['description']) ?></p>
-      </div>
-    <?php endforeach; ?>
-  </div>
-</section>
-
-<!-- 3. Collaboration Inquiry Form -->
-<section class="sec pt-0" aria-labelledby="formHeading">
-  <h2 id="formHeading" style="font-size: 24px; margin-bottom: 24px;">Send an Inquiry</h2>
+<!-- Collaboration Inquiry Section -->
+<section class="sec" style="padding-top: 60px; padding-bottom: 70px;" aria-labelledby="collabHeading">
+  <h1 id="collabHeading" style="font-size: 36px; margin-bottom: 32px; text-align: center;">Collaboration</h1>
 
   <?php if ($form_status === 'success'): ?>
     <div class="alert alert-success" style="max-width: 520px; margin: 0 auto 24px;">
@@ -97,7 +67,7 @@ include __DIR__ . '/includes/header.php';
     </div>
   <?php endif; ?>
 
-  <form method="POST" action="<?= e($formspree_action) ?>" class="form-box" id="collabForm">
+  <form method="POST" action="<?= e($formspree_action) ?>" class="form-box" id="collabForm" style="margin: 0 auto;">
     <!-- Formspree subject & reply-to configuration -->
     <input type="hidden" name="_subject" value="New Collaboration Inquiry — Colourist">
     
@@ -127,16 +97,16 @@ include __DIR__ . '/includes/header.php';
       <textarea id="collabMessage" name="message" required placeholder="Ceritakan konsep atau rencana kolaborasi Anda..."></textarea>
     </div>
 
-    <div style="text-align: center; margin-top: 10px;">
-      <button type="submit" name="submit_collab" class="btn btn-solid" style="padding: 10px 32px;">
-        Send Inquiry
+    <div style="text-align: center; margin-top: 16px;">
+      <button type="submit" name="submit_collab" class="btn btn-solid" style="padding: 12px 36px; width: 100%;">
+        SEND INQUIRY
       </button>
     </div>
   </form>
 
-  <p style="margin-top: 24px; font-size: 11px; color: var(--mut);">
+  <p style="margin-top: 28px; font-size: 11px; color: var(--mut); text-align: center;">
     Atau hubungi kami langsung via email: 
-    <a href="mailto:<?= e($site['email']) ?>?subject=Collaboration%20Inquiry" style="text-decoration: underline;">
+    <a href="mailto:<?= e($site['email']) ?>?subject=Collaboration%20Inquiry" style="text-decoration: underline; color: var(--fg);">
       <?= e($site['email']) ?>
     </a>
   </p>

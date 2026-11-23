@@ -1,6 +1,6 @@
 <?php
 /**
- * Header Template — Colourist by Zerlinda
+ * Header Template — Colourist
  * Accessible burger navigation, Cormorant Garamond headings, Black Mango logo, account & cart icons
  */
 
@@ -60,7 +60,7 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="<?= ($clean_current === 'index' || empty($clean_current)) ? 'is-home' : '' ?>">
 
   <!-- Backdrop overlay for mega menu -->
   <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
@@ -79,9 +79,8 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
       </button>
 
       <!-- Center: Logo -->
-      <a href="" class="logo" aria-label="Colourist by Zerlinda Home">
+      <a href="" class="logo" aria-label="Colourist Home">
         COLOURIST
-        <small>BY ZERLINDA</small>
       </a>
 
       <!-- Right: User Account and Shopping Bag / Cart -->
@@ -119,7 +118,7 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
             <?php if ($has_submenu): ?>
               <div class="menu-item-group">
                 <button type="button"
-                  class="menu-item-btn <?= ($is_active_page || $clean_current === 'experience' || $current_page === 'experience.php') ? 'current-page' : '' ?>"
+                  class="menu-item-btn <?= ($is_active_page || $clean_current === 'experiences') ? 'current-page' : '' ?>"
                   id="expNavBtn" aria-expanded="false" aria-controls="desktopSubmenuCol expMobileSubmenu">
                   <span class="txt"><?= e($item['label']) ?></span>
                   <span class="chevron-arrow" id="expChevron" aria-hidden="true">&rsaquo;</span>
@@ -128,10 +127,7 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
                 <!-- Mobile Accordion Submenu -->
                 <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
                   <?php foreach ($item['children'] as $child): ?>
-                    <?php 
-                      $is_active_child = ($current_page === 'experience.php' && ($current_service === $child['slug'] || ($current_service === 'color-analysis' && $child['slug'] === 'personal-color-analysis'))); 
-                    ?>
-                    <a href="<?= e($child['url']) ?>" class="menu-link <?= $is_active_child ? 'active-link' : '' ?>">
+                    <a href="<?= e($child['url']) ?>" class="menu-link">
                       <?= e($child['label']) ?>
                     </a>
                   <?php endforeach; ?>
@@ -151,10 +147,7 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
         <div class="mega-col-right" id="desktopSubmenuCol" aria-label="Detail Experiences">
           <span class="sub-eyebrow">EXPERIENCES</span>
           <?php foreach ($exp_children as $child): ?>
-            <?php 
-              $is_active_child = ($current_page === 'experience.php' && ($current_service === $child['slug'] || ($current_service === 'color-analysis' && $child['slug'] === 'personal-color-analysis'))); 
-            ?>
-            <a href="<?= e($child['url']) ?>" class="menu-link <?= $is_active_child ? 'active-link' : '' ?>">
+            <a href="<?= e($child['url']) ?>" class="menu-link">
               <?= e($child['label']) ?>
             </a>
           <?php endforeach; ?>

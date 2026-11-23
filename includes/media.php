@@ -1,6 +1,6 @@
 <?php
 /**
- * Media Helper — Colourist by Zerlinda
+ * Media Helper — Colourist
  * Resolves media slots, renders responsive images and lazy-load videos with fallback placeholders.
  */
 
@@ -99,6 +99,52 @@ function media($slot, $opts = []) {
         e($inlineStyle),
         $widthAttr,
         $heightAttr
+    );
+}
+
+/**
+ * Render Olaplex-style interactive video player component.
+ * Poster + Play button, audio active on click, pauses other playing videos, small mute toggle.
+ */
+function video_player($video_slot, $opts = []) {
+    global $media;
+    $src = $media[$video_slot] ?? $video_slot;
+    $poster = $opts['poster'] ?? ($media[$video_slot . '_poster'] ?? '');
+    $alt = $opts['alt'] ?? 'Video player';
+    $class = $opts['class'] ?? '';
+    $aspect = $opts['aspect'] ?? '9/16';
+
+    $aspectStyle = $aspect ? "aspect-ratio: {$aspect};" : '';
+
+    return sprintf(
+        '<div class="vcp-card %s" data-video-player style="%s">
+          <video playsinline preload="metadata" poster="%s" class="vcp-video">
+            <source src="%s" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play %s">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>',
+        e($class),
+        e($aspectStyle),
+        e($poster),
+        e($src),
+        e($alt)
     );
 }
 

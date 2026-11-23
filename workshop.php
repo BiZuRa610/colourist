@@ -1,6 +1,6 @@
 <?php
 /**
- * Workshop Page — Colourist by Zerlinda
+ * Workshop Page — Colourist
  * Redesign sesuai Tab 6:
  * - Hero 2 kolom: kiri teks judul besar, kanan foto workshop.hero (4:3)
  * - Video 9:16 tengah
@@ -11,7 +11,7 @@ require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
 
 $page_title = 'Colourist Workshop & Certification — Professional Korean & Japanese Method';
-$page_description = 'Professional Colour Analyst Certification - Korean and Japanese Method by Colourist\'s Expert Zerlinda. International Certification, Real Client Practice, and Direct Mentorship.';
+$page_description = 'Professional Colour Analyst Certification - Korean and Japanese Method by Colourist\'s Experts. International Certification, Real Client Practice, and Direct Mentorship.';
 
 include __DIR__ . '/includes/header.php';
 ?>
@@ -27,9 +27,9 @@ include __DIR__ . '/includes/header.php';
     </div>
     <div class="wk-hero-media">
       <?= media('workshop.hero', [
-          'aspect' => '4/3',
-          'alt'    => 'Colourist Workshop Certification Ceremony',
-          'class'  => 'wk-hero-img'
+        'aspect' => '4/3',
+        'alt' => 'Colourist Workshop Certification Ceremony',
+        'class' => 'wk-hero-img'
       ]) ?>
     </div>
   </div>
@@ -38,10 +38,10 @@ include __DIR__ . '/includes/header.php';
 <!-- 2. Centered Video Section (9:16) -->
 <section class="sec wk-video-sec" aria-label="Workshop Overview Video">
   <div class="wk-video-wrap">
-    <?= media('workshop.video', [
-        'aspect' => '9/16',
-        'alt'    => 'Colourist Workshop Training Atmosphere',
-        'class'  => 'wk-video-media'
+    <?= video_player('workshop.video', [
+      'aspect' => '9/16',
+      'alt' => 'Colourist Workshop Training Atmosphere',
+      'class' => 'wk-video-media'
     ]) ?>
   </div>
 </section>
@@ -54,12 +54,13 @@ include __DIR__ . '/includes/header.php';
       <div class="why-join-text">
         <h2 class="why-join-title">Why join?</h2>
         <p class="why-join-p">The beauty and fashion world is shifting— personalization is the new luxury.</p>
-        <p class="why-join-p">Searches for “personal color” in Asia are up 350%. Top pros are using color analysis, and 70% of clients will pay more for it.</p>
+        <p class="why-join-p">Searches for “personal color” in Asia are up 350%. Top pros are using color analysis, and
+          70% of clients will pay more for it.</p>
       </div>
       <div class="why-join-media">
         <?= media('workshop.group', [
-            'alt'   => 'Colourist Workshop Group Alumni',
-            'class' => 'why-join-img'
+          'alt' => 'Colourist Workshop Group Alumni',
+          'class' => 'why-join-img'
         ]) ?>
       </div>
     </div>
@@ -70,7 +71,8 @@ include __DIR__ . '/includes/header.php';
       <div class="what-get-grid">
         <div class="what-get-item">
           <h3 class="what-get-heading">International Certification</h3>
-          <p class="what-get-desc">Get international certificate by Japanese mentor for Japanese Color Analysis Method</p>
+          <p class="what-get-desc">Get international certificate by Japanese mentor for Japanese Color Analysis Method
+          </p>
         </div>
         <div class="what-get-item">
           <h3 class="what-get-heading">Real Client Practice</h3>
@@ -82,7 +84,8 @@ include __DIR__ . '/includes/header.php';
         </div>
         <div class="what-get-item">
           <h3 class="what-get-heading">Exclusive Workshop &amp; Hands-On Training</h3>
-          <p class="what-get-desc">Train with Japanese color expert. Learn to drape, analyze, and classify tones with expert guidance.</p>
+          <p class="what-get-desc">Train with Japanese color expert. Learn to drape, analyze, and classify tones with
+            expert guidance.</p>
         </div>
       </div>
     </div>
@@ -95,28 +98,24 @@ include __DIR__ . '/includes/header.php';
 
   <!-- 9:16 Video / Foto Carousel -->
   <div class="student-carousel-container">
-    <button type="button" class="student-arrow arrow-prev" id="studentPrev" aria-label="Previous student video">&lt;</button>
+    <button type="button" class="student-arrow arrow-prev" id="studentPrev"
+      aria-label="Previous student video">&lt;</button>
     <div class="student-track-wrap">
       <div class="student-track" id="studentTrack">
-        <div class="student-card">
-          <div class="ph student-ph" style="aspect-ratio: 9/16; width: 100%;"><span>Student 1</span></div>
-        </div>
-        <div class="student-card">
-          <div class="ph student-ph" style="aspect-ratio: 9/16; width: 100%;"><span>Student 2</span></div>
-        </div>
-        <div class="student-card">
-          <div class="ph student-ph" style="aspect-ratio: 9/16; width: 100%;"><span>Student 3</span></div>
-        </div>
-        <div class="student-card">
-          <div class="ph student-ph" style="aspect-ratio: 9/16; width: 100%;"><span>Student 4</span></div>
-        </div>
+        <?php for ($i = 1; $i <= 8; $i++): ?>
+          <div class="student-card">
+            <img src="assets/media/students/student_<?= $i ?>.jpg" alt="Colourist Student <?= $i ?>" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        <?php endfor; ?>
       </div>
     </div>
-    <button type="button" class="student-arrow arrow-next" id="studentNext" aria-label="Next student video">&gt;</button>
+    <button type="button" class="student-arrow arrow-next" id="studentNext"
+      aria-label="Next student video">&gt;</button>
   </div>
 
   <p class="student-stats-text">
-    Trained 60+ Colour Analysts from Indonesia, Brunei, Malaysia, Singapore, Australia, and Thailand through professional Korean and Japanese colour analysis certification programmes.
+    Trained 60+ Colour Analysts from Indonesia, Brunei, Malaysia, Singapore, Australia, and Thailand through
+    professional Korean and Japanese colour analysis certification programmes.
   </p>
 
   <div style="margin-top: 32px;">

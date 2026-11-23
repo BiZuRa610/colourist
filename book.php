@@ -1,22 +1,46 @@
 <?php
 /**
- * Booking Page — Colourist by Zerlinda
+ * Booking Page — Colourist
  * 2-column layout with studio details and WhatsApp booking flow
  */
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
 
-$page_title = 'Reserve Your Experience — Colourist by Zerlinda';
+$page_title = 'Reserve Your Experience — Colourist';
 $page_description = 'Book your private Personal Color Analysis, Private Styling, or Masterclass at ASHTA District 8 SCBD. Instant confirmation via WhatsApp.';
 
 // Check if a service was passed in query parameter
 $prefill_service = trim($_GET['service'] ?? '');
 $prefill_workshop = trim($_GET['workshop'] ?? '');
 
+// 5 Service Options
+$book_services = [
+    'personal-color-analysis' => [
+        'title' => 'Personal Color Analysis',
+        'label' => 'Color Analysis'
+    ],
+    'signature-experience' => [
+        'title' => 'Signature Experience',
+        'label' => 'Signature Experience'
+    ],
+    'private-styling' => [
+        'title' => 'Private Styling',
+        'label' => 'Private Styling'
+    ],
+    'makeup-masterclass' => [
+        'title' => 'Makeup Masterclass',
+        'label' => 'Makeup Class'
+    ],
+    'custom-lipstick' => [
+        'title' => 'Custom Lipstick',
+        'label' => 'Custom Lipstick'
+    ]
+];
+
 // Match default selected service
 $selected_service_name = 'Personal Color Analysis';
-if (!empty($prefill_service) && isset($services[$prefill_service])) {
-    $selected_service_name = $services[$prefill_service]['title'];
+if (!empty($prefill_service) && isset($book_services[$prefill_service])) {
+    $selected_service_name = $book_services[$prefill_service]['title'];
 } elseif (!empty($prefill_workshop)) {
     $selected_service_name = 'Workshop: ' . $prefill_workshop;
 }
@@ -29,9 +53,6 @@ include __DIR__ . '/includes/header.php';
   <div>
     <span class="eyebrow">Book Now</span>
     <h1 style="font-size: 32px; margin: 6px 0 14px;">Reserve your experience</h1>
-    <p style="color: var(--mut); line-height: 1.8;">
-      Pilih layanan dan jadwal yang diinginkan. Tim concierge kami akan melanjutkan konfirmasi ketersediaan slot melalui WhatsApp resmi Colourist.
-    </p>
 
     <div class="info-box">
       <b>Colourist Atelier Jakarta</b><br>
@@ -50,16 +71,16 @@ include __DIR__ . '/includes/header.php';
     <form id="bookingForm" data-wa="<?= e($site['whatsapp']) ?>" class="form-box" style="max-width: none; margin: 0;">
       <span class="eyebrow">Experience</span>
 
-      <!-- Service Selection Buttons -->
+      <!-- Service Selection Buttons (5 services) -->
       <div class="opts" role="radiogroup" aria-label="Select Experience">
-        <?php foreach ($services as $key => $srv): ?>
-          <?php $is_on = ($selected_service_name === $srv['title'] || $prefill_service === $key); ?>
+        <?php foreach ($book_services as $key => $bs): ?>
+          <?php $is_on = ($selected_service_name === $bs['title'] || $prefill_service === $key); ?>
           <button type="button" 
                   class="opt-btn <?= $is_on ? 'on' : '' ?>" 
-                  data-service="<?= e($srv['title']) ?>"
+                  data-service="<?= e($bs['title']) ?>"
                   role="radio"
                   aria-checked="<?= $is_on ? 'true' : 'false' ?>">
-            <?= e($srv['short_title']) ?>
+            <?= e($bs['label']) ?>
           </button>
         <?php endforeach; ?>
       </div>
@@ -95,12 +116,6 @@ include __DIR__ . '/includes/header.php';
       <div class="form-group">
         <label for="bookWa">WhatsApp Number *</label>
         <input type="tel" id="bookWa" name="whatsapp" required placeholder="0812xxxxxxxx atau +62812...">
-      </div>
-
-      <!-- Notes -->
-      <div class="form-group">
-        <label for="bookNotes">Notes (optional)</label>
-        <textarea id="bookNotes" name="notes" placeholder="Contoh: Reservasi untuk 2 orang, sesi ulang tahun, atau request analyst tertentu..."></textarea>
       </div>
 
       <!-- Submit Button -->

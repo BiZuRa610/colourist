@@ -1,13 +1,13 @@
 <?php
 /**
- * About Page — Colourist by Zerlinda
+ * What is it? (About Page) — Colourist
  * Our Story, Studio Atelier, Key Stats, and Press Coverage
  */
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
 
-$page_title = 'About Colourist — Asia\'s Leading & No. 1 Color Expert';
-$page_description = 'Founded by Zerlinda, Colourist is Asia\'s leading color consulting house based in ASHTA District 8, SCBD and Kuala Lumpur, dedicated to making clients feel confident in their unique color.';
+$page_title = 'What is it? — Colourist — Asia\'s Leading & No. 1 Color Expert';
+$page_description = 'Colourist is Asia\'s leading color consulting house based in ASHTA District 8, SCBD and Kuala Lumpur, dedicated to making clients feel confident in their unique color.';
 
 include __DIR__ . '/includes/header.php';
 ?>
@@ -15,13 +15,13 @@ include __DIR__ . '/includes/header.php';
 <!-- 1. Hero Image Section -->
 <section class="hero-wrapper" aria-label="About Hero">
   <?= media('about.hero', [
-      'class'    => 'hero-video-bg',
-      'aspect'   => '16/9',
-      'alt'      => 'Official Colourist Session',
-      'label'    => 'colourist_official.jpg'
+    'class' => 'hero-video-bg',
+    'aspect' => '16/9',
+    'alt' => 'Official Colourist Session',
+    'label' => 'colourist_official.jpg'
   ]) ?>
   <div class="hero-overlay">
-    <h1>About Colourist</h1>
+    <h1>What is it?</h1>
     <p>ASIA'S LEADING &amp; NO.1 COLOR EXPERT</p>
   </div>
 </section>
@@ -31,7 +31,7 @@ include __DIR__ . '/includes/header.php';
   <div class="split-media">
     <?= media('about.story', [
         'aspect' => '4/5',
-        'alt'    => 'Zerlinda Master Consultation',
+        'alt'    => 'Colourist Master Consultation',
         'label'  => '76c60e282c78588fbb41bba6c9e69e4c.jpg'
     ]) ?>
   </div>
@@ -40,10 +40,12 @@ include __DIR__ . '/includes/header.php';
     <span class="eyebrow">Our Story</span>
     <h2 id="storyHeading">Colour, made personal.</h2>
     <p>
-      Founded by Zerlinda, Colourist was born from a singular mission: to empower individuals to feel radiant and effortlessly confident through the scientific precision of colour analysis.
+      Colourist was born from a singular mission: to empower individuals to feel radiant and effortlessly confident through the scientific precision of colour analysis.
     </p>
     <p>
-      Too often, shopping and styling feel like expensive guesswork. By combining advanced draping science, face architecture, and personalized pigment formulation, we provide a definitive roadmap for your wardrobe, makeup, and lifestyle choices.
+      Too often, shopping and styling feel like expensive guesswork. By combining advanced draping science, face
+      architecture, and personalized pigment formulation, we provide a definitive roadmap for your wardrobe, makeup, and
+      lifestyle choices.
     </p>
     <p style="font-weight: 500; color: var(--fg);">
       Based in ASHTA District 8, SCBD, Jakarta and Kuala Lumpur.
@@ -69,7 +71,8 @@ include __DIR__ . '/includes/header.php';
   <span class="eyebrow">The Studio</span>
   <h2 id="studioHeading" style="font-size: 28px;">ASHTA Atelier</h2>
   <p style="color: var(--mut); max-width: 500px; margin: 8px auto 0; font-size: 12px;">
-    An intimate sanctuary bathed in calibrated daylight lighting, designed for private discovery in the heart of SCBD Jakarta.
+    An intimate sanctuary bathed in calibrated daylight lighting, designed for private discovery in the heart of SCBD
+    Jakarta.
   </p>
 
   <div class="gal">
@@ -96,9 +99,9 @@ include __DIR__ . '/includes/header.php';
     <?php foreach ($press as $item): ?>
       <div class="press-item">
         <?= media($item['media'], [
-            'aspect' => '4/3',
-            'alt'    => $item['title'],
-            'label'  => $item['outlet']
+          'aspect' => '4/3',
+          'alt' => $item['title'],
+          'label' => $item['outlet']
         ]) ?>
         <div class="press-label"><?= e($item['outlet']) ?></div>
       </div>
@@ -111,4 +114,3 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
-

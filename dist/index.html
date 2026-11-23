@@ -4,19 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Colourist by Zerlinda — Asia &amp; Indonesia&#039;s No.1 Color Expert</title>
+  <title>Colourist — Asia &amp; Indonesia&#039;s No.1 Color Expert</title>
   <meta name="description" content="Helping people feel confident through best colors. Discover your true seasonal palette, private styling, makeup masterclass, and custom lipstick at ASHTA District 8 SCBD.">
-  <link rel="canonical" href="https://colouristbyzerlinda.com/">
+  <link rel="canonical" href="https://colourist.id/">
 
   <!-- Base tag so relative links resolve cleanly across nested routes -->
     <base href="/">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Colourist by Zerlinda — Asia &amp; Indonesia&#039;s No.1 Color Expert">
+  <meta property="og:title" content="Colourist — Asia &amp; Indonesia&#039;s No.1 Color Expert">
   <meta property="og:description" content="Helping people feel confident through best colors. Discover your true seasonal palette, private styling, makeup masterclass, and custom lipstick at ASHTA District 8 SCBD.">
-  <meta property="og:url" content="https://colouristbyzerlinda.com/">
-  <meta property="og:image" content="https://colouristbyzerlinda.com/assets/media/logo.png">
+  <meta property="og:url" content="https://colourist.id/">
+  <meta property="og:image" content="https://colourist.id/assets/media/logo.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon -->
@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="is-home">
 
   <!-- Backdrop overlay for mega menu -->
   <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
@@ -53,9 +53,8 @@
       </button>
 
       <!-- Center: Logo -->
-      <a href="" class="logo" aria-label="Colourist by Zerlinda Home">
+      <a href="" class="logo" aria-label="Colourist Home">
         COLOURIST
-        <small>BY ZERLINDA</small>
       </a>
 
       <!-- Right: User Account and Shopping Bag / Cart -->
@@ -83,7 +82,7 @@
         <div class="mega-col-left">
                                     <div>
                 <a href="about" class="menu-link ">
-                  About                </a>
+                  What is it?                </a>
               </div>
                                                 <div class="menu-item-group">
                 <button type="button"
@@ -95,15 +94,15 @@
 
                 <!-- Mobile Accordion Submenu -->
                 <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
-                                                          <a href="experience/personal-color-analysis" class="menu-link ">
+                                      <a href="experiences#personal-color-analysis" class="menu-link">
                       Personal Color Analysis                    </a>
-                                                          <a href="experience/signature-experience" class="menu-link ">
+                                      <a href="experiences#signature-experience" class="menu-link">
                       Signature Experience                    </a>
-                                                          <a href="experience/private-styling" class="menu-link ">
+                                      <a href="experiences#private-styling" class="menu-link">
                       Private Styling                    </a>
-                                                          <a href="experience/makeup-masterclass" class="menu-link ">
+                                      <a href="experiences#makeup-masterclass" class="menu-link">
                       Makeup Masterclass                    </a>
-                                                          <a href="experience/custom-lipstick" class="menu-link ">
+                                      <a href="experiences#custom-lipstick" class="menu-link">
                       Custom Lipstick                    </a>
                                   </div>
               </div>
@@ -132,15 +131,15 @@
         <!-- Right Column: Submenu (Desktop, shown ONLY when Experiences is clicked) -->
         <div class="mega-col-right" id="desktopSubmenuCol" aria-label="Detail Experiences">
           <span class="sub-eyebrow">EXPERIENCES</span>
-                                  <a href="experience/personal-color-analysis" class="menu-link ">
+                      <a href="experiences#personal-color-analysis" class="menu-link">
               Personal Color Analysis            </a>
-                                  <a href="experience/signature-experience" class="menu-link ">
+                      <a href="experiences#signature-experience" class="menu-link">
               Signature Experience            </a>
-                                  <a href="experience/private-styling" class="menu-link ">
+                      <a href="experiences#private-styling" class="menu-link">
               Private Styling            </a>
-                                  <a href="experience/makeup-masterclass" class="menu-link ">
+                      <a href="experiences#makeup-masterclass" class="menu-link">
               Makeup Masterclass            </a>
-                                  <a href="experience/custom-lipstick" class="menu-link ">
+                      <a href="experiences#custom-lipstick" class="menu-link">
               Custom Lipstick            </a>
                   </div>
       </div>
@@ -150,22 +149,29 @@
   <!-- Page Wrapper Container -->
   <main class="site-wrapper" id="mainContent">
 
-<!-- 1. Hero Video Section -->
-<section class="hero-wrapper" aria-label="Hero Video">
-  <video muted loop playsinline preload="metadata" class="lazy-video hero-video-bg" data-src="assets/media/hero_portrait.mp4" src="assets/media/hero_portrait.mp4" style="aspect-ratio: 16/9; object-fit: cover;" aria-label="Colourist by Zerlinda Studio Experience"><source src="assets/media/hero_portrait.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>  <div class="hero-overlay">
-    <h2>Helping people feel <b>confident</b> through best colors.</h2>
-    <p>ASIA &amp; INDONESIA'S NO.1 COLOR EXPERT</p>
+<!-- 1. Hero Fullpage 100svh Section (Hermes Style) -->
+<section class="hero-wrapper hero-fullpage" aria-label="Hero Video">
+  <video muted loop playsinline preload="metadata" class="lazy-video hero-video-bg" data-src="assets/media/hero_full.mp4" src="assets/media/hero_full.mp4" style="object-fit: cover;" aria-label="Colourist Studio Experience"><source src="assets/media/hero_full.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>  <div class="hero-overlay-hermes">
+    <h1 class="hero-title">Helping people feel <b>confident</b> through best colors.</h1>
+    <p class="hero-subtitle">ASIA &amp; INDONESIA'S NO.1 COLOR EXPERT</p>
   </div>
+  <a href="#journeySection" class="hero-scroll-indicator" aria-label="Scroll to Colourist Journey">
+    <span class="scroll-text">SCROLL</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  </a>
 </section>
 
 <!-- 2. The Colourist Journey Section -->
-<section class="sec journey-sec" aria-labelledby="journeyHeading">
+<section class="sec journey-sec" id="journeySection" aria-labelledby="journeyHeading">
   <span class="eyebrow" style="letter-spacing: .3em;">WELCOME TO THE</span>
   <h2 id="journeyHeading" class="journey-main-title">COLOURIST</h2>
   <span class="journey-subtitle">JOURNEY</span>
 
   <div class="journey">
-          <a href="experience/personal-color-analysis" class="step" aria-label="Personal Color Analysis">
+          <a href="experiences#personal-color-analysis" class="step" aria-label="Personal Color Analysis">
         <div class="step-icon-wrap">
           <img src="assets/media/journey/journey_icon_color.svg" alt="" class="step-icon" width="36" height="36" loading="lazy">
         </div>
@@ -177,10 +183,11 @@
           <span class="step-title-line">COLOR ANALYSIS</span>
                   </div>
         <div class="step-seal-wrap">
-          <img src="assets/media/journey/journey_seal_gold.svg" alt="Personal Color Analysis Stamp" class="step-seal-img" width="58" height="58" loading="lazy">
+          <img src="assets/media/journey/journey_seal_gold.svg" alt="Personal Color Analysis Stamp" class="step-seal-img" width="58"
+            height="58" loading="lazy">
         </div>
       </a>
-          <a href="experience/private-styling" class="step" aria-label="Private Styling">
+          <a href="experiences#private-styling" class="step" aria-label="Private Styling">
         <div class="step-icon-wrap">
           <img src="assets/media/journey/journey_icon_styling.svg" alt="" class="step-icon" width="36" height="36" loading="lazy">
         </div>
@@ -192,10 +199,11 @@
           <span class="step-title-line">STYLING</span>
                   </div>
         <div class="step-seal-wrap">
-          <img src="assets/media/journey/journey_seal_empty.svg" alt="Private Styling Stamp" class="step-seal-img" width="58" height="58" loading="lazy">
+          <img src="assets/media/journey/journey_seal_empty.svg" alt="Private Styling Stamp" class="step-seal-img" width="58"
+            height="58" loading="lazy">
         </div>
       </a>
-          <a href="experience/makeup-masterclass" class="step" aria-label="Makeup Masterclass">
+          <a href="experiences#makeup-masterclass" class="step" aria-label="Makeup Masterclass">
         <div class="step-icon-wrap">
           <img src="assets/media/journey/journey_icon_makeup.svg" alt="" class="step-icon" width="36" height="36" loading="lazy">
         </div>
@@ -207,10 +215,11 @@
           <span class="step-title-line">MASTERCLASS</span>
                   </div>
         <div class="step-seal-wrap">
-          <img src="assets/media/journey/journey_seal_empty.svg" alt="Makeup Masterclass Stamp" class="step-seal-img" width="58" height="58" loading="lazy">
+          <img src="assets/media/journey/journey_seal_empty.svg" alt="Makeup Masterclass Stamp" class="step-seal-img" width="58"
+            height="58" loading="lazy">
         </div>
       </a>
-          <a href="experience/custom-lipstick" class="step" aria-label="Custom Lipstick">
+          <a href="experiences#custom-lipstick" class="step" aria-label="Custom Lipstick">
         <div class="step-icon-wrap">
           <img src="assets/media/journey/journey_icon_lipstick.svg" alt="" class="step-icon" width="36" height="36" loading="lazy">
         </div>
@@ -223,7 +232,8 @@
                       <span class="step-sublabel">(LIP BAR EXPERIENCE)</span>
                   </div>
         <div class="step-seal-wrap">
-          <img src="assets/media/journey/journey_seal_empty.svg" alt="Custom Lipstick Stamp" class="step-seal-img" width="58" height="58" loading="lazy">
+          <img src="assets/media/journey/journey_seal_empty.svg" alt="Custom Lipstick Stamp" class="step-seal-img" width="58"
+            height="58" loading="lazy">
         </div>
       </a>
       </div>
@@ -234,26 +244,114 @@
   <h2 id="experiencesHeading" style="font-size: 32px; margin-bottom: 24px;">Colourist Experience</h2>
 
   <div class="cards" style="grid-template-columns: repeat(4, 1fr);">
-          <a href="experience/personal-color-analysis" class="card">
+          <div class="card">
         <div class="card-media">
-          <video muted loop playsinline preload="metadata" class="lazy-video" data-src="assets/media/service_color_analysis.mp4" src="assets/media/service_color_analysis.mp4" style="aspect-ratio: 9/16; object-fit: cover;" aria-label="Personal Color Analysis Video Experience"><source src="assets/media/service_color_analysis.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </div>
-        <p>Personal Color Analysis</p>
-      </a>
-          <a href="experience/private-styling" class="card">
+          <div class="vcp-card " data-video-player style="aspect-ratio: 9/16;">
+          <video playsinline preload="metadata" poster="assets/media/service_color_analysis_poster.jpg" class="vcp-video">
+            <source src="assets/media/service_color_analysis.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play Personal Color Analysis Video Experience">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>        </div>
+        <p><a href="experiences#personal-color-analysis">Personal Color Analysis</a></p>
+      </div>
+          <div class="card">
         <div class="card-media">
-          <video muted loop playsinline preload="metadata" class="lazy-video" data-src="assets/media/service_private_styling.mp4" src="assets/media/service_private_styling.mp4" style="aspect-ratio: 9/16; object-fit: cover;" aria-label="Private Styling Video Experience"><source src="assets/media/service_private_styling.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </div>
-        <p>Private Styling</p>
-      </a>
-          <a href="experience/makeup-masterclass" class="card">
+          <div class="vcp-card " data-video-player style="aspect-ratio: 9/16;">
+          <video playsinline preload="metadata" poster="assets/media/service_private_styling_poster.jpg" class="vcp-video">
+            <source src="assets/media/service_private_styling.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play Private Styling Video Experience">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>        </div>
+        <p><a href="experiences#private-styling">Private Styling</a></p>
+      </div>
+          <div class="card">
         <div class="card-media">
-          <video muted loop playsinline preload="metadata" class="lazy-video" data-src="assets/media/service_makeup_masterclass.mp4" src="assets/media/service_makeup_masterclass.mp4" style="aspect-ratio: 9/16; object-fit: cover;" aria-label="Makeup Masterclass Video Experience"><source src="assets/media/service_makeup_masterclass.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </div>
-        <p>Makeup Masterclass</p>
-      </a>
-          <a href="experience/custom-lipstick" class="card">
+          <div class="vcp-card " data-video-player style="aspect-ratio: 9/16;">
+          <video playsinline preload="metadata" poster="assets/media/service_makeup_masterclass_poster.jpg" class="vcp-video">
+            <source src="assets/media/service_makeup_masterclass.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play Makeup Masterclass Video Experience">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>        </div>
+        <p><a href="experiences#makeup-masterclass">Makeup Masterclass</a></p>
+      </div>
+          <div class="card">
         <div class="card-media">
-          <video muted loop playsinline preload="metadata" class="lazy-video" data-src="assets/media/service_custom_lipstick.mp4" src="assets/media/service_custom_lipstick.mp4" style="aspect-ratio: 9/16; object-fit: cover;" aria-label="Custom Lipstick Video Experience"><source src="assets/media/service_custom_lipstick.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </div>
-        <p>Custom Lipstick</p>
-      </a>
+          <div class="vcp-card " data-video-player style="aspect-ratio: 9/16;">
+          <video playsinline preload="metadata" poster="assets/media/service_custom_lipstick_poster.jpg" class="vcp-video">
+            <source src="assets/media/service_custom_lipstick.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play Custom Lipstick Video Experience">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>        </div>
+        <p><a href="experiences#custom-lipstick">Custom Lipstick</a></p>
+      </div>
       </div>
 
   <div style="margin-top: 36px; text-align: center;">
@@ -272,12 +370,9 @@
 
   <!-- Centered 9:16 video / poster -->
   <div class="home-leader-video-wrap">
-    <video muted loop playsinline preload="metadata" 
-           class="lazy-video home-leader-video" 
-           poster="assets/media/home_leader_video_poster.jpg"
-           data-src="assets/media/hero_portrait.mp4" 
-           src="assets/media/hero_portrait.mp4" 
-           aria-label="Asia's Leading Color Expert Experience">
+    <video muted loop playsinline preload="metadata" class="lazy-video home-leader-video"
+      poster="assets/media/home_leader_video_poster.jpg" data-src="assets/media/hero_portrait.mp4"
+      src="assets/media/hero_portrait.mp4" aria-label="Asia's Leading Color Expert Experience">
       <source src="assets/media/hero_portrait.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
@@ -293,12 +388,14 @@
 
     <div class="home-trans-cards">
           <article class="home-trans-card">
-        <!-- Before / After Side-by-Side (3:4 ratio each) -->
+        <!-- Before / After Side-by-Side (1:1 ratio each, grid 2 col, gap 8px) -->
         <div class="ba-pair">
           <div class="ba-item">
-                          <img src="assets/media/story_1_before.jpg" alt="She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident? Before" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+                          <img src="assets/media/story_1_before.jpg" alt="She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident? Before" loading="lazy">
+                      </div>
           <div class="ba-item">
-                          <img src="assets/media/story_1_after.jpg" alt="She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident? After" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+                          <span class="ba-empty-label">after</span>
+                      </div>
         </div>
 
         <h3 class="home-trans-title">
@@ -310,17 +407,21 @@
           &ldquo;12 years of feeling insecure about my appearance, I never imagined that discovering the right colours could help me see myself differently.&rdquo;
         </p>
 
-        <a href="transformation/she-spent-12-years" class="home-trans-link">
-          Read the full story
-        </a>
+        <div>
+          <a href="transformation/she-spent-12-years" class="home-trans-link">
+            Read the full story
+          </a>
+        </div>
       </article>
           <article class="home-trans-card">
-        <!-- Before / After Side-by-Side (3:4 ratio each) -->
+        <!-- Before / After Side-by-Side (1:1 ratio each, grid 2 col, gap 8px) -->
         <div class="ba-pair">
           <div class="ba-item">
-                          <img src="assets/media/story_2_before.jpg" alt="Six Years in Black. Before" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+                          <span class="ba-empty-label">before</span>
+                      </div>
           <div class="ba-item">
-                          <img src="assets/media/story_2_after.jpg" alt="Six Years in Black. After" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+                          <span class="ba-empty-label">after</span>
+                      </div>
         </div>
 
         <h3 class="home-trans-title">
@@ -332,17 +433,21 @@
           &ldquo;After six years of struggling with acne, I thought wearing black was the only way to feel comfortable in my own skin&rdquo;
         </p>
 
-        <a href="transformation/six-years-in-black" class="home-trans-link">
-          Read the full story
-        </a>
+        <div>
+          <a href="transformation/six-years-in-black" class="home-trans-link">
+            Read the full story
+          </a>
+        </div>
       </article>
           <article class="home-trans-card">
-        <!-- Before / After Side-by-Side (3:4 ratio each) -->
+        <!-- Before / After Side-by-Side (1:1 ratio each, grid 2 col, gap 8px) -->
         <div class="ba-pair">
           <div class="ba-item">
-                          <img src="assets/media/story_3_before.jpg" alt="Finding confidence beyond the workplace Before" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+                          <span class="ba-empty-label">before</span>
+                      </div>
           <div class="ba-item">
-                          <img src="assets/media/story_3_after.jpg" alt="Finding confidence beyond the workplace After" loading="lazy" class="media-img" style="aspect-ratio: 3/4; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">                      </div>
+                          <span class="ba-empty-label">after</span>
+                      </div>
         </div>
 
         <h3 class="home-trans-title">
@@ -354,9 +459,11 @@
           &ldquo;I was tired of being underestimated at work. I wanted the way I presented myself to reflect my capabilities and the confidence I knew I had.&rdquo;
         </p>
 
-        <a href="transformation/finding-confidence" class="home-trans-link">
-          Read the full story
-        </a>
+        <div>
+          <a href="transformation/finding-confidence" class="home-trans-link">
+            Read the full story
+          </a>
+        </div>
       </article>
       </div>
 </section>
@@ -366,19 +473,21 @@
   <h2 id="homeWhyHeading" style="font-size: 32px; margin-bottom: 28px;">Why Colourist?</h2>
   <div class="why-text-block">
     <p class="why-line">Colourist is Asia's Leading &amp; No.1 Color Expert.</p>
-    <p class="why-line">Located in ASHTA &amp; Kuala Lumpur, we are dedicated to make Indonesians feel confident in their unique color.</p>
-    <p class="why-line">Trusted by thousands of clients, brands, and publications globally and locally, we deliver real transformations through the power of color.</p>
+    <p class="why-line">Located in ASHTA &amp; Kuala Lumpur, we are dedicated to make Indonesians feel confident in
+      their unique color.</p>
+    <p class="why-line">Trusted by thousands of clients, brands, and publications globally and locally, we deliver real
+      transformations through the power of color.</p>
   </div>
 </section>
 
 <!-- 7. Fullwidth CTA Section -->
 <section class="home-cta-sec" aria-labelledby="ctaHeading">
-  <div class="home-cta-bg-wrap">
-    <img src="assets/media/home_cta_bg.jpg" alt="Colourist Atelier Ambience" loading="lazy" class="media-img home-cta-bg-img" style="object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">  </div>
-  <div class="home-cta-overlay">
-    <h2 id="ctaHeading" class="home-cta-title">Your Transformation Journey Begins Here</h2>
+  <div class="home-cta-content">
+    <h2 id="ctaHeading" class="home-cta-title">
+      Your Transformation Journey<br>Begins Here
+    </h2>
     <div>
-      <a href="book" class="btn btn-outline-cta">
+      <a href="book" class="btn btn-cta-outline">
         BOOK NOW
       </a>
     </div>
@@ -394,7 +503,7 @@
       ASHTA District 8, Level 1, SCBD Lot 28, Jl. Jend. Sudirman Kav 52-53, Jakarta Selatan 12190    </p>
 
     <div class="footer-links">
-      <a href="about">About</a>
+      <a href="about">What is it?</a>
       <a href="experiences">Experiences</a>
       <a href="transformation">Transformation</a>
       <a href="workshop">Workshop</a>
@@ -404,7 +513,7 @@
     </div>
 
     <p style="margin-top: 16px; font-size: 10px; color: var(--mut);">
-      &copy; 2026 Colourist by Zerlinda. All rights reserved.
+      &copy; 2026 Colourist. All rights reserved.
     </p>
   </footer>
 

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Colourist Experience — 5 Bespoke Services</title>
   <meta name="description" content="Explore our private consultations at ASHTA District 8, SCBD: Personal Color Analysis, Signature Experience, Private Styling, Makeup Masterclass, and Custom Lipstick formulation.">
-  <link rel="canonical" href="https://colouristbyzerlinda.com/experiences">
+  <link rel="canonical" href="https://colourist.id/experiences">
 
   <!-- Base tag so relative links resolve cleanly across nested routes -->
     <base href="/">
@@ -15,8 +15,8 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Colourist Experience — 5 Bespoke Services">
   <meta property="og:description" content="Explore our private consultations at ASHTA District 8, SCBD: Personal Color Analysis, Signature Experience, Private Styling, Makeup Masterclass, and Custom Lipstick formulation.">
-  <meta property="og:url" content="https://colouristbyzerlinda.com/experiences">
-  <meta property="og:image" content="https://colouristbyzerlinda.com/assets/media/logo.png">
+  <meta property="og:url" content="https://colourist.id/experiences">
+  <meta property="og:image" content="https://colourist.id/assets/media/logo.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon -->
@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="">
 
   <!-- Backdrop overlay for mega menu -->
   <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
@@ -53,9 +53,8 @@
       </button>
 
       <!-- Center: Logo -->
-      <a href="" class="logo" aria-label="Colourist by Zerlinda Home">
+      <a href="" class="logo" aria-label="Colourist Home">
         COLOURIST
-        <small>BY ZERLINDA</small>
       </a>
 
       <!-- Right: User Account and Shopping Bag / Cart -->
@@ -83,7 +82,7 @@
         <div class="mega-col-left">
                                     <div>
                 <a href="about" class="menu-link ">
-                  About                </a>
+                  What is it?                </a>
               </div>
                                                 <div class="menu-item-group">
                 <button type="button"
@@ -95,15 +94,15 @@
 
                 <!-- Mobile Accordion Submenu -->
                 <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
-                                                          <a href="experience/personal-color-analysis" class="menu-link ">
+                                      <a href="experiences#personal-color-analysis" class="menu-link">
                       Personal Color Analysis                    </a>
-                                                          <a href="experience/signature-experience" class="menu-link ">
+                                      <a href="experiences#signature-experience" class="menu-link">
                       Signature Experience                    </a>
-                                                          <a href="experience/private-styling" class="menu-link ">
+                                      <a href="experiences#private-styling" class="menu-link">
                       Private Styling                    </a>
-                                                          <a href="experience/makeup-masterclass" class="menu-link ">
+                                      <a href="experiences#makeup-masterclass" class="menu-link">
                       Makeup Masterclass                    </a>
-                                                          <a href="experience/custom-lipstick" class="menu-link ">
+                                      <a href="experiences#custom-lipstick" class="menu-link">
                       Custom Lipstick                    </a>
                                   </div>
               </div>
@@ -132,15 +131,15 @@
         <!-- Right Column: Submenu (Desktop, shown ONLY when Experiences is clicked) -->
         <div class="mega-col-right" id="desktopSubmenuCol" aria-label="Detail Experiences">
           <span class="sub-eyebrow">EXPERIENCES</span>
-                                  <a href="experience/personal-color-analysis" class="menu-link ">
+                      <a href="experiences#personal-color-analysis" class="menu-link">
               Personal Color Analysis            </a>
-                                  <a href="experience/signature-experience" class="menu-link ">
+                      <a href="experiences#signature-experience" class="menu-link">
               Signature Experience            </a>
-                                  <a href="experience/private-styling" class="menu-link ">
+                      <a href="experiences#private-styling" class="menu-link">
               Private Styling            </a>
-                                  <a href="experience/makeup-masterclass" class="menu-link ">
+                      <a href="experiences#makeup-masterclass" class="menu-link">
               Makeup Masterclass            </a>
-                                  <a href="experience/custom-lipstick" class="menu-link ">
+                      <a href="experiences#custom-lipstick" class="menu-link">
               Custom Lipstick            </a>
                   </div>
       </div>
@@ -155,16 +154,34 @@
           <div class="exp-zigzag-row " id="personal-color-analysis">
       <!-- Media Column (9:16 approx 220px width) -->
       <div class="exp-media-col">
-        <a href="experience/personal-color-analysis" aria-label="View Personal Color Analysis details">
-          <video muted loop playsinline preload="metadata" class="lazy-video exp-card-media" data-src="assets/media/service_color_analysis.mp4" src="assets/media/service_color_analysis.mp4" style="aspect-ratio: 9/16; object-fit: cover;" aria-label="Personal Color Analysis"><source src="assets/media/service_color_analysis.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </a>
-      </div>
+        <div class="vcp-card exp-card-media" data-video-player style="aspect-ratio: 9/16;">
+          <video playsinline preload="metadata" poster="assets/media/service_color_analysis_poster.jpg" class="vcp-video">
+            <source src="assets/media/service_color_analysis.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play Personal Color Analysis">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>      </div>
 
       <!-- Text Column (Centered content) -->
       <div class="exp-text-col">
         <h2 class="exp-title">
-          <a href="experience/personal-color-analysis">
-            Personal Color Analysis          </a>
-        </h2>
+          Personal Color Analysis        </h2>
         <p class="exp-desc">
           60 minutes that change the way you see colour — and the way you shop, dress and present yourself.        </p>
         <div>
@@ -177,16 +194,34 @@
           <div class="exp-zigzag-row row-reverse" id="signature-experience">
       <!-- Media Column (9:16 approx 220px width) -->
       <div class="exp-media-col">
-        <a href="experience/signature-experience" aria-label="View Signature Experience details">
-          <img src="assets/media/service_signature_experience_poster.jpg" alt="Signature Experience" loading="lazy" class="media-img exp-card-media" style="aspect-ratio: 9/16; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">        </a>
-      </div>
+        <div class="vcp-card exp-card-media" data-video-player style="aspect-ratio: 9/16;">
+          <video playsinline preload="metadata" poster="assets/media/service_signature_experience_poster.jpg" class="vcp-video">
+            <source src="assets/media/service_signature_experience.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play Signature Experience">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>      </div>
 
       <!-- Text Column (Centered content) -->
       <div class="exp-text-col">
         <h2 class="exp-title">
-          <a href="experience/signature-experience">
-            Signature Experience          </a>
-        </h2>
+          Signature Experience        </h2>
         <p class="exp-desc">
           90 minutes to stop guessing, start feeling confident, and finally understand what color &amp; style works for you        </p>
         <div>
@@ -199,16 +234,34 @@
           <div class="exp-zigzag-row " id="private-styling">
       <!-- Media Column (9:16 approx 220px width) -->
       <div class="exp-media-col">
-        <a href="experience/private-styling" aria-label="View Private Styling details">
-          <video muted loop playsinline preload="metadata" class="lazy-video exp-card-media" data-src="assets/media/service_private_styling.mp4" src="assets/media/service_private_styling.mp4" style="aspect-ratio: 9/16; object-fit: cover;" aria-label="Private Styling"><source src="assets/media/service_private_styling.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </a>
-      </div>
+        <div class="vcp-card exp-card-media" data-video-player style="aspect-ratio: 9/16;">
+          <video playsinline preload="metadata" poster="assets/media/service_private_styling_poster.jpg" class="vcp-video">
+            <source src="assets/media/service_private_styling.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play Private Styling">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>      </div>
 
       <!-- Text Column (Centered content) -->
       <div class="exp-text-col">
         <h2 class="exp-title">
-          <a href="experience/private-styling">
-            Private Styling          </a>
-        </h2>
+          Private Styling        </h2>
         <p class="exp-desc">
           60 minutes to turn your personal style into something more intentional, effortless and distinctly you.        </p>
         <div>
@@ -221,16 +274,34 @@
           <div class="exp-zigzag-row row-reverse" id="makeup-masterclass">
       <!-- Media Column (9:16 approx 220px width) -->
       <div class="exp-media-col">
-        <a href="experience/makeup-masterclass" aria-label="View Makeup Masterclass details">
-          <video muted loop playsinline preload="metadata" class="lazy-video exp-card-media" data-src="assets/media/service_makeup_masterclass.mp4" src="assets/media/service_makeup_masterclass.mp4" style="aspect-ratio: 9/16; object-fit: cover;" aria-label="Makeup Masterclass"><source src="assets/media/service_makeup_masterclass.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </a>
-      </div>
+        <div class="vcp-card exp-card-media" data-video-player style="aspect-ratio: 9/16;">
+          <video playsinline preload="metadata" poster="assets/media/service_makeup_masterclass_poster.jpg" class="vcp-video">
+            <source src="assets/media/service_makeup_masterclass.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play Makeup Masterclass">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>      </div>
 
       <!-- Text Column (Centered content) -->
       <div class="exp-text-col">
         <h2 class="exp-title">
-          <a href="experience/makeup-masterclass">
-            Makeup Masterclass          </a>
-        </h2>
+          Makeup Masterclass        </h2>
         <p class="exp-desc">
           60 minutes to stop copying makeup trends and discover what truly brings out your beauty.        </p>
         <div>
@@ -243,16 +314,34 @@
           <div class="exp-zigzag-row " id="custom-lipstick">
       <!-- Media Column (9:16 approx 220px width) -->
       <div class="exp-media-col">
-        <a href="experience/custom-lipstick" aria-label="View Custom Lipstick details">
-          <video muted loop playsinline preload="metadata" class="lazy-video exp-card-media" data-src="assets/media/service_custom_lipstick.mp4" src="assets/media/service_custom_lipstick.mp4" style="aspect-ratio: 9/16; object-fit: cover;" aria-label="Custom Lipstick"><source src="assets/media/service_custom_lipstick.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>        </a>
-      </div>
+        <div class="vcp-card exp-card-media" data-video-player style="aspect-ratio: 9/16;">
+          <video playsinline preload="metadata" poster="assets/media/service_custom_lipstick_poster.jpg" class="vcp-video">
+            <source src="assets/media/service_custom_lipstick.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <button type="button" class="vcp-play-btn" aria-label="Play Custom Lipstick">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+          <button type="button" class="vcp-mute-btn" aria-label="Mute or unmute" style="display:none;">
+            <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+        </div>      </div>
 
       <!-- Text Column (Centered content) -->
       <div class="exp-text-col">
         <h2 class="exp-title">
-          <a href="experience/custom-lipstick">
-            Custom Lipstick          </a>
-        </h2>
+          Custom Lipstick        </h2>
         <p class="exp-desc">
           60 minutes to turn your perfect lip colour into a signature shade made exclusively for you.        </p>
         <div>
@@ -273,7 +362,7 @@
       ASHTA District 8, Level 1, SCBD Lot 28, Jl. Jend. Sudirman Kav 52-53, Jakarta Selatan 12190    </p>
 
     <div class="footer-links">
-      <a href="about">About</a>
+      <a href="about">What is it?</a>
       <a href="experiences">Experiences</a>
       <a href="transformation">Transformation</a>
       <a href="workshop">Workshop</a>
@@ -283,7 +372,7 @@
     </div>
 
     <p style="margin-top: 16px; font-size: 10px; color: var(--mut);">
-      &copy; 2026 Colourist by Zerlinda. All rights reserved.
+      &copy; 2026 Colourist. All rights reserved.
     </p>
   </footer>
 

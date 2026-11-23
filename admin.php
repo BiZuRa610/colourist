@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin Panel — Colourist by Zerlinda
+ * Admin Panel — Colourist
  * Manage Transformation Portfolio, backed by data/transformation.json
  */
 session_start();
