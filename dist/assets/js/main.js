@@ -10,7 +10,9 @@
   const burgerBtn = document.getElementById('burgerBtn');
   const megaPanel = document.getElementById('megaNavPanel');
   const navBackdrop = document.getElementById('navBackdrop');
-  const expNavBtn = document.getElementById('expNavBtn');
+  const expNavGroup = document.getElementById('expNavGroup');
+  const expMainLink = document.getElementById('expMainLink');
+  const expChevronBtn = document.getElementById('expChevronBtn');
   const expMobileSubmenu = document.getElementById('expMobileSubmenu');
   const expChevron = document.getElementById('expChevron');
   const desktopSubmenuCol = document.getElementById('desktopSubmenuCol');
@@ -46,10 +48,6 @@
     if (siteHeader) siteHeader.classList.remove('menu-open');
 
     // Reset Experiences submenu state on menu close
-    if (expNavBtn) {
-      expNavBtn.setAttribute('aria-expanded', 'false');
-      expNavBtn.classList.remove('active');
-    }
     if (desktopSubmenuCol) {
       desktopSubmenuCol.classList.remove('open');
     }
@@ -58,6 +56,9 @@
     }
     if (expChevron) {
       expChevron.classList.remove('open');
+    }
+    if (expChevronBtn) {
+      expChevronBtn.setAttribute('aria-expanded', 'false');
     }
   }
 
@@ -99,44 +100,506 @@
     }
   });
 
-  // Close when clicking any menu page link
+  // Close menu and handle anchor scrolling with header offset when clicking any link
   if (megaPanel) {
-    const pageLinks = megaPanel.querySelectorAll('a.menu-link');
-    pageLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
+    const allMenuLinks = megaPanel.querySelectorAll('a');
+    allMenuLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        const href = link.getAttribute('href') || '';
         closeMenu();
+
+        // If link has a hash targeting on this page
+        if (href.indexOf('#') !== -1) {
+          const hashIndex = href.indexOf('#');
+          const pagePart = href.substring(0, hashIndex);
+          const hash = href.substring(hashIndex);
+
+          // If on same page or link is relative anchor
+          const currentPath = window.location.pathname.replace(/\/$/, '');
+          const isSamePage = !pagePart || currentPath.endsWith(pagePart.replace(/^\//, '')) || (pagePart === 'experiences' && currentPath.indexOf('experiences') !== -1);
+
+          if (isSamePage) {
+            const target = document.querySelector(hash);
+            if (target) {
+              e.preventDefault();
+              setTimeout(function () {
+                const headerOffset = 70;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+                if (history.pushState) {
+                  history.pushState(null, null, hash);
+                }
+              }, 120);
+            }
+          }
+        }
       });
     });
   }
 
-  // Toggle "Experiences" submenu on click (Desktop 2nd column + Mobile accordion)
-  if (expNavBtn) {
-    expNavBtn.addEventListener('click', function (e) {
+  // Desktop: Hover / Focus on "Experiences" opens right column submenu
+  if (expNavGroup && desktopSubmenuCol) {
+    let hoverTimer;
+
+    function openDesktopSub() {
+      clearTimeout(hoverTimer);
+      desktopSubmenuCol.classList.add('open');
+      if (expChevron) expChevron.classList.add('open');
+    }
+
+    function closeDesktopSub() {
+      hoverTimer = setTimeout(function () {
+        if (!expNavGroup.matches(':hover') && !desktopSubmenuCol.matches(':hover')) {
+          desktopSubmenuCol.classList.remove('open');
+          if (expChevron) expChevron.classList.remove('open');
+        }
+      }, 180);
+    }
+
+    expNavGroup.addEventListener('mouseenter', openDesktopSub);
+    expNavGroup.addEventListener('mouseleave', closeDesktopSub);
+    expNavGroup.addEventListener('focusin', openDesktopSub);
+    expNavGroup.addEventListener('focusout', closeDesktopSub);
+
+    desktopSubmenuCol.addEventListener('mouseenter', openDesktopSub);
+    desktopSubmenuCol.addEventListener('mouseleave', closeDesktopSub);
+  }
+
+  // Mobile / Touch: Chevron button toggles accordion submenu
+  if (expChevronBtn) {
+    expChevronBtn.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
+      const isOpen = expMobileSubmenu && expMobileSubmenu.classList.contains('open');
+      const next = !isOpen;
 
-      const isExpanded = expNavBtn.getAttribute('aria-expanded') === 'true';
-      const nextState = !isExpanded;
-
-      expNavBtn.setAttribute('aria-expanded', nextState ? 'true' : 'false');
-      expNavBtn.classList.toggle('active', nextState);
-
-      // Desktop: toggle right column visibility
-      if (desktopSubmenuCol) {
-        desktopSubmenuCol.classList.toggle('open', nextState);
-      }
-
-      // Mobile: toggle accordion dropdown below Experiences
-      if (expMobileSubmenu) {
-        expMobileSubmenu.classList.toggle('open', nextState);
-      }
-      if (expChevron) {
-        expChevron.classList.toggle('open', nextState);
-      }
+      if (expMobileSubmenu) expMobileSubmenu.classList.toggle('open', next);
+      if (expChevron) expChevron.classList.toggle('open', next);
+      expChevronBtn.setAttribute('aria-expanded', next ? 'true' : 'false');
     });
   }
 
-  // 2. Olaplex-style Unified Video Player Controller (Home, Experiences, Workshop)
+  // Scroll with header offset if landing with hash
+  if (window.location.hash) {
+    setTimeout(function () {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        const headerOffset = 70;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 200);
+  }
+
+  // 2. Olaplex-Style Experiences Horizontal Carousel (Home Page with Infinite Loop)
+  const expTrack = document.getElementById('expCarouselTrack');
+  if (expTrack) {
+    const expCards = expTrack.querySelectorAll('[data-exp-card]');
+    const expPrev = document.getElementById('expCarouselPrev');
+    const expNext = document.getElementById('expCarouselNext');
+    const origCards = expTrack.querySelectorAll('[data-clone="none"]');
+    const N = origCards.length || 5;
+
+    // Prevent native drag on images and videos inside track
+    expTrack.querySelectorAll('img, video').forEach(function (mediaEl) {
+      mediaEl.addEventListener('dragstart', function (e) {
+        e.preventDefault();
+      });
+    });
+
+    // Helper: calculate set width (distance from set A card 0 to set B card 0)
+    function getSetWidth() {
+      if (expCards.length >= 2 * N && expCards[N] && expCards[0]) {
+        return expCards[N].offsetLeft - expCards[0].offsetLeft;
+      }
+      return 0;
+    }
+
+    // Update active card based on center proximity (throttled with RAF)
+    let rafActiveCard = null;
+    function updateActiveCard() {
+      const trackRect = expTrack.getBoundingClientRect();
+      const trackCenter = trackRect.left + trackRect.width / 2;
+
+      let closestCard = null;
+      let minDistance = Infinity;
+
+      expCards.forEach(function (card) {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const distance = Math.abs(trackCenter - cardCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestCard = card;
+        }
+      });
+
+      expCards.forEach(function (card) {
+        if (card === closestCard) {
+          card.classList.add('is-active');
+        } else {
+          card.classList.remove('is-active');
+        }
+      });
+
+      return closestCard;
+    }
+
+    function throttledUpdateActive() {
+      if (rafActiveCard) return;
+      rafActiveCard = requestAnimationFrame(function () {
+        updateActiveCard();
+        rafActiveCard = null;
+      });
+    }
+
+    // Initial position: center middle card of set B without animation
+    function initPosition() {
+      const middleCardIdx = N + Math.floor(N / 2);
+      const middleCard = expCards[middleCardIdx] || expCards[0];
+      if (!middleCard) return;
+
+      const centerOffset = middleCard.offsetLeft - (expTrack.clientWidth - middleCard.offsetWidth) / 2;
+      expTrack.style.scrollSnapType = 'none';
+      expTrack.style.scrollBehavior = 'auto';
+      expTrack.scrollLeft = centerOffset;
+
+      requestAnimationFrame(function () {
+        expTrack.style.scrollSnapType = '';
+        expTrack.style.scrollBehavior = '';
+        updateActiveCard();
+      });
+    }
+
+    // Run initial positioning
+    initPosition();
+    setTimeout(initPosition, 60);
+    window.addEventListener('load', initPosition);
+
+    // Silent Jump mechanism (Lompat diam-diam ke set B)
+    let isJumping = false;
+    let pendingJumpDelta = 0;
+    let currentlyPlayingVideo = null;
+
+    function jumpSilent(delta) {
+      if (isJumping || delta === 0) return;
+
+      // Tahan lompatan jika video sedang berputar agar playback tidak terputus
+      if (currentlyPlayingVideo && !currentlyPlayingVideo.paused) {
+        pendingJumpDelta = delta;
+        return;
+      }
+
+      isJumping = true;
+      expTrack.style.scrollSnapType = 'none';
+      expTrack.style.scrollBehavior = 'auto';
+
+      expTrack.scrollLeft += delta;
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          expTrack.style.scrollSnapType = '';
+          expTrack.style.scrollBehavior = '';
+          isJumping = false;
+          updateActiveCard();
+        });
+      });
+    }
+
+    // Check if active card is in clone set and jump silently to equivalent card in set B
+    function checkAndPerformJump() {
+      if (isDown || isJumping) return;
+      const active = updateActiveCard();
+      if (!active) return;
+
+      const cloneType = active.getAttribute('data-clone');
+      const setWidth = getSetWidth();
+      if (setWidth <= 0) return;
+
+      if (cloneType === 'prev') {
+        jumpSilent(+setWidth);
+      } else if (cloneType === 'next') {
+        jumpSilent(-setWidth);
+      }
+    }
+
+    // Debounced scroll listener & native scrollend
+    let scrollDebounceTimer = null;
+    expTrack.addEventListener('scroll', function () {
+      throttledUpdateActive();
+      clearTimeout(scrollDebounceTimer);
+      scrollDebounceTimer = setTimeout(checkAndPerformJump, 80);
+    }, { passive: true });
+
+    if ('onscrollend' in window) {
+      expTrack.addEventListener('scrollend', checkAndPerformJump);
+    }
+    window.addEventListener('resize', throttledUpdateActive, { passive: true });
+
+    // Desktop arrows (< and >) — selalu aktif tanpa disabled
+    if (expPrev) {
+      expPrev.addEventListener('click', function () {
+        const cardWidth = expCards[0] ? expCards[0].offsetWidth : 300;
+        expTrack.scrollBy({ left: -(cardWidth + 2), behavior: 'smooth' });
+      });
+    }
+    if (expNext) {
+      expNext.addEventListener('click', function () {
+        const cardWidth = expCards[0] ? expCards[0].offsetWidth : 300;
+        expTrack.scrollBy({ left: (cardWidth + 2), behavior: 'smooth' });
+      });
+    }
+
+    // Keyboard arrow keys navigation when carousel has focus
+    expTrack.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const cardWidth = expCards[0] ? expCards[0].offsetWidth : 300;
+        expTrack.scrollBy({ left: -(cardWidth + 2), behavior: 'smooth' });
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const cardWidth = expCards[0] ? expCards[0].offsetWidth : 300;
+        expTrack.scrollBy({ left: (cardWidth + 2), behavior: 'smooth' });
+      }
+    });
+
+    // Pointer Events: Desktop mouse drag with continuous loop & accidental click suppression
+    let isDown = false;
+    let hasDragged = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let activePointerId = null;
+
+    expTrack.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'touch') return;
+      if (e.button !== 0) return; // Left click only
+
+      isDown = true;
+      hasDragged = false;
+      startX = e.clientX;
+      scrollStart = expTrack.scrollLeft;
+      activePointerId = e.pointerId;
+
+      try {
+        expTrack.setPointerCapture(e.pointerId);
+      } catch (err) {}
+
+      expTrack.classList.add('is-dragging');
+    });
+
+    expTrack.addEventListener('pointermove', function (e) {
+      if (!isDown) return;
+      const deltaX = e.clientX - startX;
+      if (Math.abs(deltaX) > 5) {
+        hasDragged = true;
+      }
+
+      let newScrollLeft = scrollStart - deltaX;
+      const setWidth = getSetWidth();
+
+      if (setWidth > 0 && expCards.length >= 2 * N) {
+        const firstCardB = expCards[N];
+        const lastCardB = expCards[2 * N - 1];
+        const minCenterB = firstCardB.offsetLeft - (expTrack.clientWidth - firstCardB.offsetWidth) / 2;
+        const maxCenterB = lastCardB.offsetLeft - (expTrack.clientWidth - lastCardB.offsetWidth) / 2;
+        const cardWidth = firstCardB.offsetWidth;
+
+        // Saat drag melewati batas set B, lompat dengan menyesuaikan startScroll
+        if (newScrollLeft < minCenterB - cardWidth / 2) {
+          newScrollLeft += setWidth;
+          scrollStart += setWidth;
+        } else if (newScrollLeft > maxCenterB + cardWidth / 2) {
+          newScrollLeft -= setWidth;
+          scrollStart -= setWidth;
+        }
+      }
+
+      expTrack.scrollLeft = newScrollLeft;
+    });
+
+    function endPointerDrag(e) {
+      if (!isDown) return;
+      isDown = false;
+      expTrack.classList.remove('is-dragging');
+
+      if (activePointerId !== null) {
+        try {
+          expTrack.releasePointerCapture(activePointerId);
+        } catch (err) {}
+        activePointerId = null;
+      }
+
+      throttledUpdateActive();
+      checkAndPerformJump();
+
+      if (hasDragged) {
+        setTimeout(function () {
+          hasDragged = false;
+        }, 60);
+      }
+    }
+
+    expTrack.addEventListener('pointerup', endPointerDrag);
+    expTrack.addEventListener('pointercancel', endPointerDrag);
+
+    // Suppress clicks on children if user dragged > 5px
+    expTrack.addEventListener('click', function (e) {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      }
+    }, true); // Capturing phase
+
+    // Helper: Synchronize Play/Pause icon state across cards with identical data-index
+    function syncPlayIcons(index, isPlaying) {
+      expTrack.querySelectorAll(`[data-exp-card][data-index="${index}"]`).forEach(function (c) {
+        const pBtn = c.querySelector('.exp-ctrl-play');
+        if (pBtn) {
+          const playIcon = pBtn.querySelector('.icon-play');
+          const pauseIcon = pBtn.querySelector('.icon-pause');
+          if (playIcon) playIcon.style.display = isPlaying ? 'none' : 'block';
+          if (pauseIcon) pauseIcon.style.display = isPlaying ? 'block' : 'none';
+        }
+      });
+    }
+
+    // Helper: Synchronize Mute icon and audio state across cards with identical data-index
+    function syncMuteIcons(index, isMuted) {
+      expTrack.querySelectorAll(`[data-exp-card][data-index="${index}"]`).forEach(function (c) {
+        const mBtn = c.querySelector('.exp-ctrl-mute');
+        if (mBtn) {
+          const mutedIcon = mBtn.querySelector('.icon-muted');
+          const unmutedIcon = mBtn.querySelector('.icon-unmuted');
+          if (mutedIcon) mutedIcon.style.display = isMuted ? 'block' : 'none';
+          if (unmutedIcon) unmutedIcon.style.display = isMuted ? 'none' : 'block';
+        }
+        const v = c.querySelector('video');
+        if (v) v.muted = isMuted;
+      });
+    }
+
+    // Helper: Pause all other videos across carousel and page
+    function pauseAllOtherVideos(exceptVideo) {
+      expCards.forEach(function (c) {
+        const vid = c.querySelector('video');
+        if (vid && vid !== exceptVideo) {
+          vid.pause();
+          vid.currentTime = 0;
+          syncPlayIcons(c.getAttribute('data-index'), false);
+        }
+      });
+
+      const otherPlayers = document.querySelectorAll('[data-video-player]');
+      otherPlayers.forEach(function (player) {
+        const vid = player.querySelector('video');
+        if (vid && vid !== exceptVideo) {
+          vid.pause();
+          vid.currentTime = 0;
+          player.classList.remove('is-playing');
+          const mute = player.querySelector('.vcp-mute-btn');
+          if (mute) mute.style.display = 'none';
+        }
+      });
+    }
+
+    // Setup controls for each card (including clones)
+    expCards.forEach(function (card) {
+      const video = card.querySelector('video');
+      const playBtn = card.querySelector('.exp-ctrl-play');
+      const muteBtn = card.querySelector('.exp-ctrl-mute');
+      const cardIndex = card.getAttribute('data-index');
+
+      if (!video) return;
+
+      function centerCard() {
+        const offset = card.offsetLeft - (expTrack.clientWidth - card.offsetWidth) / 2;
+        expTrack.scrollTo({ left: offset, behavior: 'smooth' });
+      }
+
+      function playThisCard() {
+        centerCard();
+        pauseAllOtherVideos(video);
+
+        // Lazy load video source on clone cards if not yet loaded
+        if (!video.src && video.getAttribute('data-src')) {
+          video.src = video.getAttribute('data-src');
+          video.load();
+        }
+
+        video.muted = false;
+        syncMuteIcons(cardIndex, false);
+
+        const p = video.play();
+        if (p !== undefined) {
+          p.then(function () {
+            currentlyPlayingVideo = video;
+            syncPlayIcons(cardIndex, true);
+          }).catch(function () {
+            video.muted = true;
+            syncMuteIcons(cardIndex, true);
+            video.play();
+            currentlyPlayingVideo = video;
+            syncPlayIcons(cardIndex, true);
+          });
+        }
+      }
+
+      function pauseThisCard() {
+        video.pause();
+        currentlyPlayingVideo = null;
+        syncPlayIcons(cardIndex, false);
+
+        // Eksekusi lompatan tertunda jika ada
+        if (pendingJumpDelta !== 0) {
+          jumpSilent(pendingJumpDelta);
+          pendingJumpDelta = 0;
+        }
+      }
+
+      if (playBtn) {
+        playBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (video.paused) {
+            playThisCard();
+          } else {
+            pauseThisCard();
+          }
+        });
+      }
+
+      if (muteBtn) {
+        muteBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const nextMuted = !video.muted;
+          syncMuteIcons(cardIndex, nextMuted);
+        });
+      }
+
+      video.addEventListener('ended', function () {
+        video.currentTime = 0;
+        syncPlayIcons(cardIndex, false);
+        currentlyPlayingVideo = null;
+
+        // Eksekusi lompatan tertunda jika ada
+        if (pendingJumpDelta !== 0) {
+          jumpSilent(pendingJumpDelta);
+          pendingJumpDelta = 0;
+        }
+      });
+    });
+  }
+
+  // 3. Olaplex-style Unified Video Player Controller (Experiences page, etc.)
   const videoPlayers = document.querySelectorAll('[data-video-player]');
   videoPlayers.forEach(function (player) {
     const video = player.querySelector('video');
@@ -163,6 +626,21 @@
           other.classList.remove('is-playing');
           const otherMute = other.querySelector('.vcp-mute-btn');
           if (otherMute) otherMute.style.display = 'none';
+        }
+      });
+
+      // Also pause any carousel video on page
+      const carouselCards = document.querySelectorAll('[data-exp-card]');
+      carouselCards.forEach(function (c) {
+        const vid = c.querySelector('video');
+        if (vid) {
+          vid.pause();
+          vid.currentTime = 0;
+          vid.load();
+          const pIcon = c.querySelector('.icon-play');
+          const psIcon = c.querySelector('.icon-pause');
+          if (pIcon) pIcon.style.display = 'block';
+          if (psIcon) psIcon.style.display = 'none';
         }
       });
 
@@ -250,9 +728,57 @@
       }
     );
 
-    document.querySelectorAll('video.lazy-video, .hero-video-bg, .home-leader-video').forEach(function (video) {
+    document.querySelectorAll('video.lazy-video, .hero-video-bg').forEach(function (video) {
       videoObserver.observe(video);
     });
+  }
+
+  // 4. Workshop Video Viewport Autoplay (/workshop)
+  const wkAutoplay = document.querySelector('[data-workshop-autoplay]');
+  if (wkAutoplay) {
+    const wkVideo = wkAutoplay.querySelector('video');
+    const wkMuteBtn = wkAutoplay.querySelector('.wk-mute-btn');
+    const mutedIcon = wkMuteBtn ? wkMuteBtn.querySelector('.icon-muted') : null;
+    const unmutedIcon = wkMuteBtn ? wkMuteBtn.querySelector('.icon-unmuted') : null;
+
+    if (wkVideo) {
+      wkVideo.muted = true;
+
+      if (!isReducedMotion && 'IntersectionObserver' in window) {
+        const wkObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                const playPromise = wkVideo.play();
+                if (playPromise !== undefined) {
+                  playPromise.catch(function () {});
+                }
+              } else {
+                if (!wkVideo.paused) {
+                  wkVideo.pause();
+                }
+              }
+            });
+          },
+          { threshold: 0.25 }
+        );
+        wkObserver.observe(wkAutoplay);
+      } else {
+        const p = wkVideo.play();
+        if (p !== undefined) p.catch(function () {});
+      }
+
+      if (wkMuteBtn) {
+        wkMuteBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          wkVideo.muted = !wkVideo.muted;
+          if (mutedIcon && unmutedIcon) {
+            mutedIcon.style.display = wkVideo.muted ? 'block' : 'none';
+            unmutedIcon.style.display = wkVideo.muted ? 'none' : 'block';
+          }
+        });
+      }
+    }
   }
 
   // 3. Transformation Category Filter (Real Clients, Experts, Celebrities)

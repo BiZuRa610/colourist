@@ -116,16 +116,21 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
             }
             ?>
             <?php if ($has_submenu): ?>
-              <div class="menu-item-group">
-                <button type="button"
-                  class="menu-item-btn <?= ($is_active_page || $clean_current === 'experiences') ? 'current-page' : '' ?>"
-                  id="expNavBtn" aria-expanded="false" aria-controls="desktopSubmenuCol expMobileSubmenu">
-                  <span class="txt"><?= e($item['label']) ?></span>
-                  <span class="chevron-arrow" id="expChevron" aria-hidden="true">&rsaquo;</span>
-                </button>
+              <div class="menu-item-group" id="expNavGroup">
+                <div class="menu-item-row <?= ($is_active_page || $clean_current === 'experiences') ? 'current-page' : '' ?>">
+                  <a href="<?= e($item['url']) ?>" class="menu-link exp-main-link <?= ($is_active_page || $clean_current === 'experiences') ? 'active-link' : '' ?>" id="expMainLink">
+                    <span class="txt"><?= e($item['label']) ?></span>
+                  </a>
+                  <button type="button" class="exp-chevron-btn" id="expChevronBtn" aria-label="Toggle Experiences submenu" aria-expanded="false" aria-controls="desktopSubmenuCol expMobileSubmenu">
+                    <span class="chevron-arrow" id="expChevron" aria-hidden="true">&rsaquo;</span>
+                  </button>
+                </div>
 
                 <!-- Mobile Accordion Submenu -->
                 <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
+                  <a href="experiences" class="menu-link <?= ($clean_current === 'experiences') ? 'active-link' : '' ?>">
+                    All Experiences
+                  </a>
                   <?php foreach ($item['children'] as $child): ?>
                     <a href="<?= e($child['url']) ?>" class="menu-link">
                       <?= e($child['label']) ?>
@@ -143,9 +148,9 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
           <?php endforeach; ?>
         </div>
 
-        <!-- Right Column: Submenu (Desktop, shown ONLY when Experiences is clicked) -->
+        <!-- Right Column: Submenu (Desktop, shown on Experiences hover/focus) -->
         <div class="mega-col-right" id="desktopSubmenuCol" aria-label="Detail Experiences">
-          <span class="sub-eyebrow">EXPERIENCES</span>
+          <a href="experiences" class="sub-eyebrow sub-eyebrow-link">EXPERIENCES</a>
           <?php foreach ($exp_children as $child): ?>
             <a href="<?= e($child['url']) ?>" class="menu-link">
               <?= e($child['label']) ?>

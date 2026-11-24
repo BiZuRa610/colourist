@@ -30,9 +30,9 @@ include __DIR__ . '/includes/header.php';
 <section class="split" aria-labelledby="storyHeading">
   <div class="split-media">
     <?= media('about.story', [
-        'aspect' => '4/5',
-        'alt'    => 'Colourist Master Consultation',
-        'label'  => '76c60e282c78588fbb41bba6c9e69e4c.jpg'
+      'aspect' => '4/5',
+      'alt' => 'Colourist Master Consultation',
+      'label' => '76c60e282c78588fbb41bba6c9e69e4c.jpg'
     ]) ?>
   </div>
 
@@ -40,7 +40,8 @@ include __DIR__ . '/includes/header.php';
     <span class="eyebrow">Our Story</span>
     <h2 id="storyHeading">Colour, made personal.</h2>
     <p>
-      Colourist was born from a singular mission: to empower individuals to feel radiant and effortlessly confident through the scientific precision of colour analysis.
+      Colourist was born from a singular mission: to empower individuals to feel radiant and effortlessly confident
+      through the scientific precision of colour analysis.
     </p>
     <p>
       Too often, shopping and styling feel like expensive guesswork. By combining advanced draping science, face

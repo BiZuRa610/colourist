@@ -86,16 +86,21 @@ Warning: Undefined array key "REQUEST_METHOD" in D:\Laragon\www\makeup\collabora
                 <a href="about" class="menu-link ">
                   What is it?                </a>
               </div>
-                                                <div class="menu-item-group">
-                <button type="button"
-                  class="menu-item-btn "
-                  id="expNavBtn" aria-expanded="false" aria-controls="desktopSubmenuCol expMobileSubmenu">
-                  <span class="txt">Experiences</span>
-                  <span class="chevron-arrow" id="expChevron" aria-hidden="true">&rsaquo;</span>
-                </button>
+                                                <div class="menu-item-group" id="expNavGroup">
+                <div class="menu-item-row ">
+                  <a href="experiences" class="menu-link exp-main-link " id="expMainLink">
+                    <span class="txt">Experiences</span>
+                  </a>
+                  <button type="button" class="exp-chevron-btn" id="expChevronBtn" aria-label="Toggle Experiences submenu" aria-expanded="false" aria-controls="desktopSubmenuCol expMobileSubmenu">
+                    <span class="chevron-arrow" id="expChevron" aria-hidden="true">&rsaquo;</span>
+                  </button>
+                </div>
 
                 <!-- Mobile Accordion Submenu -->
                 <div class="mobile-accordion" id="expMobileSubmenu" aria-label="Submenu Experiences">
+                  <a href="experiences" class="menu-link ">
+                    All Experiences
+                  </a>
                                       <a href="experiences#personal-color-analysis" class="menu-link">
                       Personal Color Analysis                    </a>
                                       <a href="experiences#signature-experience" class="menu-link">
@@ -130,9 +135,9 @@ Warning: Undefined array key "REQUEST_METHOD" in D:\Laragon\www\makeup\collabora
               </div>
                               </div>
 
-        <!-- Right Column: Submenu (Desktop, shown ONLY when Experiences is clicked) -->
+        <!-- Right Column: Submenu (Desktop, shown on Experiences hover/focus) -->
         <div class="mega-col-right" id="desktopSubmenuCol" aria-label="Detail Experiences">
-          <span class="sub-eyebrow">EXPERIENCES</span>
+          <a href="experiences" class="sub-eyebrow sub-eyebrow-link">EXPERIENCES</a>
                       <a href="experiences#personal-color-analysis" class="menu-link">
               Personal Color Analysis            </a>
                       <a href="experiences#signature-experience" class="menu-link">

@@ -34,7 +34,7 @@ $site = [
 $media = [
     // Brand & Seals
     'brand.logo' => 'assets/media/logo.png',
-    'journey.seal' => 'assets/media/journey/journey_seal_gold.svg',
+    'journey.seal' => 'assets/media/journey/journey_seal_gold.png',
     'journey.seal_empty' => 'assets/media/journey/journey_seal_empty.svg',
 
     // Journey Icons
@@ -46,8 +46,7 @@ $media = [
     // Home
     'hero.home' => 'assets/media/hero_full.mp4',
     'hero.home_poster' => 'assets/media/hero_full_poster.jpg',
-    'home.leader_video' => 'assets/media/hero_portrait.mp4',
-    'home.leader_video_poster' => 'assets/media/home_leader_video_poster.jpg',
+    'home.leader_bg' => 'assets/media/leader_bg.jpg',
     'home.cta_bg' => 'assets/media/cta_bg.jpg',
 
     // Services (Cards & Detail)
@@ -222,7 +221,7 @@ $journey_steps = [
         'title_line2' => 'COLOR ANALYSIS',
         'sublabel' => '',
         'icon' => 'assets/media/journey/journey_icon_color.svg',
-        'seal' => 'assets/media/journey/journey_seal_gold.svg',
+        'seal' => 'assets/media/journey/journey_seal_gold.png',
         'is_gold' => true,
         'alt' => 'Personal Color Analysis'
     ],

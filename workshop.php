@@ -38,11 +38,24 @@ include __DIR__ . '/includes/header.php';
 <!-- 2. Centered Video Section (9:16) -->
 <section class="sec wk-video-sec" aria-label="Workshop Overview Video">
   <div class="wk-video-wrap">
-    <?= video_player('workshop.video', [
-      'aspect' => '9/16',
-      'alt' => 'Colourist Workshop Training Atmosphere',
-      'class' => 'wk-video-media'
-    ]) ?>
+    <div class="wk-autoplay-player" data-workshop-autoplay>
+      <video muted loop playsinline preload="auto" poster="<?= e($media['workshop.video_poster'] ?? '') ?>" class="wk-autoplay-video">
+        <source src="<?= e($media['workshop.video'] ?? '') ?>" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <button type="button" class="wk-mute-btn" aria-label="Mute or unmute">
+        <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+        <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </section>
 

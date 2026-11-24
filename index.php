@@ -64,31 +64,95 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- 3. Experiences Cards Section (9:16 Video Cards) -->
-<section class="sec pt-0" aria-labelledby="experiencesHeading">
+<!-- 3. Experiences Cards Section (Olaplex-Style Horizontal Video Carousel) -->
+<section class="sec pt-0 home-exp-sec" aria-labelledby="experiencesHeading">
   <h2 id="experiencesHeading" style="font-size: 32px; margin-bottom: 24px;">Colourist Experience</h2>
 
-  <div class="cards" style="grid-template-columns: repeat(4, 1fr);">
-    <?php
-    // Show 4 representative service cards on home
-    $home_services = [
-      $services['personal-color-analysis'],
-      $services['private-styling'],
-      $services['makeup-masterclass'],
-      $services['custom-lipstick']
-    ];
-    foreach ($home_services as $srv):
+  <!-- Full-bleed Carousel Wrapper -->
+  <div class="exp-carousel-wrapper">
+    <button type="button" class="exp-carousel-arrow arrow-prev" id="expCarouselPrev" aria-label="Previous experience">&lt;</button>
+
+    <div class="exp-carousel-track" id="expCarouselTrack" tabindex="0" role="region" aria-label="Experiences Carousel">
+      <?php
+      $carousel_sets = [
+        ['type' => 'prev', 'is_clone' => true],
+        ['type' => 'none', 'is_clone' => false],
+        ['type' => 'next', 'is_clone' => true],
+      ];
       ?>
-      <div class="card">
-        <div class="card-media">
-          <?= video_player($srv['media_slot'], [
-            'aspect' => '9/16',
-            'alt' => $srv['title'] . ' Video Experience'
-          ]) ?>
-        </div>
-        <p><a href="experiences#<?= e($srv['slug']) ?>"><?= e($srv['title']) ?></a></p>
-      </div>
-    <?php endforeach; ?>
+      <?php foreach ($carousel_sets as $c_set): ?>
+        <?php foreach (array_values($services) as $idx => $srv): ?>
+          <?php
+            $video_src = $media[$srv['media_slot']] ?? '';
+            $poster_src = $media[$srv['media_slot'] . '_poster'] ?? '';
+            $is_clone = $c_set['is_clone'];
+          ?>
+          <div class="exp-carousel-card" data-exp-card data-slug="<?= e($srv['slug']) ?>" data-index="<?= $idx ?>" data-clone="<?= $c_set['type'] ?>"<?= $is_clone ? ' aria-hidden="true"' : '' ?>>
+            <div class="exp-card-media-wrap">
+              <?php if ($is_clone): ?>
+                <video playsinline preload="none" poster="<?= e($poster_src) ?>" class="exp-card-video" data-src="<?= e($video_src) ?>">
+                  <source data-src="<?= e($video_src) ?>" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+              <?php else: ?>
+                <video playsinline preload="metadata" poster="<?= e($poster_src) ?>" class="exp-card-video">
+                  <source src="<?= e($video_src) ?>" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+              <?php endif; ?>
+
+              <!-- Bottom Gradient Overlay -->
+              <div class="exp-card-gradient"></div>
+
+              <!-- Bottom Controls Bar -->
+              <div class="exp-card-controls">
+                <!-- Mute Toggle -->
+                <button type="button" class="exp-ctrl-btn exp-ctrl-mute" aria-label="Mute or unmute"<?= $is_clone ? ' tabindex="-1"' : '' ?>>
+                  <svg class="icon-muted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                  </svg>
+                  <svg class="icon-unmuted" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                  </svg>
+                </button>
+
+                <!-- Play / Pause Button -->
+                <button type="button" class="exp-ctrl-btn exp-ctrl-play" aria-label="Play or pause <?= e($srv['title']) ?>"<?= $is_clone ? ' tabindex="-1"' : '' ?>>
+                  <svg class="icon-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="6,4 20,12 6,20"/>
+                  </svg>
+                  <svg class="icon-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                    <rect x="6" y="4" width="4" height="16"/>
+                    <rect x="14" y="4" width="4" height="16"/>
+                  </svg>
+                </button>
+
+                <!-- Explore Pill Button -->
+                <a href="experiences#<?= e($srv['slug']) ?>" class="exp-ctrl-pill" aria-label="Explore <?= e($srv['title']) ?>"<?= $is_clone ? ' tabindex="-1"' : '' ?>>
+                  <span>EXPLORE</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Title below card (serif, centered) -->
+            <h3 class="exp-carousel-title">
+              <a href="experiences#<?= e($srv['slug']) ?>"<?= $is_clone ? ' tabindex="-1"' : '' ?>>
+                <?= e($srv['title']) ?>
+              </a>
+            </h3>
+          </div>
+        <?php endforeach; ?>
+      <?php endforeach; ?>
+    </div>
+
+    <button type="button" class="exp-carousel-arrow arrow-next" id="expCarouselNext" aria-label="Next experience">&gt;</button>
   </div>
 
   <div style="margin-top: 36px; text-align: center;">
@@ -98,26 +162,17 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- 4. Asia's Leading Color Expert Section -->
-<section class="sec" style="padding-top: 30px; padding-bottom: 40px;" aria-labelledby="leaderHeading">
-  <h2 id="leaderHeading" style="font-size: 32px; margin-bottom: 8px;">Asia's Leading Color Expert</h2>
-  <p style="color: var(--fg); font-size: 13px; max-width: 600px; margin: 0 auto 32px; letter-spacing: .02em;">
-    The expert in Personal Color Analysis, Styling, and Beauty Transformation
-  </p>
-
-  <!-- Centered 9:16 video / poster -->
-  <div class="home-leader-video-wrap">
-    <video muted loop playsinline preload="metadata" class="lazy-video home-leader-video"
-      poster="<?= e($media['home.leader_video_poster']) ?>" data-src="<?= e($media['home.leader_video']) ?>"
-      src="<?= e($media['home.leader_video']) ?>" aria-label="Asia's Leading Color Expert Experience">
-      <source src="<?= e($media['home.leader_video']) ?>" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
+<!-- 4. Asia's Leading Color Expert Hero Banner (Full-Bleed) -->
+<section class="home-leader-banner-sec" aria-labelledby="leaderHeading" style="background-image: url('<?= e($media['home.leader_bg'] ?? 'assets/media/leader_bg.jpg') ?>');">
+  <div class="home-leader-banner-overlay"></div>
+  <div class="home-leader-banner-content">
+    <h2 id="leaderHeading" class="home-leader-title">Asia's Leading Color Expert</h2>
+    <p class="home-leader-subtitle">The expert in Personal Color Analysis, Styling, and Beauty Transformation</p>
   </div>
 </section>
 
 <!-- 5. Transformations Section (3 Before/After Cards) -->
-<section class="sec" style="padding-top: 30px; padding-bottom: 50px;" aria-labelledby="homeTransHeading">
+<section class="sec" style="padding-top: 50px; padding-bottom: 50px;" aria-labelledby="homeTransHeading">
   <h2 id="homeTransHeading" style="font-size: 32px; margin-bottom: 6px;">Transformations</h2>
   <p style="color: var(--mut); font-size: 13px; margin: 0 auto 36px;">
     Every transformation begins with color.

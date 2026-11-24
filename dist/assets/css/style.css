@@ -34,6 +34,11 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #141414;
@@ -394,12 +399,59 @@ header.site-header {
   transition: color .15s ease;
 }
 
+.menu-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.exp-main-link {
+  flex: 1;
+  display: inline-block;
+}
+
+.exp-chevron-btn {
+  background: none;
+  border: none;
+  padding: 0 8px;
+  cursor: pointer;
+  color: var(--fg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: inherit;
+  font: inherit;
+  transition: color .15s ease;
+}
+
+.exp-chevron-btn:hover {
+  color: var(--acc);
+}
+
+.sub-eyebrow-link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--acc);
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 8px;
+  transition: opacity 0.2s;
+}
+
+.sub-eyebrow-link:hover {
+  opacity: 0.7;
+}
+
 .mega-col-left a.menu-link:hover,
 .mega-col-left button.menu-item-btn:hover {
   color: var(--acc);
 }
 
-.mega-col-left a.menu-link.active-link {
+.mega-col-left a.menu-link.active-link,
+.mega-col-left a.exp-main-link.active-link {
   font-weight: 500;
   border-bottom: 1px solid var(--fg);
 }
@@ -1010,8 +1062,9 @@ body.is-home .site-header.menu-open .header-icon-btn {
   height: 58px;
   display: block;
   object-fit: contain;
+  background: none;
+  border: none;
   transition: transform .2s ease, filter .2s ease;
-  border-radius: 50%;
 }
 
 .step:hover .step-seal-img {
@@ -1027,6 +1080,10 @@ body.is-home .site-header.menu-open .header-icon-btn {
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .step-icon {
     filter: invert(1);
+  }
+
+  :root:not([data-theme="light"]) .step-seal-img {
+    filter: none !important;
   }
 
   :root:not([data-theme="light"]) .step-divider {
@@ -1056,6 +1113,246 @@ body.is-home .site-header.menu-open .header-icon-btn {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-top: 24px;
+}
+
+/* ==========================================================================
+   Olaplex-Style "Shop the Look" Experiences Carousel
+   ========================================================================== */
+.home-exp-sec {
+  overflow: hidden;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.exp-carousel-wrapper {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: visible;
+}
+
+.exp-carousel-track {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  padding: 40px 40vw 24px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.exp-carousel-track:focus {
+  outline: none;
+}
+
+.exp-carousel-track:focus-visible {
+  outline: 1px dashed var(--fg);
+  outline-offset: -4px;
+}
+
+.exp-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.exp-carousel-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+/* Desktop: ±5 cards visible, card width ≈ 20vw */
+.exp-carousel-card {
+  flex: 0 0 20vw;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 300ms ease, opacity 300ms ease;
+  position: relative;
+  opacity: 0.85;
+  transform: scale(0.96);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.exp-carousel-card img,
+.exp-carousel-card video {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Active card: closest to center, scale 1.12, full opacity */
+.exp-carousel-card.is-active {
+  opacity: 1;
+  transform: scale(1.12);
+  z-index: 5;
+}
+
+.exp-card-media-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9/16;
+  background: #111111;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.exp-card-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Subtle gradient overlay at bottom */
+.exp-card-gradient {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.35) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Bottom Controls */
+.exp-card-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  z-index: 3;
+}
+
+.exp-ctrl-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.exp-ctrl-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: scale(1.08);
+}
+
+.exp-ctrl-pill {
+  background: #000000;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  letter-spacing: .12em;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.exp-ctrl-pill:hover {
+  background: #222222;
+  transform: scale(1.04);
+}
+
+.exp-carousel-title {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.35;
+  margin-top: 14px;
+  color: var(--fg);
+  font-weight: 400;
+  letter-spacing: .02em;
+  min-height: 2.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+}
+
+.exp-carousel-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.exp-carousel-title a:hover {
+  text-decoration: underline;
+}
+
+/* Arrows desktop */
+.exp-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--line);
+  color: var(--fg);
+  font-family: var(--font-serif);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, opacity 0.2s, transform 0.2s;
+}
+
+.exp-carousel-arrow:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.exp-carousel-arrow.arrow-prev {
+  left: 20px;
+}
+
+.exp-carousel-arrow.arrow-next {
+  right: 20px;
+}
+
+/* Mobile: card ≈ 62vw, kartu sebelah mengintip */
+@media (max-width: 768px) {
+  .exp-carousel-card {
+    flex: 0 0 62vw;
+  }
+  .exp-carousel-arrow {
+    display: none;
+  }
+  .exp-carousel-track {
+    padding: 26px 19vw 20px;
+  }
+  .exp-carousel-title {
+    font-size: 13.5px;
+  }
 }
 
 .card {
@@ -1934,21 +2231,81 @@ main,
    4. NEW SECTIONS (Revision: Home, Story, Experiences, Partners, Workshop)
    ========================================================================== */
 
-/* HOME: Leader Video */
-.home-leader-video-wrap {
-  max-width: 240px;
-  margin: 0 auto;
-  aspect-ratio: 9/16;
-  background: #111;
+/* HOME: Asia's Leading Color Expert Hero Banner (Full-Bleed) */
+.home-leader-banner-sec {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  height: 70vh;
+  min-height: 460px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
-.home-leader-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.home-leader-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.home-leader-banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-leader-title {
+  font-family: var(--font-serif);
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: #ffffff !important;
+  margin: 0 0 16px;
+  line-height: 1.18;
+  text-transform: none;
+}
+
+.home-leader-subtitle {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: #ffffff !important;
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .home-leader-banner-sec {
+    height: 60vh;
+    min-height: 380px;
+  }
+  .home-leader-title {
+    font-size: 30px;
+    letter-spacing: .08em;
+    margin-bottom: 12px;
+  }
+  .home-leader-subtitle {
+    font-size: 13px;
+    max-width: 340px;
+  }
 }
 
 /* HOME: Transformations 3 Cards */
@@ -2650,6 +3007,46 @@ main,
   box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
+.wk-autoplay-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9/16;
+  background: #111111;
+  overflow: hidden;
+}
+
+.wk-autoplay-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wk-mute-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.wk-mute-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: scale(1.08);
+}
+
 .wk-video-media {
   width: 100%;
   height: 100%;
@@ -2799,11 +3196,6 @@ main,
 
 /* Mobile Responsive Adjustments (<720px) */
 @media (max-width: 720px) {
-  .home-leader-video-wrap {
-    width: 70%;
-    max-width: 220px;
-  }
-
   .home-trans-cards {
     display: flex;
     overflow-x: auto;
