@@ -95,22 +95,22 @@ include __DIR__ . '/includes/header.php';
           ?>
           <div class="exp-carousel-card" data-exp-card data-slug="<?= e($srv['slug']) ?>" data-index="<?= $idx ?>" data-clone="<?= $c_set['type'] ?>"<?= $is_clone ? ' aria-hidden="true"' : '' ?>>
             <div class="exp-card-media-wrap">
-              <?php if ($is_clone): ?>
-                <video playsinline preload="none" poster="<?= e($poster_src) ?>" class="exp-card-video" data-src="<?= e($video_src) ?>">
-                  <source data-src="<?= e($video_src) ?>" type="video/mp4">
-                  Your browser does not support HTML5 video.
-                </video>
-              <?php else: ?>
-                <video playsinline preload="metadata" poster="<?= e($poster_src) ?>" class="exp-card-video">
-                  <source src="<?= e($video_src) ?>" type="video/mp4">
-                  Your browser does not support HTML5 video.
-                </video>
-              <?php endif; ?>
+              <video playsinline preload="<?= $is_clone ? 'none' : 'metadata' ?>" poster="<?= e($poster_src) ?>" class="exp-card-video" src="<?= e($video_src) ?>">
+                <source src="<?= e($video_src) ?>" type="video/mp4">
+                Your browser does not support HTML5 video.
+              </video>
+
+              <!-- Center Big Play Button (±72px desktop / 56px mobile) -->
+              <button type="button" class="exp-center-play-btn" aria-label="Play <?= e($srv['title']) ?>"<?= $is_clone ? ' tabindex="-1"' : '' ?>>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="7,4 20,12 7,20"/>
+                </svg>
+              </button>
 
               <!-- Bottom Gradient Overlay -->
               <div class="exp-card-gradient"></div>
 
-              <!-- Bottom Controls Bar -->
+              <!-- Bottom Controls Bar (Mute left, Explore right) -->
               <div class="exp-card-controls">
                 <!-- Mute Toggle -->
                 <button type="button" class="exp-ctrl-btn exp-ctrl-mute" aria-label="Mute or unmute"<?= $is_clone ? ' tabindex="-1"' : '' ?>>
@@ -123,17 +123,6 @@ include __DIR__ . '/includes/header.php';
                     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                     <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
                     <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                  </svg>
-                </button>
-
-                <!-- Play / Pause Button -->
-                <button type="button" class="exp-ctrl-btn exp-ctrl-play" aria-label="Play or pause <?= e($srv['title']) ?>"<?= $is_clone ? ' tabindex="-1"' : '' ?>>
-                  <svg class="icon-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="6,4 20,12 6,20"/>
-                  </svg>
-                  <svg class="icon-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
-                    <rect x="6" y="4" width="4" height="16"/>
-                    <rect x="14" y="4" width="4" height="16"/>
                   </svg>
                 </button>
 

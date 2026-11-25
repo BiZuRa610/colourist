@@ -460,15 +460,13 @@
       }
     }, true); // Capturing phase
 
-    // Helper: Synchronize Play/Pause icon state across cards with identical data-index
-    function syncPlayIcons(index, isPlaying) {
+    // Helper: Synchronize Play/Pause state and classes across cards with identical data-index
+    function syncPlayState(index, isPlaying) {
       expTrack.querySelectorAll(`[data-exp-card][data-index="${index}"]`).forEach(function (c) {
-        const pBtn = c.querySelector('.exp-ctrl-play');
-        if (pBtn) {
-          const playIcon = pBtn.querySelector('.icon-play');
-          const pauseIcon = pBtn.querySelector('.icon-pause');
-          if (playIcon) playIcon.style.display = isPlaying ? 'none' : 'block';
-          if (pauseIcon) pauseIcon.style.display = isPlaying ? 'block' : 'none';
+        if (isPlaying) {
+          c.classList.add('is-playing');
+        } else {
+          c.classList.remove('is-playing');
         }
       });
     }
@@ -495,7 +493,7 @@
         if (vid && vid !== exceptVideo) {
           vid.pause();
           vid.currentTime = 0;
-          syncPlayIcons(c.getAttribute('data-index'), false);
+          syncPlayState(c.getAttribute('data-index'), false);
         }
       });
 
@@ -515,7 +513,8 @@
     // Setup controls for each card (including clones)
     expCards.forEach(function (card) {
       const video = card.querySelector('video');
-      const playBtn = card.querySelector('.exp-ctrl-play');
+      const mediaWrap = card.querySelector('.exp-card-media-wrap');
+      const centerPlayBtn = card.querySelector('.exp-center-play-btn');
       const muteBtn = card.querySelector('.exp-ctrl-mute');
       const cardIndex = card.getAttribute('data-index');
 
@@ -530,10 +529,13 @@
         centerCard();
         pauseAllOtherVideos(video);
 
-        // Lazy load video source on clone cards if not yet loaded
+        // Ensure source is loaded
         if (!video.src && video.getAttribute('data-src')) {
           video.src = video.getAttribute('data-src');
-          video.load();
+        }
+        if (!video.src) {
+          const srcEl = video.querySelector('source');
+          if (srcEl && srcEl.src) video.src = srcEl.src;
         }
 
         video.muted = false;
@@ -543,13 +545,19 @@
         if (p !== undefined) {
           p.then(function () {
             currentlyPlayingVideo = video;
-            syncPlayIcons(cardIndex, true);
-          }).catch(function () {
+            syncPlayState(cardIndex, true);
+          }).catch(function (err) {
+            console.error('Carousel video play with sound error:', err);
+            // Fallback to muted play if policy requires user gesture / blocks sound
             video.muted = true;
             syncMuteIcons(cardIndex, true);
-            video.play();
-            currentlyPlayingVideo = video;
-            syncPlayIcons(cardIndex, true);
+            video.play().then(function () {
+              currentlyPlayingVideo = video;
+              syncPlayState(cardIndex, true);
+            }).catch(function (err2) {
+              console.error('Carousel video play fallback error:', err2);
+              syncPlayState(cardIndex, false);
+            });
           });
         }
       }
@@ -557,7 +565,7 @@
       function pauseThisCard() {
         video.pause();
         currentlyPlayingVideo = null;
-        syncPlayIcons(cardIndex, false);
+        syncPlayState(cardIndex, false);
 
         // Eksekusi lompatan tertunda jika ada
         if (pendingJumpDelta !== 0) {
@@ -566,14 +574,30 @@
         }
       }
 
-      if (playBtn) {
-        playBtn.addEventListener('click', function (e) {
+      function togglePlayAction(e) {
+        if (hasDragged) return;
+        if (video.paused) {
+          playThisCard();
+        } else {
+          pauseThisCard();
+        }
+      }
+
+      // Center play button click
+      if (centerPlayBtn) {
+        centerPlayBtn.addEventListener('click', function (e) {
           e.stopPropagation();
-          if (video.paused) {
-            playThisCard();
-          } else {
-            pauseThisCard();
+          togglePlayAction(e);
+        });
+      }
+
+      // Media wrap click (clicking card/poster directly)
+      if (mediaWrap) {
+        mediaWrap.addEventListener('click', function (e) {
+          if (e.target.closest('.exp-ctrl-mute') || e.target.closest('.exp-ctrl-pill') || e.target.closest('a')) {
+            return;
           }
+          togglePlayAction(e);
         });
       }
 
@@ -587,7 +611,7 @@
 
       video.addEventListener('ended', function () {
         video.currentTime = 0;
-        syncPlayIcons(cardIndex, false);
+        syncPlayState(cardIndex, false);
         currentlyPlayingVideo = null;
 
         // Eksekusi lompatan tertunda jika ada
@@ -636,11 +660,7 @@
         if (vid) {
           vid.pause();
           vid.currentTime = 0;
-          vid.load();
-          const pIcon = c.querySelector('.icon-play');
-          const psIcon = c.querySelector('.icon-pause');
-          if (pIcon) pIcon.style.display = 'block';
-          if (psIcon) psIcon.style.display = 'none';
+          c.classList.remove('is-playing');
         }
       });
 
@@ -651,15 +671,19 @@
         playPromise.then(function () {
           player.classList.add('is-playing');
           if (muteBtn) muteBtn.style.display = 'flex';
-        }).catch(function () {
+        }).catch(function (err) {
+          console.error('Experiences video unmuted play error:', err);
           // If browser blocks unmuted play, fallback to muted
           video.muted = true;
-          video.play();
-          player.classList.add('is-playing');
-          if (muteBtn) {
-            muteBtn.style.display = 'flex';
-            updateMuteIcons(true);
-          }
+          video.play().then(function () {
+            player.classList.add('is-playing');
+            if (muteBtn) {
+              muteBtn.style.display = 'flex';
+              updateMuteIcons(true);
+            }
+          }).catch(function (err2) {
+            console.error('Experiences video muted fallback error:', err2);
+          });
         });
       }
     }

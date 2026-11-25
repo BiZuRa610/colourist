@@ -668,23 +668,26 @@ body.is-home .site-header:not(.is-scrolled):not(.menu-open) .logo-light { displa
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   color: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s, opacity 0.2s;
+  transition: transform 0.2s, background 0.2s, opacity 0.25s;
   z-index: 5;
 }
 
 .vcp-play-btn svg {
-  margin-left: 2px;
+  margin-left: 3px;
+  width: 28px;
+  height: 28px;
 }
 
 .vcp-card:hover .vcp-play-btn {
@@ -698,8 +701,20 @@ body.is-home .site-header:not(.is-scrolled):not(.menu-open) .logo-light { displa
 }
 
 .vcp-card.is-playing:hover .vcp-play-btn {
-  opacity: 0.6;
+  opacity: 0.7;
   pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .vcp-play-btn {
+    width: 56px;
+    height: 56px;
+  }
+  .vcp-play-btn svg {
+    width: 22px;
+    height: 22px;
+    margin-left: 2px;
+  }
 }
 
 .vcp-mute-btn {
@@ -1154,6 +1169,63 @@ body.is-home .site-header.menu-open .header-icon-btn {
   background: #111111;
   overflow: hidden;
   border-radius: 0;
+  cursor: pointer;
+}
+
+/* Center Big Play Button (±72px desktop / 56px mobile) */
+.exp-center-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 4;
+  transition: opacity 0.25s ease, transform 0.2s ease, background 0.2s ease;
+  pointer-events: auto;
+}
+
+.exp-center-play-btn svg {
+  margin-left: 3px;
+  width: 28px;
+  height: 28px;
+}
+
+.exp-center-play-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.exp-carousel-card.is-playing .exp-center-play-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.exp-carousel-card.is-playing:hover .exp-center-play-btn {
+  opacity: 0.7;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .exp-center-play-btn {
+    width: 56px;
+    height: 56px;
+  }
+  .exp-center-play-btn svg {
+    width: 22px;
+    height: 22px;
+    margin-left: 2px;
+  }
 }
 
 .exp-card-video {
@@ -2729,6 +2801,429 @@ main,
   .donut-hole {
     width: 60px;
     height: 60px;
+  }
+}
+
+/* ABOUT PAGE: Canva Page 11 Full Styles */
+.about-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.about-sec-title {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  letter-spacing: .04em;
+  text-align: center;
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.about-sec-subtitle {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #666666;
+  text-align: center;
+  margin: 0 auto 36px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.pca-benefits-block {
+  margin: 28px 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.pca-sub-badge {
+  display: inline-block;
+  background: #000000;
+  color: #ffffff;
+  padding: 5px 12px;
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.pca-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pca-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #333333;
+}
+
+.pca-checklist .chk-icon {
+  font-weight: 700;
+  color: #111111;
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+/* 3. Introducing Colours */
+.pca-intro-colours-sec {
+  background: #ffffff;
+  padding: 60px 0;
+}
+
+.pca-warm-cool-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.pca-tone-card {
+  padding: 28px 20px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-align: center;
+  background: #faf9f7;
+}
+
+.tone-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.tone-swatch-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.warm-circle {
+  background: conic-gradient(#ffe066, #ff9900, #ff3b30, #ffe066);
+}
+
+.cool-circle {
+  background: conic-gradient(#5ac8fa, #007aff, #af52de, #5ac8fa);
+}
+
+.tone-heading {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  margin: 0;
+}
+
+.tone-desc {
+  font-size: 13px;
+  font-weight: 500;
+  color: #222222;
+  margin-bottom: 8px;
+}
+
+.tone-sub {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #666666;
+  margin: 0;
+}
+
+.pca-tone-divider {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: #888888;
+  text-align: center;
+}
+
+.pca-factors-block {
+  text-align: center;
+  margin: 30px auto;
+  max-width: 680px;
+}
+
+.factors-intro {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #333333;
+  margin-bottom: 14px;
+}
+
+.factors-pills {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.factor-pill {
+  background: #f4f3f1;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #222222;
+}
+
+.pca-seasons-char-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 32px 0 16px;
+}
+
+.season-char-card {
+  border: 1px solid var(--line);
+  padding: 20px 14px;
+  text-align: center;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.season-char-card .mini-donut {
+  width: 80px !important;
+  height: 80px !important;
+  margin: 0 auto 12px;
+}
+
+.season-char-card .mini-donut .donut-hole {
+  width: 44px !important;
+  height: 44px !important;
+}
+
+.season-char-card h4 {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: .18em;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.season-char-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11.5px;
+  color: #555555;
+  line-height: 1.8;
+}
+
+.factors-footnote {
+  font-size: 12px;
+  color: #777777;
+  text-align: center;
+  font-style: italic;
+  margin-top: 16px;
+}
+
+/* 4. Our Stand on Personal Colour */
+.pca-stand-sec {
+  background: #f6f4f1;
+  padding: 60px 0;
+}
+
+.stand-italic-lead {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: #555555;
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 36px;
+}
+
+.stand-two-col {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.stand-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #222222;
+  border-left: 2px solid #000000;
+  padding-left: 18px;
+  margin: 0 0 20px;
+}
+
+.stand-p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #444444;
+  margin-bottom: 14px;
+}
+
+.stand-approach-wrap {
+  margin-top: 26px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.approach-heading {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+.stand-photo-card {
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.stand-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* 5. Concepts Around the World */
+.pca-world-sec {
+  background: #ffffff;
+  padding: 60px 0;
+}
+
+.pca-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.timeline-step {
+  border-top: 2px solid #111111;
+  padding-top: 10px;
+}
+
+.t-era {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.t-desc {
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: #666666;
+}
+
+.timeline-roots {
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #333333;
+  margin: 28px auto 36px;
+  max-width: 720px;
+}
+
+.pca-systems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.system-card {
+  border: 1px solid var(--line);
+  padding: 22px 18px;
+  border-radius: 4px;
+  background: #faf9f7;
+}
+
+.system-card h3 {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.system-meta {
+  font-size: 11px;
+  color: #888888;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.system-card p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #444444;
+  margin: 0;
+}
+
+.pca-philosophy-box {
+  background: #f6f4f1;
+  border-radius: 6px;
+  padding: 36px 30px;
+  margin-top: 30px;
+}
+
+.philosophy-p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #444444;
+  margin-bottom: 14px;
+}
+
+.philosophy-highlight {
+  border-left: 3px solid #000000;
+  padding: 16px 20px;
+  background: #ffffff;
+  margin: 22px 0;
+}
+
+.philosophy-highlight h4 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.philosophy-highlight p {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #333333;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .pca-warm-cool-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .pca-seasons-char-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stand-two-col {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .pca-timeline-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .pca-systems-grid {
+    grid-template-columns: 1fr;
+  }
+  .pca-philosophy-box {
+    padding: 24px 18px;
   }
 }
 
