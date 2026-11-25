@@ -5,14 +5,15 @@
  */
 
 if (!defined('APP_INIT')) {
-    require_once __DIR__ . '/data.php';
+  require_once __DIR__ . '/data.php';
 }
 
 /**
  * Escape HTML output securely.
  */
-function e($string) {
-    return htmlspecialchars((string)$string, ENT_QUOTES, 'UTF-8');
+function e($string)
+{
+  return htmlspecialchars((string) $string, ENT_QUOTES, 'UTF-8');
 }
 
 /**
@@ -31,95 +32,97 @@ function e($string) {
  *   - 'style'       => Inline styles
  * @return string HTML output
  */
-function media($slot, $opts = []) {
-    global $media;
+function media($slot, $opts = [])
+{
+  global $media;
 
-    // Resolve slot to file path
-    $src = '';
-    if (isset($media[$slot])) {
-        $src = $media[$slot];
-    } elseif (!empty($slot)) {
-        $src = $slot;
-    }
+  // Resolve slot to file path
+  $src = '';
+  if (isset($media[$slot])) {
+    $src = $media[$slot];
+  } elseif (!empty($slot)) {
+    $src = $slot;
+  }
 
-    $aspect     = $opts['aspect'] ?? '';
-    $class      = $opts['class'] ?? '';
-    $alt        = $opts['alt'] ?? ($opts['label'] ?? 'Colourist Media');
-    $poster     = $opts['poster'] ?? '';
-    $label      = $opts['label'] ?? ($slot ? $slot : 'Media Placeholder');
-    $styleExtra = $opts['style'] ?? '';
+  $aspect = $opts['aspect'] ?? '';
+  $class = $opts['class'] ?? '';
+  $alt = $opts['alt'] ?? ($opts['label'] ?? 'Colourist Media');
+  $poster = $opts['poster'] ?? '';
+  $label = $opts['label'] ?? ($slot ? $slot : 'Media Placeholder');
+  $styleExtra = $opts['style'] ?? '';
 
-    $aspectStyle = '';
-    if ($aspect) {
-        $aspectStyle = "aspect-ratio: {$aspect};";
-    }
+  $aspectStyle = '';
+  if ($aspect) {
+    $aspectStyle = "aspect-ratio: {$aspect};";
+  }
 
-    // If source is empty, render graceful gradient placeholder as in mockups
-    if (empty($src)) {
-        $classes = trim('ph ' . $class);
-        $inlineStyle = trim($aspectStyle . ' ' . $styleExtra);
-        $styleAttr = $inlineStyle ? ' style="' . e($inlineStyle) . '"' : '';
-        return '<div class="' . e($classes) . '"' . $styleAttr . ' role="img" aria-label="' . e($alt) . '"><span>' . e($label) . '</span></div>';
-    }
+  // If source is empty, render graceful gradient placeholder as in mockups
+  if (empty($src)) {
+    $classes = trim('ph ' . $class);
+    $inlineStyle = trim($aspectStyle . ' ' . $styleExtra);
+    $styleAttr = $inlineStyle ? ' style="' . e($inlineStyle) . '"' : '';
+    return '<div class="' . e($classes) . '"' . $styleAttr . ' role="img" aria-label="' . e($alt) . '"><span>' . e($label) . '</span></div>';
+  }
 
-    // Determine file extension
-    $ext = strtolower(pathinfo($src, PATHINFO_EXTENSION));
+  // Determine file extension
+  $ext = strtolower(pathinfo($src, PATHINFO_EXTENSION));
 
-    // Video types
-    $videoExtensions = ['mp4', 'webm', 'mov', 'ogg'];
-    if (in_array($ext, $videoExtensions)) {
-        $videoClasses = trim('lazy-video ' . $class);
-        $inlineStyle = trim($aspectStyle . ' object-fit: cover; ' . $styleExtra);
-        $posterAttr = $poster ? ' poster="' . e($poster) . '"' : '';
-        $autoplayAttr = ($opts['autoplay'] ?? true) ? ' autoplay' : '';
-        
-        return sprintf(
-            '<video%s muted loop playsinline preload="auto"%s class="%s" data-src="%s" src="%s" style="%s" aria-label="%s"><source src="%s" type="video/%s">Your browser does not support HTML5 video.</video>',
-            $autoplayAttr,
-            $posterAttr,
-            e($videoClasses),
-            e($src),
-            e($src),
-            e($inlineStyle),
-            e($alt),
-            e($src),
-            e($ext === 'mov' ? 'mp4' : $ext)
-        );
-    }
-
-    // Image types (and default fallback)
-    $imageClasses = trim('media-img ' . $class);
+  // Video types
+  $videoExtensions = ['mp4', 'webm', 'mov', 'ogg'];
+  if (in_array($ext, $videoExtensions)) {
+    $videoClasses = trim('lazy-video ' . $class);
     $inlineStyle = trim($aspectStyle . ' object-fit: cover; ' . $styleExtra);
-    $widthAttr = !empty($opts['width']) ? ' width="' . intval($opts['width']) . '"' : '';
-    $heightAttr = !empty($opts['height']) ? ' height="' . intval($opts['height']) . '"' : '';
+    $posterAttr = $poster ? ' poster="' . e($poster) . '"' : '';
+    $autoplayAttr = ($opts['autoplay'] ?? true) ? ' autoplay' : '';
 
     return sprintf(
-        '<img src="%s" alt="%s" loading="lazy" class="%s" style="%s"%s%s onerror="this.onerror=null;this.classList.add(\'img-err\');">',
-        e($src),
-        e($alt),
-        e($imageClasses),
-        e($inlineStyle),
-        $widthAttr,
-        $heightAttr
+      '<video%s muted loop playsinline preload="auto"%s class="%s" data-src="%s" src="%s" style="%s" aria-label="%s"><source src="%s" type="video/%s">Your browser does not support HTML5 video.</video>',
+      $autoplayAttr,
+      $posterAttr,
+      e($videoClasses),
+      e($src),
+      e($src),
+      e($inlineStyle),
+      e($alt),
+      e($src),
+      e($ext === 'mov' ? 'mp4' : $ext)
     );
+  }
+
+  // Image types (and default fallback)
+  $imageClasses = trim('media-img ' . $class);
+  $inlineStyle = trim($aspectStyle . ' object-fit: cover; ' . $styleExtra);
+  $widthAttr = !empty($opts['width']) ? ' width="' . intval($opts['width']) . '"' : '';
+  $heightAttr = !empty($opts['height']) ? ' height="' . intval($opts['height']) . '"' : '';
+
+  return sprintf(
+    '<img src="%s" alt="%s" loading="lazy" class="%s" style="%s"%s%s onerror="this.onerror=null;this.classList.add(\'img-err\');">',
+    e($src),
+    e($alt),
+    e($imageClasses),
+    e($inlineStyle),
+    $widthAttr,
+    $heightAttr
+  );
 }
 
 /**
  * Render Olaplex-style interactive video player component.
  * Poster + Play button, audio active on click, pauses other playing videos, small mute toggle.
  */
-function video_player($video_slot, $opts = []) {
-    global $media;
-    $src = $media[$video_slot] ?? $video_slot;
-    $poster = $opts['poster'] ?? ($media[$video_slot . '_poster'] ?? '');
-    $alt = $opts['alt'] ?? 'Video player';
-    $class = $opts['class'] ?? '';
-    $aspect = $opts['aspect'] ?? '9/16';
+function video_player($video_slot, $opts = [])
+{
+  global $media;
+  $src = $media[$video_slot] ?? $video_slot;
+  $poster = $opts['poster'] ?? ($media[$video_slot . '_poster'] ?? '');
+  $alt = $opts['alt'] ?? 'Video player';
+  $class = $opts['class'] ?? '';
+  $aspect = $opts['aspect'] ?? '9/16';
 
-    $aspectStyle = $aspect ? "aspect-ratio: {$aspect};" : '';
+  $aspectStyle = $aspect ? "aspect-ratio: {$aspect};" : '';
 
-    return sprintf(
-        '<div class="vcp-card %s" data-video-player style="%s">
+  return sprintf(
+    '<div class="vcp-card %s" data-video-player style="%s">
           <video playsinline preload="metadata" poster="%s" class="vcp-video" src="%s">
             <source src="%s" type="video/mp4">
             Your browser does not support HTML5 video.
@@ -142,19 +145,20 @@ function video_player($video_slot, $opts = []) {
             </svg>
           </button>
         </div>',
-        e($class),
-        e($aspectStyle),
-        e($poster),
-        e($src),
-        e($src),
-        e($alt)
-    );
+    e($class),
+    e($aspectStyle),
+    e($poster),
+    e($src),
+    e($src),
+    e($alt)
+  );
 }
 
 /**
  * Generate formatted WhatsApp link with prefilled booking message.
  */
-function wa_link($phone, $message) {
-    return 'https://wa.me/' . preg_replace('/[^0-9]/', '', $phone) . '?text=' . rawurlencode($message);
+function wa_link($phone, $message)
+{
+  return 'https://wa.me/' . preg_replace('/[^0-9]/', '', $phone) . '?text=' . rawurlencode($message);
 }
 

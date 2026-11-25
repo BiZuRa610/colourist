@@ -67,9 +67,10 @@ include __DIR__ . '/includes/header.php';
     <div class="pca-exp-text">
       <h2 id="pcaExpHeading" class="pca-exp-title">Personal Colour Analysis</h2>
       <div class="pca-exp-divider" aria-hidden="true"></div>
-      
+
       <p class="pca-exp-p">
-        Personal Colour Analysis (PCA) helps you find colours that <strong>harmonize</strong> with your natural color, features, your skin, hair, and eyes, so you can look your best effortlessly.
+        Personal Colour Analysis (PCA) helps you find colours that <strong>harmonize</strong> with your natural color,
+        features, your skin, hair, and eyes, so you can look your best effortlessly.
       </p>
 
       <div class="pca-harmony-badge-wrap">
@@ -77,7 +78,8 @@ include __DIR__ . '/includes/header.php';
       </div>
 
       <p class="pca-exp-p">
-        This analysis provides valuable insights into the colours that suit you best and how to mix and match them to achieve a harmonious look.
+        This analysis provides valuable insights into the colours that suit you best and how to mix and match them to
+        achieve a harmonious look.
       </p>
 
       <!-- Benefits Sub-section -->
@@ -86,19 +88,23 @@ include __DIR__ . '/includes/header.php';
         <ul class="pca-checklist">
           <li>
             <span class="chk-icon">&#10003;</span>
-            <div><strong>Boost confidence.</strong> Look and feel more put together with colours that truly complement you.</div>
+            <div><strong>Boost confidence.</strong> Look and feel more put together with colours that truly complement
+              you.</div>
           </li>
           <li>
             <span class="chk-icon">&#10003;</span>
-            <div><strong>Strengthen your personal brand.</strong> Whether in your career or on social media, the right colours help you stand out effortlessly.</div>
+            <div><strong>Strengthen your personal brand.</strong> Whether in your career or on social media, the right
+              colours help you stand out effortlessly.</div>
           </li>
           <li>
             <span class="chk-icon">&#10003;</span>
-            <div><strong>Make smarter fashion &amp; makeup choices.</strong> No more guessing or wasting money on colours that don't flatter you.</div>
+            <div><strong>Make smarter fashion &amp; makeup choices.</strong> No more guessing or wasting money on
+              colours that don't flatter you.</div>
           </li>
           <li>
             <span class="chk-icon">&#10003;</span>
-            <div><strong>Enhance your natural beauty.</strong> Wear shades that make your skin look radiant and fresh.</div>
+            <div><strong>Enhance your natural beauty.</strong> Wear shades that make your skin look radiant and fresh.
+            </div>
           </li>
         </ul>
       </div>
@@ -111,10 +117,8 @@ include __DIR__ . '/includes/header.php';
     </div>
 
     <div class="pca-exp-media">
-      <img src="assets/media/what_is_it_pca.jpg" 
-           alt="Personal Colour Analysis session at Colourist" 
-           class="pca-exp-img" 
-           loading="lazy">
+      <img src="assets/media/what_is_it_pca.jpg" alt="Personal Colour Analysis session at Colourist" class="pca-exp-img"
+        loading="lazy">
     </div>
   </div>
 </section>
@@ -135,7 +139,8 @@ include __DIR__ . '/includes/header.php';
           <h3 class="tone-heading">Warm</h3>
         </div>
         <p class="tone-desc">All colours with a <strong>warm</strong> temperature.</p>
-        <p class="tone-sub">Warm-toned colours have a yellow or golden base. People with warm undertones have yellow or golden undertones.</p>
+        <p class="tone-sub">Warm-toned colours have a yellow or golden base. People with warm undertones have yellow or
+          golden undertones.</p>
       </div>
 
       <div class="pca-tone-divider">
@@ -148,14 +153,16 @@ include __DIR__ . '/includes/header.php';
           <h3 class="tone-heading">Cool</h3>
         </div>
         <p class="tone-desc">All colours with a <strong>cool</strong> temperature.</p>
-        <p class="tone-sub">Cool-toned colours have a blue or pink base. People with cool undertones have blue or pink undertones.</p>
+        <p class="tone-sub">Cool-toned colours have a blue or pink base. People with cool undertones have blue or pink
+          undertones.</p>
       </div>
     </div>
 
     <!-- 3 Key Factors -->
     <div class="pca-factors-block">
       <p class="factors-intro">
-        From this warm and cool undertone concept, the <strong>4 Season Colour Analysis is developed.</strong> Each season is categorized based on three key factors:
+        From this warm and cool undertone concept, the <strong>4 Season Colour Analysis is developed.</strong> Each
+        season is categorized based on three key factors:
       </p>
       <div class="factors-pills">
         <span class="factor-pill">&bull; Temperature (Warm vs. Cool)</span>
@@ -224,17 +231,21 @@ include __DIR__ . '/includes/header.php';
     <div class="stand-two-col">
       <div class="stand-text-col">
         <blockquote class="stand-quote">
-          &ldquo;Indonesians have one of the most beautiful and diverse natural tones. Coupled with our rich culture of batik and hijab; my mission is to help Indonesians become the best versions of themselves by leveraging their best colour.&rdquo;
+          &ldquo;Indonesians have one of the most beautiful and diverse natural tones. Coupled with our rich culture of
+          batik and hijab; my mission is to help Indonesians become the best versions of themselves by leveraging their
+          best colour.&rdquo;
         </blockquote>
 
         <p class="stand-p">
           Learning and working with various experts around the world, we have seen various techniques.
         </p>
         <p class="stand-p">
-          Colourist aims to take the learning from global experts from Japan, Korea, Hong Kong, Thailand, and Australia, to create the <strong>highest benchmark</strong> that is the most relevant for Indonesians.
+          Colourist aims to take the learning from global experts from Japan, Korea, Hong Kong, Thailand, and Australia,
+          to create the <strong>highest benchmark</strong> that is the most relevant for Indonesians.
         </p>
         <p class="stand-p">
-          Going beyond by adapting these systems to suit the diverse skin tones and unique beauty of Indonesians, we believe every individual's beauty should be celebrated.
+          Going beyond by adapting these systems to suit the diverse skin tones and unique beauty of Indonesians, we
+          believe every individual's beauty should be celebrated.
         </p>
 
         <!-- Our Approach Checkpoints -->
@@ -243,15 +254,18 @@ include __DIR__ . '/includes/header.php';
           <ul class="pca-checklist approach-list">
             <li>
               <span class="chk-icon">&#10003;</span>
-              <div><strong>Personal Colour should empower</strong> by helping people find what suits them, not limiting beauty or exclusivity.</div>
+              <div><strong>Personal Colour should empower</strong> by helping people find what suits them, not limiting
+                beauty or exclusivity.</div>
             </li>
             <li>
               <span class="chk-icon">&#10003;</span>
-              <div><strong>Leveraging our international experience</strong>, we're creating the highest benchmark for Indonesians by understanding Indonesian skin tones and characteristics.</div>
+              <div><strong>Leveraging our international experience</strong>, we're creating the highest benchmark for
+                Indonesians by understanding Indonesian skin tones and characteristics.</div>
             </li>
             <li>
               <span class="chk-icon">&#10003;</span>
-              <div><strong>Education &gt; Trends.</strong> Personal Colour is about understanding the science of colour harmony and how it interacts with individual skin tones.</div>
+              <div><strong>Education &gt; Trends.</strong> Personal Colour is about understanding the science of colour
+                harmony and how it interacts with individual skin tones.</div>
             </li>
           </ul>
         </div>
@@ -259,10 +273,12 @@ include __DIR__ . '/includes/header.php';
 
       <div class="stand-media-col">
         <div class="stand-photo-card">
-          <img src="assets/media/ashta_studio_tour.jpg" alt="Colourist Studio consultation" class="stand-photo" loading="lazy">
+          <img src="assets/media/ashta_studio_tour.jpg" alt="Colourist Studio consultation" class="stand-photo"
+            loading="lazy">
         </div>
         <div class="stand-photo-card" style="margin-top: 18px;">
-          <img src="assets/media/partners_celeb_1.jpg" alt="Clients discovering color harmony" class="stand-photo" loading="lazy">
+          <img src="assets/media/partners_celeb_1.jpg" alt="Clients discovering color harmony" class="stand-photo"
+            loading="lazy">
         </div>
       </div>
     </div>
@@ -306,7 +322,9 @@ include __DIR__ . '/includes/header.php';
     </div>
 
     <p class="timeline-roots">
-      The roots of Colour analysis method have been around since <strong>1920</strong> coined by <strong>Johannes Itten</strong>. Since then, experts have adapted methods to local beauty standards and created various colour systems.
+      The roots of Colour analysis method have been around since <strong>1920</strong> coined by <strong>Johannes
+        Itten</strong>. Since then, experts have adapted methods to local beauty standards and created various colour
+      systems.
     </p>
 
     <!-- Systems Cards Grid -->
@@ -314,47 +332,57 @@ include __DIR__ . '/includes/header.php';
       <div class="system-card">
         <h3>4-Season Colour Analysis</h3>
         <div class="system-meta">1970s by Carole Jackson</div>
-        <p>Popular in the US, based on Johannes Itten's color theory. Divides individuals into Spring, Summer, Autumn, and Winter based on warm/cool and light/dark characteristics.</p>
+        <p>Popular in the US, based on Johannes Itten's color theory. Divides individuals into Spring, Summer, Autumn,
+          and Winter based on warm/cool and light/dark characteristics.</p>
       </div>
 
       <div class="system-card">
         <h3>12-Season Colour Analysis</h3>
         <div class="system-meta">1980s by Suzanne Caygill &amp; Sci \ ART</div>
-        <p>Popular worldwide, an extension of the 4-season system. Introduces subcategories like Light Spring, Soft Autumn, Cool Summer, and Bright Winter for more precise colour matching.</p>
+        <p>Popular worldwide, an extension of the 4-season system. Introduces subcategories like Light Spring, Soft
+          Autumn, Cool Summer, and Bright Winter for more precise colour matching.</p>
       </div>
 
       <div class="system-card">
         <h3>Japanese PCCS</h3>
         <div class="system-meta">1960s by Japan Color Research Institute</div>
-        <p>Developed in Japan, used in design, fashion, and beauty. Classifies colors into tonal families of 4 seasons with 3 sub-seasons each (Cool, Soft, Light, Warm, Deep, Muted, and Bright tones).</p>
+        <p>Developed in Japan, used in design, fashion, and beauty. Classifies colors into tonal families of 4 seasons
+          with 3 sub-seasons each (Cool, Soft, Light, Warm, Deep, Muted, and Bright tones).</p>
       </div>
 
       <div class="system-card">
         <h3>Korean Personal Colour Systems</h3>
         <div class="system-meta">2010s by Major Fashion-Beauty Experts</div>
-        <p>Introduces micro-tonal grading: Pale, Light, Clear Bright, Strong Vivid, Muted Soft, Dull, Middle, Deep, and Dark tones tailored for Asian skin depth.</p>
+        <p>Introduces micro-tonal grading: Pale, Light, Clear Bright, Strong Vivid, Muted Soft, Dull, Middle, Deep, and
+          Dark tones tailored for Asian skin depth.</p>
       </div>
 
       <div class="system-card">
         <h3>Tonal Colour System</h3>
         <div class="system-meta">1990s by David Zyla</div>
-        <p>Popular in the UK, based on the Colour Theory of Albert Munsell. Uses 6 dominant colouring types: Light, Deep, Warm, Cool, Clear, and Soft.</p>
+        <p>Popular in the UK, based on the Colour Theory of Albert Munsell. Uses 6 dominant colouring types: Light,
+          Deep, Warm, Cool, Clear, and Soft.</p>
       </div>
     </div>
 
     <!-- Philosophy & Lifetime Investment Callout Box -->
     <div class="pca-philosophy-box">
       <p class="philosophy-p">
-        In Korea alone, leading trending centers offer different methods — some even give different seasons for different parts of a client's body (hair, makeup, clothes) which can disrupt harmony.
+        In Korea alone, leading trending centers offer different methods — some even give different seasons for
+        different parts of a client's body (hair, makeup, clothes) which can disrupt harmony.
       </p>
       <p class="philosophy-p">
-        These interpretations have deviated from the core principle of <strong>HARMONY</strong> and from achieving a lifetime result. Such techniques favor frequent visits, whereas <strong>Personal Colour should be a single lifetime investment</strong> based on your natural undertones that you are born with.
+        These interpretations have deviated from the core principle of <strong>HARMONY</strong> and from achieving a
+        lifetime result. Such techniques favor frequent visits, whereas <strong>Personal Colour should be a single
+          lifetime investment</strong> based on your natural undertones that you are born with.
       </p>
-      
+
       <div class="philosophy-highlight">
         <h4>Color Analysis and what we believe in is about HARMONY.</h4>
         <p>
-          Embracing our rich spectrum of skintone diversity in Indonesia, Colourist synthesizes the finest global methodologies from Japan, Korea, Hong Kong, Bangkok, and Australia to establish the <strong>highest benchmark</strong> that is most empowering and relevant for Indonesians.
+          Embracing our rich spectrum of skintone diversity in Indonesia, Colourist synthesizes the finest global
+          methodologies from Japan, Korea, Hong Kong, Bangkok, and Australia to establish the <strong>highest
+            benchmark</strong> that is most empowering and relevant for Indonesians.
         </p>
       </div>
 
