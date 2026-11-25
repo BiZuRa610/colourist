@@ -375,6 +375,7 @@
     // Pointer Events: Desktop mouse drag with continuous loop & accidental click suppression
     let isDown = false;
     let hasDragged = false;
+    let dragStarted = false;
     let startX = 0;
     let scrollStart = 0;
     let activePointerId = null;
@@ -385,23 +386,26 @@
 
       isDown = true;
       hasDragged = false;
+      dragStarted = false;
       startX = e.clientX;
       scrollStart = expTrack.scrollLeft;
       activePointerId = e.pointerId;
-
-      try {
-        expTrack.setPointerCapture(e.pointerId);
-      } catch (err) {}
-
-      expTrack.classList.add('is-dragging');
+      // Do NOT call setPointerCapture here; wait until movement > 5px to allow clicks
     });
 
     expTrack.addEventListener('pointermove', function (e) {
       if (!isDown) return;
       const deltaX = e.clientX - startX;
-      if (Math.abs(deltaX) > 5) {
+      if (!dragStarted && Math.abs(deltaX) > 5) {
+        dragStarted = true;
         hasDragged = true;
+        try {
+          expTrack.setPointerCapture(activePointerId);
+        } catch (err) {}
+        expTrack.classList.add('is-dragging');
       }
+
+      if (!dragStarted) return;
 
       let newScrollLeft = scrollStart - deltaX;
       const setWidth = getSetWidth();
@@ -431,12 +435,13 @@
       isDown = false;
       expTrack.classList.remove('is-dragging');
 
-      if (activePointerId !== null) {
+      if (dragStarted && activePointerId !== null) {
         try {
           expTrack.releasePointerCapture(activePointerId);
         } catch (err) {}
-        activePointerId = null;
       }
+      activePointerId = null;
+      dragStarted = false;
 
       throttledUpdateActive();
       checkAndPerformJump();
@@ -444,21 +449,12 @@
       if (hasDragged) {
         setTimeout(function () {
           hasDragged = false;
-        }, 60);
+        }, 80);
       }
     }
 
     expTrack.addEventListener('pointerup', endPointerDrag);
     expTrack.addEventListener('pointercancel', endPointerDrag);
-
-    // Suppress clicks on children if user dragged > 5px
-    expTrack.addEventListener('click', function (e) {
-      if (hasDragged) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-      }
-    }, true); // Capturing phase
 
     // Helper: Synchronize Play/Pause state and classes across cards with identical data-index
     function syncPlayState(index, isPlaying) {
@@ -488,12 +484,18 @@
 
     // Helper: Pause all other videos across carousel and page
     function pauseAllOtherVideos(exceptVideo) {
+      const exceptCard = exceptVideo ? exceptVideo.closest('[data-exp-card]') : null;
+      const exceptIndex = exceptCard ? exceptCard.getAttribute('data-index') : null;
+
       expCards.forEach(function (c) {
         const vid = c.querySelector('video');
+        const cIndex = c.getAttribute('data-index');
         if (vid && vid !== exceptVideo) {
           vid.pause();
           vid.currentTime = 0;
-          syncPlayState(c.getAttribute('data-index'), false);
+          if (cIndex !== exceptIndex) {
+            syncPlayState(cIndex, false);
+          }
         }
       });
 
@@ -510,26 +512,54 @@
       });
     }
 
-    // Setup controls for each card (including clones)
-    expCards.forEach(function (card) {
-      const video = card.querySelector('video');
-      const mediaWrap = card.querySelector('.exp-card-media-wrap');
-      const centerPlayBtn = card.querySelector('.exp-center-play-btn');
-      const muteBtn = card.querySelector('.exp-ctrl-mute');
-      const cardIndex = card.getAttribute('data-index');
+    // Single delegated click listener on expTrack: handles mute, play/pause, links, and prevents drag-clicks
+    expTrack.addEventListener('click', function (e) {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
 
+      // 1. Mute toggle button click
+      const muteBtn = e.target.closest('.exp-ctrl-mute');
+      if (muteBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const card = muteBtn.closest('[data-exp-card]');
+        if (!card) return;
+        const cardIndex = card.getAttribute('data-index');
+        const video = card.querySelector('video');
+        if (video) {
+          const nextMuted = !video.muted;
+          syncMuteIcons(cardIndex, nextMuted);
+        }
+        return;
+      }
+
+      // 2. Explore pill or any anchor link click — allow normal navigation
+      if (e.target.closest('.exp-ctrl-pill') || e.target.closest('a')) {
+        return;
+      }
+
+      // 3. Card click (center play button, poster, media wrap, or card body)
+      const card = e.target.closest('[data-exp-card]');
+      if (!card) return;
+
+      const video = card.querySelector('video');
       if (!video) return;
+
+      const cardIndex = card.getAttribute('data-index');
 
       function centerCard() {
         const offset = card.offsetLeft - (expTrack.clientWidth - card.offsetWidth) / 2;
         expTrack.scrollTo({ left: offset, behavior: 'smooth' });
       }
 
-      function playThisCard() {
+      if (video.paused) {
         centerCard();
         pauseAllOtherVideos(video);
 
-        // Ensure source is loaded
+        // Ensure video source is loaded
         if (!video.src && video.getAttribute('data-src')) {
           video.src = video.getAttribute('data-src');
         }
@@ -540,6 +570,7 @@
 
         video.muted = false;
         syncMuteIcons(cardIndex, false);
+        syncPlayState(cardIndex, true);
 
         const p = video.play();
         if (p !== undefined) {
@@ -548,7 +579,7 @@
             syncPlayState(cardIndex, true);
           }).catch(function (err) {
             console.error('Carousel video play with sound error:', err);
-            // Fallback to muted play if policy requires user gesture / blocks sound
+            // Fallback to muted play if browser policy blocks unmuted play
             video.muted = true;
             syncMuteIcons(cardIndex, true);
             video.play().then(function () {
@@ -560,9 +591,7 @@
             });
           });
         }
-      }
-
-      function pauseThisCard() {
+      } else {
         video.pause();
         currentlyPlayingVideo = null;
         syncPlayState(cardIndex, false);
@@ -573,48 +602,19 @@
           pendingJumpDelta = 0;
         }
       }
+    });
 
-      function togglePlayAction(e) {
-        if (hasDragged) return;
-        if (video.paused) {
-          playThisCard();
-        } else {
-          pauseThisCard();
-        }
-      }
-
-      // Center play button click
-      if (centerPlayBtn) {
-        centerPlayBtn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          togglePlayAction(e);
-        });
-      }
-
-      // Media wrap click (clicking card/poster directly)
-      if (mediaWrap) {
-        mediaWrap.addEventListener('click', function (e) {
-          if (e.target.closest('.exp-ctrl-mute') || e.target.closest('.exp-ctrl-pill') || e.target.closest('a')) {
-            return;
-          }
-          togglePlayAction(e);
-        });
-      }
-
-      if (muteBtn) {
-        muteBtn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          const nextMuted = !video.muted;
-          syncMuteIcons(cardIndex, nextMuted);
-        });
-      }
+    // Attach ended listener to each video inside track
+    expCards.forEach(function (card) {
+      const video = card.querySelector('video');
+      const cardIndex = card.getAttribute('data-index');
+      if (!video) return;
 
       video.addEventListener('ended', function () {
         video.currentTime = 0;
         syncPlayState(cardIndex, false);
         currentlyPlayingVideo = null;
 
-        // Eksekusi lompatan tertunda jika ada
         if (pendingJumpDelta !== 0) {
           jumpSilent(pendingJumpDelta);
           pendingJumpDelta = 0;
@@ -645,7 +645,6 @@
           if (otherVid) {
             otherVid.pause();
             otherVid.currentTime = 0;
-            otherVid.load();
           }
           other.classList.remove('is-playing');
           const otherMute = other.querySelector('.vcp-mute-btn');
@@ -664,13 +663,25 @@
         }
       });
 
+      // Ensure source is loaded
+      if (!video.src && video.getAttribute('data-src')) {
+        video.src = video.getAttribute('data-src');
+      }
+      if (!video.src) {
+        const srcEl = video.querySelector('source');
+        if (srcEl && srcEl.src) video.src = srcEl.src;
+      }
+
       // Play this with sound enabled
       video.muted = false;
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.then(function () {
           player.classList.add('is-playing');
-          if (muteBtn) muteBtn.style.display = 'flex';
+          if (muteBtn) {
+            muteBtn.style.display = 'flex';
+            updateMuteIcons(false);
+          }
         }).catch(function (err) {
           console.error('Experiences video unmuted play error:', err);
           // If browser blocks unmuted play, fallback to muted
@@ -718,7 +729,6 @@
     video.addEventListener('ended', function () {
       pausePlayer();
       video.currentTime = 0;
-      video.load();
     });
   });
 
@@ -752,7 +762,7 @@
       }
     );
 
-    document.querySelectorAll('video.lazy-video, .hero-video-bg').forEach(function (video) {
+    document.querySelectorAll('video.lazy-video, .hero-video-bg, .leader-banner-video').forEach(function (video) {
       videoObserver.observe(video);
     });
   }

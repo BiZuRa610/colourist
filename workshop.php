@@ -39,7 +39,7 @@ include __DIR__ . '/includes/header.php';
 <section class="sec wk-video-sec" aria-label="Workshop Overview Video">
   <div class="wk-video-wrap">
     <div class="wk-autoplay-player" data-workshop-autoplay>
-      <video muted loop playsinline preload="auto" poster="<?= e($media['workshop.video_poster'] ?? '') ?>" class="wk-autoplay-video">
+      <video autoplay muted loop playsinline preload="auto" poster="<?= e($media['workshop.video_poster'] ?? '') ?>" class="wk-autoplay-video">
         <source src="<?= e($media['workshop.video'] ?? '') ?>" type="video/mp4">
         Your browser does not support HTML5 video.
       </video>

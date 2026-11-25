@@ -37,18 +37,14 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: calc(70px + env(safe-area-inset-top, 0px));
+  overflow-x: hidden;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: calc(70px + env(safe-area-inset-top, 0px));
 }
 
 body {
@@ -58,6 +54,7 @@ body {
   font: 300 13px/1.7 var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
   overflow-x: hidden;
 }
 
@@ -2780,13 +2777,21 @@ main,
 
 .pca-exp-media {
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  box-shadow: none;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pca-exp-img {
   width: 100%;
-  height: auto;
+  max-width: 360px;
+  aspect-ratio: 9/16;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  border-radius: 0;
 }
 
 @media (max-width: 768px) {

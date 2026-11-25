@@ -34,7 +34,13 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
 
   <!-- Base tag so relative links resolve cleanly across nested routes -->
   <?php
-    $base_href = (defined('STATIC_EXPORT') || defined('VERCEL_ROUTER')) ? '/' : '/makeup/';
+    if (defined('STATIC_EXPORT') || defined('VERCEL_ROUTER') || (php_sapi_name() === 'cli-server')) {
+        $base_href = '/';
+    } elseif (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/makeup/') === 0) {
+        $base_href = '/makeup/';
+    } else {
+        $base_href = '/';
+    }
   ?>
   <base href="<?= $base_href ?>">
 

@@ -3,6 +3,21 @@
  * Home Page — Colourist
  * Asia & Indonesia's No. 1 Color Expert
  */
+
+// Route clean URLs when running under PHP built-in webserver without separate router
+if (php_sapi_name() === 'cli-server') {
+    $req_path = trim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+    if (in_array($req_path, ['about', 'experiences', 'workshop', 'collaboration', 'partners', 'book', 'transformation'])) {
+        require __DIR__ . '/' . $req_path . '.php';
+        exit;
+    }
+    if (strpos($req_path, 'transformation/') === 0) {
+        $_GET['story'] = substr($req_path, strlen('transformation/'));
+        require __DIR__ . '/story.php';
+        exit;
+    }
+}
+
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
 

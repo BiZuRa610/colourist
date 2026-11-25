@@ -71,9 +71,11 @@ function media($slot, $opts = []) {
         $videoClasses = trim('lazy-video ' . $class);
         $inlineStyle = trim($aspectStyle . ' object-fit: cover; ' . $styleExtra);
         $posterAttr = $poster ? ' poster="' . e($poster) . '"' : '';
+        $autoplayAttr = ($opts['autoplay'] ?? true) ? ' autoplay' : '';
         
         return sprintf(
-            '<video muted loop playsinline preload="metadata"%s class="%s" data-src="%s" src="%s" style="%s" aria-label="%s"><source src="%s" type="video/%s">Your browser does not support HTML5 video.</video>',
+            '<video%s muted loop playsinline preload="auto"%s class="%s" data-src="%s" src="%s" style="%s" aria-label="%s"><source src="%s" type="video/%s">Your browser does not support HTML5 video.</video>',
+            $autoplayAttr,
             $posterAttr,
             e($videoClasses),
             e($src),
@@ -118,7 +120,7 @@ function video_player($video_slot, $opts = []) {
 
     return sprintf(
         '<div class="vcp-card %s" data-video-player style="%s">
-          <video playsinline preload="metadata" poster="%s" class="vcp-video">
+          <video playsinline preload="metadata" poster="%s" class="vcp-video" src="%s">
             <source src="%s" type="video/mp4">
             Your browser does not support HTML5 video.
           </video>
@@ -143,6 +145,7 @@ function video_player($video_slot, $opts = []) {
         e($class),
         e($aspectStyle),
         e($poster),
+        e($src),
         e($src),
         e($alt)
     );

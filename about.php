@@ -111,8 +111,8 @@ include __DIR__ . '/includes/header.php';
     </div>
 
     <div class="pca-exp-media">
-      <img src="assets/media/pca_explanation.jpg" 
-           alt="Personal Colour Analysis consultation at Colourist Studio" 
+      <img src="assets/media/what_is_it_pca.jpg" 
+           alt="Personal Colour Analysis session at Colourist" 
            class="pca-exp-img" 
            loading="lazy">
     </div>
