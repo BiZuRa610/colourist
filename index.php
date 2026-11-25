@@ -36,7 +36,7 @@ include __DIR__ . '/includes/header.php';
 <!-- 2. The Colourist Journey Section -->
 <section class="sec journey-sec" id="journeySection" aria-labelledby="journeyHeading">
   <span class="eyebrow" style="letter-spacing: .3em;">WELCOME TO THE</span>
-  <h2 id="journeyHeading" class="journey-main-title">COLOURIST</h2>
+  <h2 id="journeyHeading" class="journey-main-title"><img src="<?= e($media['brand.logo_black'] ?? 'assets/media/logos/logo_colourist.png') ?>" alt="Colourist" height="28" style="display:inline-block;vertical-align:middle;"></h2>
   <span class="journey-subtitle">JOURNEY</span>
 
   <div class="journey">
@@ -74,6 +74,12 @@ include __DIR__ . '/includes/header.php';
 
     <div class="exp-carousel-track" id="expCarouselTrack" tabindex="0" role="region" aria-label="Experiences Carousel">
       <?php
+      // Home carousel: 4 services (exclude signature-experience)
+      $home_carousel_slugs = ['personal-color-analysis', 'private-styling', 'makeup-masterclass', 'custom-lipstick'];
+      $home_carousel_services = [];
+      foreach ($home_carousel_slugs as $cs) {
+          if (isset($services[$cs])) $home_carousel_services[] = $services[$cs];
+      }
       $carousel_sets = [
         ['type' => 'prev', 'is_clone' => true],
         ['type' => 'none', 'is_clone' => false],
@@ -81,7 +87,7 @@ include __DIR__ . '/includes/header.php';
       ];
       ?>
       <?php foreach ($carousel_sets as $c_set): ?>
-        <?php foreach (array_values($services) as $idx => $srv): ?>
+        <?php foreach ($home_carousel_services as $idx => $srv): ?>
           <?php
             $video_src = $media[$srv['media_slot']] ?? '';
             $poster_src = $media[$srv['media_slot'] . '_poster'] ?? '';

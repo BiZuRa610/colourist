@@ -10,7 +10,7 @@ if (!defined('APP_INIT')) {
   </main>
 
   <footer class="site-footer">
-    <div class="footer-logo">COLOURIST</div>
+    <div class="footer-logo"><img src="<?= e($media['brand.logo_black'] ?? 'assets/media/logos/logo_colourist.png') ?>" alt="Colourist" height="20" style="display:inline-block;"></div>
     <p style="margin: 0 auto 12px; max-width: 500px;">
       Asia &amp; Indonesia's No. 1 Color Expert.<br>
       <?= e($site['studio_address']) ?>

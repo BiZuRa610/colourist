@@ -15,25 +15,17 @@ include __DIR__ . '/includes/header.php';
 <!-- 1. Page Header -->
 <section class="sec" style="padding-bottom: 24px;">
   <h1 style="font-size: 34px; margin-bottom: 24px;">Colourist Transformation</h1>
-
-  <!-- 3 Solid Black Category Filter Buttons -->
-  <div class="filter-btn-group" role="tablist" aria-label="Filter Kategori Transformasi">
-    <button type="button" class="trans-filter-btn active" data-category="real-clients">
-      REAL CLIENTS
-    </button>
-    <button type="button" class="trans-filter-btn" data-category="experts">
-      EXPERTS
-    </button>
-    <button type="button" class="trans-filter-btn" data-category="celebrities">
-      CELEBRITIES
-    </button>
-  </div>
 </section>
 
-<!-- 2. Stories Zigzag-Sejajar Listing (5 items) -->
+<!-- 2. Stories Listing (4 items, no felt-invisible) -->
 <section class="trans-stories-sec" aria-label="Daftar Cerita Transformasi">
   <div class="trans-stories-list" id="transStoriesList">
-    <?php foreach ($stories as $st): ?>
+    <?php
+    // Only 4 stories, exclude felt-invisible
+    $display_stories = $stories;
+    unset($display_stories['felt-invisible']);
+    ?>
+    <?php foreach ($display_stories as $st): ?>
       <article class="trans-story-row" data-category="<?= e($st['category']) ?>">
         <div class="trans-story-media">
           <a href="transformation/<?= e($st['slug']) ?>" aria-label="<?= e($st['title']) ?>">

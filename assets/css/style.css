@@ -16,6 +16,7 @@
 }
 
 :root {
+  color-scheme: light;
   --bg: #ffffff;
   --fg: #111111;
   --mut: #777777;
@@ -37,30 +38,6 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #141414;
-    --fg: #f2f2f2;
-    --mut: #999999;
-    --line: #2c2c2c;
-    --ph: #2e2e2e;
-    --ph2: #444444;
-    --soft: #1c1c1c;
-    --card-bg: #1a1a1a;
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #141414;
-  --fg: #f2f2f2;
-  --mut: #999999;
-  --line: #2c2c2c;
-  --ph: #2e2e2e;
-  --ph2: #444444;
-  --soft: #1c1c1c;
-  --card-bg: #1a1a1a;
 }
 
 *,
@@ -264,6 +241,13 @@ header.site-header {
   top: 5.5px;
   transform: rotate(-45deg);
 }
+
+/* Logo images */
+.logo-img { display: block; height: 22px; width: auto; object-fit: contain; }
+.logo-dark { display: block; }
+.logo-light { display: none; }
+body.is-home .site-header:not(.is-scrolled):not(.menu-open) .logo-dark { display: none; }
+body.is-home .site-header:not(.is-scrolled):not(.menu-open) .logo-light { display: block; }
 
 /* Logo - Absolute Centering for true optical alignment */
 .logo {
@@ -779,8 +763,8 @@ header.site-header {
 
 .hero-wrapper.hero-fullpage .hero-title {
   font-family: var(--font-serif);
-  font-size: 36px;
-  line-height: 1.25;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1.15;
   color: #ffffff;
   font-weight: 400;
   margin: 0 0 10px 0;
@@ -1074,37 +1058,6 @@ body.is-home .site-header.menu-open .header-icon-btn {
 /* Hover on empty stamp: darkened border effect */
 .step:hover .step-seal-wrap img[src*="empty"] {
   filter: contrast(1.5) brightness(0.92);
-}
-
-/* Dark Mode Adjustments */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .step-icon {
-    filter: invert(1);
-  }
-
-  :root:not([data-theme="light"]) .step-seal-img {
-    filter: none !important;
-  }
-
-  :root:not([data-theme="light"]) .step-divider {
-    background-color: #333333;
-  }
-
-  :root:not([data-theme="light"]) .step-divider i {
-    background: #ffffff;
-  }
-}
-
-:root[data-theme="dark"] .step-icon {
-  filter: invert(1);
-}
-
-:root[data-theme="dark"] .step-divider {
-  background-color: #333333;
-}
-
-:root[data-theme="dark"] .step-divider i {
-  background: #ffffff;
 }
 
 /* Cards Grid (4 columns for Home, 3 columns for Workshops) */
@@ -3271,39 +3224,4 @@ main,
   }
 }
 
-/* Enforce light theme on Home CTA across all dark mode settings */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .home-cta-sec {
-    background-color: #f7f6f4;
-    color: #111111;
-  }
-  :root:not([data-theme="light"]) .home-cta-title {
-    color: #111111 !important;
-  }
-  :root:not([data-theme="light"]) .btn-cta-outline {
-    border-color: #111111 !important;
-    color: #111111 !important;
-    background: transparent !important;
-  }
-  :root:not([data-theme="light"]) .btn-cta-outline:hover {
-    background: #111111 !important;
-    color: #ffffff !important;
-  }
-}
-
-:root[data-theme="dark"] .home-cta-sec {
-  background-color: #f7f6f4;
-  color: #111111;
-}
-:root[data-theme="dark"] .home-cta-title {
-  color: #111111 !important;
-}
-:root[data-theme="dark"] .btn-cta-outline {
-  border-color: #111111 !important;
-  color: #111111 !important;
-  background: transparent !important;
-}
-:root[data-theme="dark"] .btn-cta-outline:hover {
-  background: #111111 !important;
-  color: #ffffff !important;
-}
+/* Enforce light theme on Home CTA */

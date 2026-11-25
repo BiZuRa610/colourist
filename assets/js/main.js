@@ -206,7 +206,7 @@
     const expPrev = document.getElementById('expCarouselPrev');
     const expNext = document.getElementById('expCarouselNext');
     const origCards = expTrack.querySelectorAll('[data-clone="none"]');
-    const N = origCards.length || 5;
+    const N = origCards.length || 4;
 
     // Prevent native drag on images and videos inside track
     expTrack.querySelectorAll('img, video').forEach(function (mediaEl) {
@@ -958,7 +958,7 @@
 
   if (bookingForm) {
     bookingForm.addEventListener('submit', function (e) {
-      const waNumber = bookingForm.getAttribute('data-wa') || '628111925828';
+      const waNumber = bookingForm.getAttribute('data-wa') || '6285121807590';
       const service = serviceInput ? serviceInput.value : 'Personal Color Analysis';
       const date = document.getElementById('bookDate') ? document.getElementById('bookDate').value : '';
       const time = document.getElementById('bookTime') ? document.getElementById('bookTime').value : '';

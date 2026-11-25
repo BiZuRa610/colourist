@@ -27,6 +27,7 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light only">
   <title><?= e($page_title) ?></title>
   <meta name="description" content="<?= e($page_description) ?>">
   <link rel="canonical" href="<?= e($canonical_url) ?>">
@@ -80,7 +81,8 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
 
       <!-- Center: Logo -->
       <a href="" class="logo" aria-label="Colourist Home">
-        COLOURIST
+        <img src="<?= e($media['brand.logo_black'] ?? 'assets/media/logos/logo_colourist.png') ?>" alt="Colourist" class="logo-img logo-dark" height="22">
+        <img src="<?= e($media['brand.logo_white'] ?? 'assets/media/logos/logo_colourist_white.png') ?>" alt="Colourist" class="logo-img logo-light" height="22">
       </a>
 
       <!-- Right: User Account and Shopping Bag / Cart -->

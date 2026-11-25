@@ -94,8 +94,10 @@ foreach ($pages as $route => $config) {
     write_dist_html($config['dest'], $html);
 }
 
-// 2. Transformation Stories: /transformation/{slug} (5 stories)
-foreach ($stories as $slug => $st) {
+// 2. Transformation Stories: /transformation/{slug} (4 stories, no felt-invisible)
+$build_stories = $stories;
+unset($build_stories['felt-invisible']);
+foreach ($build_stories as $slug => $st) {
     $route = "/transformation/{$slug}";
     $dest = $dist_dir . "/transformation/{$slug}/index.html";
     echo "  -> Rendering story {$route}...\n";

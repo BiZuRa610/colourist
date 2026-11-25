@@ -17,8 +17,8 @@ $site = [
     'hero_headline' => 'Helping people feel confident through best colors.',
     'description' => 'Asia & Indonesia\'s No. 1 Color Expert located at ASHTA District 8, SCBD, Jakarta. Private color analysis, styling, makeup masterclasses, and bespoke lipstick formulation.',
     'url' => 'https://colourist.id',
-    'whatsapp' => '628111925828', // Standard international format without '+'
-    'whatsapp_display' => '+62 811-1925-828',
+    'whatsapp' => '6285121807590', // Standard international format without '+'
+    'whatsapp_display' => '+62 851-2180-7590',
     'email' => 'inquiry@colourist.id',
     'instagram' => 'https://instagram.com/colourist_official',
     'tiktok' => 'https://tiktok.com/@colourist_official',
@@ -34,6 +34,8 @@ $site = [
 $media = [
     // Brand & Seals
     'brand.logo' => 'assets/media/logo.png',
+    'brand.logo_black' => 'assets/media/logos/logo_colourist.png',
+    'brand.logo_white' => 'assets/media/logos/logo_colourist_white.png',
     'journey.seal' => 'assets/media/journey/journey_seal_gold.png',
     'journey.seal_empty' => 'assets/media/journey/journey_seal_empty.svg',
 
@@ -525,19 +527,43 @@ $stories = [
         'media_slot' => 'story.rediscovering-herself',
         'before_slot' => '',
         'after_slot' => '',
-        'has_content' => false
-    ],
-    'felt-invisible' => [
-        'slug' => 'felt-invisible',
-        'title' => 'She Felt Invisible in Every Room',
-        'quote' => 'I always felt like I blended into the background. I wanted to feel more confident being seen.',
-        'category' => 'real-clients',
-        'category_label' => 'Real Clients',
-        'subtitle' => 'A Colourist Client Story',
-        'media_slot' => 'story.felt-invisible',
-        'before_slot' => '',
-        'after_slot' => '',
-        'has_content' => false
+        'has_content' => true,
+        'content' => [
+            [
+                'heading' => 'The story behind the transformation',
+                'paragraphs' => [
+                    'After becoming a mother, so much of her attention went to her baby.',
+                    'Like many new mothers, her world revolved around her child — feeding schedules, sleepless nights, and making sure everything was perfect for her little one.',
+                    'Somewhere along the way, she stopped prioritising herself.',
+                    'She couldn\'t remember the last time she bought something for herself, or even thought about how she wanted to look. Her wardrobe became purely functional — whatever was comfortable and easy to wash.',
+                    'It wasn\'t that she didn\'t care. She just didn\'t have the time or energy to think about herself.',
+                    'But there was a quiet feeling she couldn\'t ignore: she missed feeling like herself.',
+                    'Not just as a mother, but as a woman.'
+                ]
+            ],
+            [
+                'heading' => 'What colour analysis revealed',
+                'paragraphs' => [
+                    'When she came to Colourist, she wasn\'t looking for a dramatic transformation.',
+                    'She simply wanted to feel like herself again.',
+                    'Through Personal Colour Analysis, we discovered her seasonal palette — the colours that naturally harmonise with her skin, hair, and eyes.',
+                    'Many of the colours she had been wearing didn\'t complement her natural colouring. The muted, washed-out tones she had defaulted to were actually making her look more tired than she was.',
+                    'Her true colours were brighter, warmer, and more alive than she expected.',
+                    'When she saw the right colours against her face, something shifted. She looked more rested. More vibrant. More like herself.'
+                ]
+            ],
+            [
+                'heading' => 'More than finding her colours',
+                'paragraphs' => [
+                    'The most meaningful part of her transformation wasn\'t about the colours themselves.',
+                    'It was the moment she looked in the mirror and recognised the woman she had been before motherhood — still there, still beautiful, just waiting to be seen again.',
+                    'She didn\'t need to choose between being a mother and being herself.',
+                    'She could be both.',
+                    'Because sometimes, rediscovering yourself begins with something as simple as rediscovering your colours.',
+                    'At Colourist, we believe every woman deserves to feel beautiful — in every chapter of her life.'
+                ]
+            ]
+        ]
     ]
 ];
 
