@@ -1,6 +1,6 @@
 # Colourist — Website Official
 
-Website native PHP untuk **Colourist** (Asia & Indonesia's No. 1 Color Expert, studio di ASHTA District 8 SCBD, Jakarta). Dibangun secara native tanpa framework dan tanpa build tool, mengusung estetika minimalis luxury dengan tipografi Cormorant Garamond, Black Mango & Poppins, aksen `#b5654f`, video interaktif portrait (9:16) bersuara gaya Olaplex, hero full-page 100svh bergaya Hermes, responsive mobile-first, dan dark mode otomatis (`prefers-color-scheme`).
+Website native PHP untuk **Colourist** (Asia & Indonesia's No. 1 Color Expert, studio di ASHTA District 8 SCBD, Jakarta). Dibangun secara native tanpa framework dan tanpa build tool, mengusung estetika minimalis luxury dengan tipografi Cormorant Garamond, Black Mango & Poppins, aksen `#b5654f`, video interaktif portrait (9:16) bersuara gaya Olaplex, hero full-page 100svh bergaya Hermes, responsive mobile-first, dan desain selalu terang (light only).
 
 ---
 
@@ -19,7 +19,7 @@ Buka peramban di `http://localhost:8000`. Jika menggunakan Laragon / Apache, cle
 ## 2. Mengedit Konten & Konfigurasi (`includes/data.php`)
 
 Semua data teks, nomor kontak, jadwal, layanan, workshop, dan testimoni dipusatkan di `includes/data.php`:
-- **Informasi Kontak & Studio**: Ubah nomor WhatsApp (`$site['whatsapp']`), alamat, jam operasional, dan email.
+- **Informasi Kontak & Studio**: Nomor WhatsApp resmi Colourist: `+62 851-2180-7590` (`6285121807590`), alamat ASHTA District 8 SCBD, jam operasional, dan email.
 - **Menu Navigasi**: Kelola item menu dan submenu di array `$nav_menu`.
 - **Layanan (5 Layanan Utama)**: Kelola 5 layanan utama di array `$services`:
   - `personal-color-analysis`
@@ -27,20 +27,18 @@ Semua data teks, nomor kontak, jadwal, layanan, workshop, dan testimoni dipusatk
   - `private-styling`
   - `makeup-masterclass`
   - `custom-lipstick`
+  *(Catatan: Carousel di beranda menampilkan 4 layanan: Personal Color Analysis, Private Styling, Makeup Masterclass, dan Custom Lipstick).*
 - **Cerita Transformasi (Transformation Stories)**:
-  - Dikelola di array `$stories` di `includes/data.php`.
-  - Untuk menambah cerita baru:
-    1. Tambahkan slug baru sebagai key di `$stories` (misal: `'my-new-story'`).
-    2. Isi `title`, `quote`, `category` (`'real-clients'`, `'experts'`, atau `'celebrities'`), `category_label`, `subtitle`, `media_slot`, `has_content` (`true`), dan `content` (array section berisi `heading`, `paragraphs`, serta `bullets` opsional).
-    3. Tambahkan slot gambar di `$media` (misal: `'story.my-new-story' => 'assets/media/my_story.jpg'`).
-    4. Jalankan `php build.php` untuk merender static export `dist/transformation/my-new-story/index.html`.
+  - Dikelola di array `$stories` di `includes/data.php` (4 cerita klien otentik):
+    1. She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident? (`she-spent-12-years`)
+    2. Six Years in Black. (`six-years-in-black`)
+    3. Finding confidence beyond the workplace (`finding-confidence`)
+    4. Rediscovering Herself After Motherhood (`rediscovering-herself`)
+  - Jalankan `php build.php` untuk merender static export `dist/transformation/` setiap ada perubahan.
 - **Mitra / Partner Brands**:
   - Dikelola di array `$partner_brands` di `includes/data.php`.
-  - Untuk menambah logo partner:
-    1. Tambahkan item di `$partner_brands`, contoh: `['name' => 'Brand Name', 'logo' => 'assets/media/brands/logo.png']`.
-    2. Jika path `logo` dikosongkan (`''`), sistem otomatis merender wordmark tipografi luxury dengan filter monokrom.
-    3. Jalankan `php build.php` setelah selesai.
-- **Testimoni & Mitra**: Kelola quote klien dan mitra di array `$testimonials` dan `$partners`.
+  - Menggunakan logo resmi Ferragamo, Plaza Indonesia, The Langham, Dior, Burberry, Miss World, Miss Indonesia, Laura Mercier.
+- **Testimoni & Mitra**: Kelola quote klien dan mitra di array `$testimonials` dan `$celebrity_cards`.
 
 ---
 

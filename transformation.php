@@ -1,7 +1,11 @@
 <?php
 /**
  * Transformation Page — Colourist
- * 5 Real Client Stories with Category Filter (Real Clients, Experts, Celebrities)
+ * Acuan canva_transformation_list_ref.png:
+ * - 4 Real Client Stories in exact order
+ * - Foto kiri (~40% landscape 16:9), kanan judul serif + kutipan italic + "Read the full story" underline
+ * - Baris dipisah bg abu sangat muda bergantian
+ * - Filter kategori disembunyikan
  */
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
@@ -9,37 +13,36 @@ require_once __DIR__ . '/includes/media.php';
 $page_title = 'Colourist Transformation — Authentic Stories & Confidence';
 $page_description = 'Every person deserves to feel confident in their own skin. Discover authentic transformations from thousands of clients across Asia.';
 
+$ordered_story_slugs = [
+    'she-spent-12-years',
+    'six-years-in-black',
+    'finding-confidence',
+    'rediscovering-herself'
+];
+
 include __DIR__ . '/includes/header.php';
 ?>
 
 <!-- 1. Page Header -->
 <section class="sec" style="padding-bottom: 24px;">
-  <h1 style="font-size: 34px; margin-bottom: 24px;">Colourist Transformation</h1>
+  <h1 style="font-size: 34px; margin-bottom: 12px; font-family: var(--font-serif); text-align: center;">Colourist Transformation</h1>
+  <p style="color: var(--mut); font-size: 13px; text-align: center; margin: 0 auto;">Every transformation begins with color.</p>
 </section>
 
-<!-- 2. Stories Listing (4 items, no felt-invisible) -->
+<!-- 2. Stories Listing (4 items, alternating rows) -->
 <section class="trans-stories-sec" aria-label="Daftar Cerita Transformasi">
   <div class="trans-stories-list" id="transStoriesList">
-    <?php
-    // Only 4 stories, exclude felt-invisible
-    $display_stories = $stories;
-    unset($display_stories['felt-invisible']);
-    ?>
-    <?php foreach ($display_stories as $st): ?>
-      <article class="trans-story-row" data-category="<?= e($st['category']) ?>">
+    <?php foreach ($ordered_story_slugs as $idx => $s_slug): ?>
+      <?php 
+        $st = $stories[$s_slug] ?? null;
+        if (!$st) continue;
+        $is_alt = ($idx % 2 === 1);
+        $story_img = $media[$st['media_slot']] ?? "assets/media/stories/story_" . ($idx + 1) . ".jpg";
+      ?>
+      <article class="trans-story-row <?= $is_alt ? 'is-alt-bg' : '' ?>">
         <div class="trans-story-media">
           <a href="transformation/<?= e($st['slug']) ?>" aria-label="<?= e($st['title']) ?>">
-            <?php if (!empty($st['media_slot']) && !empty($media[$st['media_slot']])): ?>
-              <?= media($st['media_slot'], [
-                  'aspect' => '16/9',
-                  'alt'    => $st['title'],
-                  'class'  => 'trans-row-img'
-              ]) ?>
-            <?php else: ?>
-              <div class="ph" style="aspect-ratio: 16/9; width: 100%; min-height: 220px;" role="img" aria-label="<?= e($st['title']) ?>">
-                <span><?= e($st['title']) ?></span>
-              </div>
-            <?php endif; ?>
+            <img src="<?= e($story_img) ?>" alt="<?= e($st['title']) ?>" class="trans-row-img" loading="lazy">
           </a>
         </div>
 

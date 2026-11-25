@@ -35,7 +35,7 @@ include __DIR__ . '/includes/header.php';
 
 <!-- 2. The Colourist Journey Section -->
 <section class="sec journey-sec" id="journeySection" aria-labelledby="journeyHeading">
-  <span class="eyebrow" style="letter-spacing: .3em;">WELCOME TO THE</span>
+  <span class="eyebrow" style="letter-spacing: .4em;">WELCOME TO THE</span>
   <h2 id="journeyHeading" class="journey-main-title"><img src="<?= e($media['brand.logo_black'] ?? 'assets/media/logos/logo_colourist.png') ?>" alt="Colourist" height="28" style="display:inline-block;vertical-align:middle;"></h2>
   <span class="journey-subtitle">JOURNEY</span>
 
@@ -168,8 +168,11 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- 4. Asia's Leading Color Expert Hero Banner (Full-Bleed) -->
+<!-- 4. Asia's Leading Color Expert Hero Banner (Full-Bleed with Video) -->
 <section class="home-leader-banner-sec" aria-labelledby="leaderHeading" style="background-image: url('<?= e($media['home.leader_bg'] ?? 'assets/media/leader_bg.jpg') ?>');">
+  <video autoplay muted loop playsinline preload="auto" poster="<?= e($media['home.leader_bg'] ?? 'assets/media/leader_bg.jpg') ?>" class="leader-banner-video">
+    <source src="assets/media/leader_banner_video.mp4" type="video/mp4">
+  </video>
   <div class="home-leader-banner-overlay"></div>
   <div class="home-leader-banner-content">
     <h2 id="leaderHeading" class="home-leader-title">Asia's Leading Color Expert</h2>
@@ -177,82 +180,94 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- 5. Transformations Section (3 Before/After Cards) -->
-<section class="sec" style="padding-top: 50px; padding-bottom: 50px;" aria-labelledby="homeTransHeading">
-  <h2 id="homeTransHeading" style="font-size: 32px; margin-bottom: 6px;">Transformations</h2>
-  <p style="color: var(--mut); font-size: 13px; margin: 0 auto 36px;">
+<!-- 5. Transformations Section (Collage + 3 Columns) -->
+<section class="sec home-trans-sec" aria-labelledby="homeTransHeading">
+  <h2 id="homeTransHeading" class="home-trans-main-title">Transformations</h2>
+  <p class="home-trans-subtitle">
     Every transformation begins with color.
   </p>
 
-  <?php
-  // Take first 3 stories
-  $home_stories = array_slice($stories, 0, 3, true);
-  ?>
-  <div class="home-trans-cards">
-    <?php foreach ($home_stories as $st): ?>
-      <article class="home-trans-card">
-        <!-- Before / After Side-by-Side (1:1 ratio each, grid 2 col, gap 8px) -->
-        <div class="ba-pair">
-          <div class="ba-item">
-            <?php if (!empty($st['before_slot']) && !empty($media[$st['before_slot']])): ?>
-              <img src="<?= e($media[$st['before_slot']]) ?>" alt="<?= e($st['title']) ?> Before" loading="lazy">
-            <?php else: ?>
-              <span class="ba-empty-label">before</span>
-            <?php endif; ?>
-          </div>
-          <div class="ba-item">
-            <?php if (!empty($st['after_slot']) && !empty($media[$st['after_slot']])): ?>
-              <img src="<?= e($media[$st['after_slot']]) ?>" alt="<?= e($st['title']) ?> After" loading="lazy">
-            <?php else: ?>
-              <span class="ba-empty-label">after</span>
-            <?php endif; ?>
-          </div>
-        </div>
+  <!-- Centered Collage Image -->
+  <div class="home-trans-collage-wrap">
+    <img src="<?= e($media['home.transformations_collage'] ?? 'assets/media/transformations_collage.jpg') ?>" 
+         alt="" 
+         class="home-trans-collage-img" 
+         loading="lazy">
+  </div>
 
-        <h3 class="home-trans-title">
-          <a href="transformation/<?= e($st['slug']) ?>">
-            <?= e($st['title']) ?>
-          </a>
-        </h3>
+  <!-- 3 Text Columns (no photo) -->
+  <div class="home-trans-cols">
+    <article class="home-trans-col">
+      <h3 class="home-trans-title">
+        <a href="transformation/she-spent-12-years">She Spent 12 Years Feeling Insecure. When Did She Start Feeling Confident?</a>
+      </h3>
+      <p class="home-trans-quote">
+        &ldquo;12 years of feeling insecure about my appearance, I never imagined that discovering the right colours could help me see myself differently.&rdquo;
+      </p>
+      <div>
+        <a href="transformation/she-spent-12-years" class="home-trans-link">
+          Read the full story
+        </a>
+      </div>
+    </article>
 
-        <p class="home-trans-quote">
-          &ldquo;<?= e($st['quote']) ?>&rdquo;
-        </p>
+    <article class="home-trans-col">
+      <h3 class="home-trans-title">
+        <a href="transformation/six-years-in-black">Six Years in Black</a>
+      </h3>
+      <p class="home-trans-quote">
+        &ldquo;After six years of struggling with acne, I thought wearing black was the only way to feel comfortable in my own skin&rdquo;
+      </p>
+      <div>
+        <a href="transformation/six-years-in-black" class="home-trans-link">
+          Read the full story
+        </a>
+      </div>
+    </article>
 
-        <div>
-          <a href="transformation/<?= e($st['slug']) ?>" class="home-trans-link">
-            Read the full story
-          </a>
-        </div>
-      </article>
-    <?php endforeach; ?>
+    <article class="home-trans-col">
+      <h3 class="home-trans-title">
+        <a href="transformation/rediscovering-herself">Rediscovering Herself After Motherhood</a>
+      </h3>
+      <p class="home-trans-quote">
+        &ldquo;After becoming a mother, so much of my attention went to my baby. Somewhere along the way, I stopped prioritising myself. I wanted to feel beautiful and confident again, not just as a mother, but as a woman.&rdquo;
+      </p>
+      <div>
+        <a href="transformation/rediscovering-herself" class="home-trans-link">
+          Read the full story
+        </a>
+      </div>
+    </article>
   </div>
 </section>
 
-<!-- 6. Why Colourist? Section (3 Italic Lines Centered) -->
-<section class="sec why-sec" aria-labelledby="homeWhyHeading">
-  <h2 id="homeWhyHeading" style="font-size: 32px; margin-bottom: 28px;">Why Colourist?</h2>
-  <div class="why-text-block">
-    <p class="why-line">Colourist is Asia's Leading &amp; No.1 Color Expert.</p>
-    <p class="why-line">Located in ASHTA &amp; Kuala Lumpur, we are dedicated to make Indonesians feel confident in
-      their unique color.</p>
-    <p class="why-line">Trusted by thousands of clients, brands, and publications globally and locally, we deliver real
-      transformations through the power of color.</p>
-  </div>
-</section>
-
-<!-- 7. Fullwidth CTA Section -->
-<section class="home-cta-sec" aria-labelledby="ctaHeading">
-  <div class="home-cta-content">
-    <h2 id="ctaHeading" class="home-cta-title">
-      Your Transformation Journey<br>Begins Here
-    </h2>
-    <div>
-      <a href="book" class="btn btn-cta-outline">
-        BOOK NOW
-      </a>
+<!-- 6 & 7. Why Colourist + CTA (Combined Seamless Block) -->
+<div class="home-why-cta-combined">
+  <section class="sec why-sec" aria-labelledby="homeWhyHeading">
+    <h2 id="homeWhyHeading" style="font-size: 34px; margin-bottom: 24px;">Why Colourist?</h2>
+    <div class="why-text-block">
+      <p class="why-line">Colourist is Asia's Leading &amp; No.1 Color Expert.</p>
+      <p class="why-line">Located in ASHTA &amp; Kuala Lumpur, we are dedicated to make Indonesians feel confident in their unique color.</p>
+      <p class="why-line">Trusted by thousands of clients, brands, and publications globally and locally, we deliver real transformations through the power of color.</p>
     </div>
-  </div>
-</section>
+    <div class="faces-fade-wrap">
+      <img src="assets/media/why_faces.png" alt="" class="why-faces-img" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Fullwidth CTA Section -->
+  <section class="home-cta-sec" aria-labelledby="ctaHeading">
+    <div class="home-cta-content">
+      <h2 id="ctaHeading" class="home-cta-title">
+        Your Transformation Journey<br>Begins Here
+      </h2>
+      <div>
+        <a href="book" class="btn btn-cta-outline">
+          BOOK NOW
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

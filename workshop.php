@@ -93,7 +93,7 @@ include __DIR__ . '/includes/header.php';
         </div>
         <div class="what-get-item">
           <h3 class="what-get-heading">Direct Mentorship</h3>
-          <p class="what-get-desc">Get personal feedback from Ms. Zerlinda. Ask anything. Level up fast.</p>
+          <p class="what-get-desc">Get personal feedback from Colourist Expert Mentors. Ask anything. Level up fast.</p>
         </div>
         <div class="what-get-item">
           <h3 class="what-get-heading">Exclusive Workshop &amp; Hands-On Training</h3>
@@ -114,6 +114,7 @@ include __DIR__ . '/includes/header.php';
     <button type="button" class="student-arrow arrow-prev" id="studentPrev"
       aria-label="Previous student video">&lt;</button>
     <div class="student-track-wrap">
+      <div class="carousel-fade fade-left" id="studentFadeLeft" aria-hidden="true"></div>
       <div class="student-track" id="studentTrack">
         <?php for ($i = 1; $i <= 8; $i++): ?>
           <div class="student-card">
@@ -121,6 +122,7 @@ include __DIR__ . '/includes/header.php';
           </div>
         <?php endfor; ?>
       </div>
+      <div class="carousel-fade fade-right" id="studentFadeRight" aria-hidden="true"></div>
     </div>
     <button type="button" class="student-arrow arrow-next" id="studentNext"
       aria-label="Next student video">&gt;</button>

@@ -2007,38 +2007,55 @@ footer.site-footer .footer-links a:hover {
   }
 
   .journey {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px 16px;
-    max-width: 420px;
-    margin-top: 28px;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px !important;
+    max-width: 100% !important;
+    margin-top: 20px !important;
   }
 
   .step-icon-wrap {
-    height: 32px;
-    margin-bottom: 10px;
+    height: 28px !important;
+    margin-bottom: 8px !important;
   }
 
   .step-icon {
-    height: 30px;
+    height: 26px !important;
+    width: auto !important;
   }
 
   .step-divider {
-    margin-bottom: 10px;
+    margin-bottom: 8px !important;
+  }
+
+  .step-divider i {
+    width: 6px !important;
+    height: 6px !important;
   }
 
   .step-label {
-    min-height: 38px;
-    margin-bottom: 10px;
+    min-height: 30px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .step-title-line {
+    font-size: 7px !important;
+    letter-spacing: .06em !important;
+    line-height: 1.3 !important;
+  }
+
+  .step-sublabel {
+    font-size: 5.5px !important;
+    letter-spacing: 0 !important;
   }
 
   .step-seal-wrap {
-    width: 48px;
-    height: 48px;
+    width: 44px !important;
+    height: 44px !important;
   }
 
   .step-seal-img {
-    width: 48px;
-    height: 48px;
+    width: 44px !important;
+    height: 44px !important;
   }
 
   .cards-wk,
@@ -2202,13 +2219,22 @@ main,
   overflow: hidden;
 }
 
+.leader-banner-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
 .home-leader-banner-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, transparent 20%, rgba(0, 0, 0, 0.85) 100%);
   z-index: 1;
 }
 
@@ -2261,8 +2287,41 @@ main,
   }
 }
 
-/* HOME: Transformations 3 Cards */
-.home-trans-cards {
+/* HOME: Transformations Section (Collage + 3 Columns) */
+.home-trans-sec {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.home-trans-main-title {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  letter-spacing: .06em;
+  margin-bottom: 6px;
+  color: var(--fg);
+}
+
+.home-trans-subtitle {
+  font-family: var(--font-sans);
+  color: var(--mut);
+  font-size: 13px;
+  margin: 0 auto 32px;
+}
+
+.home-trans-collage-wrap {
+  max-width: 70%;
+  margin: 0 auto 36px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.home-trans-collage-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.home-trans-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
@@ -2271,58 +2330,19 @@ main,
   text-align: left;
 }
 
-.home-trans-card {
+.home-trans-col {
   display: flex;
   flex-direction: column;
-  height: auto;
-  overflow: visible;
-}
-
-.ba-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 16px;
-  width: 100%;
-}
-
-.ba-item {
-  aspect-ratio: 1/1;
-  background: #f4f3f1;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ba-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.ba-empty-label {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  color: #777777;
-  text-transform: lowercase;
-  user-select: none;
 }
 
 .home-trans-title {
   font-family: 'Cormorant Garamond', var(--font-serif);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: .04em;
+  line-height: 1.3;
+  letter-spacing: .03em;
   margin-top: 2px;
-  margin-bottom: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .home-trans-title a {
@@ -2337,8 +2357,8 @@ main,
 .home-trans-quote {
   font-family: var(--font-sans);
   font-style: italic;
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 12.5px;
+  line-height: 1.6;
   color: #777777;
   margin-bottom: 14px;
   flex: 1;
@@ -2355,9 +2375,14 @@ main,
   display: inline-block;
 }
 
-/* HOME: Why Colourist 3 Lines Italic */
+/* HOME: Why Colourist + CTA Combined Block */
+.home-why-cta-combined {
+  margin: 0;
+  padding: 0;
+}
+
 .why-sec {
-  padding: 50px 28px;
+  padding: 50px 28px 0;
 }
 
 .why-text-block {
@@ -2375,10 +2400,26 @@ main,
   letter-spacing: .02em;
 }
 
+.faces-fade-wrap {
+  width: 100%;
+  max-width: 1000px;
+  margin: 36px auto 0;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to bottom, #000000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000000 60%, transparent 100%);
+}
+
+.why-faces-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* HOME: Fullwidth CTA */
 .home-cta-sec {
   position: relative;
-  height: 560px;
+  height: 520px;
   background-color: #f7f6f4;
   background-image: url('../media/cta_bg.jpg');
   background-size: cover;
@@ -2391,6 +2432,8 @@ main,
   color: #111111;
   color-scheme: light;
   padding: 40px 20px;
+  margin-top: -24px;
+  box-shadow: inset 0 20px 25px rgba(255,255,255,0.8), inset 0 -20px 25px rgba(255,255,255,0.8);
   overflow: hidden;
 }
 
@@ -2442,6 +2485,259 @@ main,
 .btn-cta-outline:hover {
   background: #111111;
   color: #ffffff !important;
+}
+
+/* ABOUT PAGE: What is Colour Analysis 4 Quadrants & PCA */
+.about-pca-sec {
+  padding: 60px 28px 50px;
+}
+
+.about-pca-title {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  letter-spacing: .04em;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.pca-diagram-container {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.pca-crosshair-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.pca-crosshair-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--line);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.pca-quadrants-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.pca-quadrant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.season-donut {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.donut-hole {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.donut-spring {
+  background: conic-gradient(
+    #fbd0a1 0deg 30deg,
+    #f69c72 30deg 60deg,
+    #f26b52 60deg 90deg,
+    #f7c844 90deg 120deg,
+    #e9e048 120deg 150deg,
+    #a6d564 150deg 180deg,
+    #47be8a 180deg 210deg,
+    #53c8c6 210deg 240deg,
+    #69c6e3 240deg 270deg,
+    #88b2e3 270deg 300deg,
+    #f9b8c6 300deg 330deg,
+    #f78496 330deg 360deg
+  );
+}
+
+.donut-summer {
+  background: conic-gradient(
+    #f6c5d2 0deg 30deg,
+    #e89ab3 30deg 60deg,
+    #cf769a 60deg 90deg,
+    #c48ebf 90deg 120deg,
+    #9c79b1 120deg 150deg,
+    #7d78a8 150deg 180deg,
+    #668bb2 180deg 210deg,
+    #7ba7bc 210deg 240deg,
+    #93c5be 240deg 270deg,
+    #a8d1b2 270deg 300deg,
+    #d1d5a8 300deg 330deg,
+    #eddabf 330deg 360deg
+  );
+}
+
+.donut-autumn {
+  background: conic-gradient(
+    #dd985c 0deg 30deg,
+    #cb6738 30deg 60deg,
+    #a93c28 60deg 90deg,
+    #802a28 90deg 120deg,
+    #c2843b 120deg 150deg,
+    #b29738 150deg 180deg,
+    #7a823b 180deg 210deg,
+    #4b6842 210deg 240deg,
+    #2c5d5d 240deg 270deg,
+    #3b6678 270deg 300deg,
+    #6a4a62 300deg 330deg,
+    #8d5b46 330deg 360deg
+  );
+}
+
+.donut-winter {
+  background: conic-gradient(
+    #c8193a 0deg 30deg,
+    #9f1345 30deg 60deg,
+    #bd1573 60deg 90deg,
+    #881c7e 90deg 120deg,
+    #531e7d 120deg 150deg,
+    #1d2b7d 150deg 180deg,
+    #11458e 180deg 210deg,
+    #0c759f 210deg 240deg,
+    #0d826a 240deg 270deg,
+    #165935 270deg 300deg,
+    #242426 300deg 330deg,
+    #ecebee 330deg 360deg
+  );
+}
+
+.season-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .25em;
+  color: var(--fg);
+}
+
+/* PCA Explanation Section (Light Grey) */
+.pca-explanation-sec {
+  background: #f6f4f1;
+  padding: 60px 28px;
+  width: 100%;
+}
+
+.pca-explanation-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 50px;
+  align-items: center;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.pca-exp-text {
+  text-align: left;
+}
+
+.pca-exp-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: .04em;
+  margin-bottom: 12px;
+}
+
+.pca-exp-divider {
+  width: 60px;
+  height: 1.5px;
+  background: var(--fg);
+  margin-bottom: 22px;
+}
+
+.pca-exp-p {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.85;
+  color: #333333;
+  margin-bottom: 18px;
+}
+
+.pca-exp-p strong {
+  font-weight: 600;
+  color: #111111;
+}
+
+.pca-harmony-badge-wrap {
+  margin: 20px 0;
+}
+
+.pca-harmony-badge {
+  display: inline-block;
+  background: #000000;
+  color: #ffffff;
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+.pca-exp-media {
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.pca-exp-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .pca-explanation-inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .season-donut {
+    width: 110px;
+    height: 110px;
+  }
+  .donut-hole {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* TRANSFORMATION LIST: Canva layout */
+.trans-story-row.is-alt-bg {
+  background: #faf9f8;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 2px;
 }
 
 /* TRANSFORMATION: Filter buttons & Zigzag layout */
@@ -3149,17 +3445,14 @@ main,
 
 /* Mobile Responsive Adjustments (<720px) */
 @media (max-width: 720px) {
-  .home-trans-cards {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 16px;
-    gap: 16px;
+  .home-trans-collage-wrap {
+    max-width: 92%;
   }
 
-  .home-trans-card {
-    flex: 0 0 85%;
-    scroll-snap-align: start;
+  .home-trans-cols {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 0 10px;
   }
 
   .trans-story-row {

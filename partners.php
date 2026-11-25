@@ -45,6 +45,7 @@ include __DIR__ . '/includes/header.php';
     <button type="button" class="celeb-arrow arrow-prev" id="celebPrev" aria-label="Previous celebrity">&lt;</button>
 
     <div class="celebs-track-wrap">
+      <div class="carousel-fade fade-left" id="celebsFadeLeft" aria-hidden="true"></div>
       <div class="celebs-track" id="celebsTrack">
         <?php foreach ($celebrity_cards as $celeb): ?>
           <div class="celeb-card">

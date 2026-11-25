@@ -1,117 +1,98 @@
 <?php
 /**
  * What is it? (About Page) — Colourist
- * Our Story, Studio Atelier, Key Stats, and Press Coverage
+ * Redesign sesuai Canva Page 11:
+ * - Diagram 4 Kuadran (Crosshair) 4 Cincin Donat Musim: Spring, Summer, Autumn, Winter
+ * - Section Personal Colour Analysis (PCA) dengan penjelasan & foto
+ * - Catatan: butuh export penuh Page 11 untuk bagian bawah
  */
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/media.php';
 
 $page_title = 'What is it? — Colourist — Asia\'s Leading & No. 1 Color Expert';
-$page_description = 'Colourist is Asia\'s leading color consulting house based in ASHTA District 8, SCBD and Kuala Lumpur, dedicated to making clients feel confident in their unique color.';
+$page_description = 'Discover Personal Colour Analysis (PCA): finding colours that harmonize with your natural complexion, features, skin, hair, and eyes.';
 
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- 1. Hero Image Section -->
-<section class="hero-wrapper" aria-label="About Hero">
-  <?= media('about.hero', [
-    'class' => 'hero-video-bg',
-    'aspect' => '16/9',
-    'alt' => 'Official Colourist Session',
-    'label' => 'colourist_official.jpg'
-  ]) ?>
-  <div class="hero-overlay">
-    <h1>What is it?</h1>
-    <p>ASIA'S LEADING &amp; NO.1 COLOR EXPERT</p>
-  </div>
-</section>
+<!-- 1. What is Colour Analysis? Section with 4 Quadrants Diagram -->
+<section class="sec about-pca-sec" aria-labelledby="aboutPcaHeading">
+  <h1 id="aboutPcaHeading" class="about-pca-title">What is Colour Analysis?</h1>
 
-<!-- 2. Our Story Split Section -->
-<section class="split" aria-labelledby="storyHeading">
-  <div class="split-media">
-    <?= media('about.story', [
-      'aspect' => '4/5',
-      'alt' => 'Colourist Master Consultation',
-      'label' => '76c60e282c78588fbb41bba6c9e69e4c.jpg'
-    ]) ?>
-  </div>
+  <div class="pca-diagram-container">
+    <div class="pca-crosshair-v" aria-hidden="true"></div>
+    <div class="pca-crosshair-h" aria-hidden="true"></div>
 
-  <div>
-    <span class="eyebrow">Our Story</span>
-    <h2 id="storyHeading">Colour, made personal.</h2>
-    <p>
-      Colourist was born from a singular mission: to empower individuals to feel radiant and effortlessly confident
-      through the scientific precision of colour analysis.
-    </p>
-    <p>
-      Too often, shopping and styling feel like expensive guesswork. By combining advanced draping science, face
-      architecture, and personalized pigment formulation, we provide a definitive roadmap for your wardrobe, makeup, and
-      lifestyle choices.
-    </p>
-    <p style="font-weight: 500; color: var(--fg);">
-      Based in ASHTA District 8, SCBD, Jakarta and Kuala Lumpur.
-    </p>
-    <div style="margin-top: 20px;">
-      <a href="book" class="btn btn-solid">Book Now</a>
-    </div>
-  </div>
-</section>
-
-<!-- 3. Stats Section (3 Columns) -->
-<section class="stats" aria-label="Key Milestones">
-  <?php foreach ($stats as $stat): ?>
-    <div>
-      <b><?= e($stat['number']) ?></b>
-      <span><?= e($stat['label']) ?></span>
-    </div>
-  <?php endforeach; ?>
-</section>
-
-<!-- 4. Studio Gallery (ASHTA Atelier) -->
-<section class="sec" aria-labelledby="studioHeading">
-  <span class="eyebrow">The Studio</span>
-  <h2 id="studioHeading" style="font-size: 28px;">ASHTA Atelier</h2>
-  <p style="color: var(--mut); max-width: 500px; margin: 8px auto 0; font-size: 12px;">
-    An intimate sanctuary bathed in calibrated daylight lighting, designed for private discovery in the heart of SCBD
-    Jakarta.
-  </p>
-
-  <div class="gal">
-    <div class="gal-item">
-      <?= media('about.studio.1', ['aspect' => '1/1', 'alt' => 'ASHTA Studio Tour', 'label' => 'ashta_studio_tour.jpg']) ?>
-    </div>
-    <div class="gal-item">
-      <?= media('about.studio.2', ['aspect' => '1/1', 'alt' => 'Atelier Draping Station', 'label' => 'foto studio']) ?>
-    </div>
-    <div class="gal-item">
-      <?= media('about.studio.3', ['aspect' => '1/1', 'alt' => 'Atelier Studio Space', 'label' => 'foto studio']) ?>
-    </div>
-    <div class="gal-item">
-      <?= media('about.studio.4', ['aspect' => '1/1', 'alt' => 'Consultation Lounge', 'label' => 'foto studio']) ?>
-    </div>
-  </div>
-</section>
-
-<!-- 5. Press Coverage Horizontal Strip ("As seen in") -->
-<section class="sec pt-0" aria-labelledby="pressHeading">
-  <span class="eyebrow" id="pressHeading">As seen in</span>
-
-  <div class="press">
-    <?php foreach ($press as $item): ?>
-      <div class="press-item">
-        <?= media($item['media'], [
-          'aspect' => '4/3',
-          'alt' => $item['title'],
-          'label' => $item['outlet']
-        ]) ?>
-        <div class="press-label"><?= e($item['outlet']) ?></div>
+    <div class="pca-quadrants-grid">
+      <!-- Top-Left: SPRING -->
+      <div class="pca-quadrant q-spring">
+        <div class="season-donut donut-spring" role="img" aria-label="Spring Color Palette 12 Shades">
+          <div class="donut-hole"></div>
+        </div>
+        <span class="season-label">SPRING</span>
       </div>
-    <?php endforeach; ?>
-  </div>
 
-  <div style="margin-top: 36px;">
-    <a href="book" class="btn btn-solid">Experience Colourist</a>
+      <!-- Top-Right: SUMMER -->
+      <div class="pca-quadrant q-summer">
+        <div class="season-donut donut-summer" role="img" aria-label="Summer Color Palette 12 Shades">
+          <div class="donut-hole"></div>
+        </div>
+        <span class="season-label">SUMMER</span>
+      </div>
+
+      <!-- Bottom-Left: AUTUMN -->
+      <div class="pca-quadrant q-autumn">
+        <div class="season-donut donut-autumn" role="img" aria-label="Autumn Color Palette 12 Shades">
+          <div class="donut-hole"></div>
+        </div>
+        <span class="season-label">AUTUMN</span>
+      </div>
+
+      <!-- Bottom-Right: WINTER -->
+      <div class="pca-quadrant q-winter">
+        <div class="season-donut donut-winter" role="img" aria-label="Winter Color Palette 12 Shades">
+          <div class="donut-hole"></div>
+        </div>
+        <span class="season-label">WINTER</span>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- 2. Personal Colour Analysis Explanation Section (Light Grey) -->
+<section class="pca-explanation-sec" aria-labelledby="pcaExpHeading">
+  <div class="pca-explanation-inner">
+    <div class="pca-exp-text">
+      <h2 id="pcaExpHeading" class="pca-exp-title">Personal Colour Analysis</h2>
+      <div class="pca-exp-divider" aria-hidden="true"></div>
+      
+      <p class="pca-exp-p">
+        Personal Colour Analysis (PCA) helps you find colours that <strong>harmonize</strong> with your natural color, features, your skin, hair, and eyes, so you can look your best effortlessly.
+      </p>
+
+      <div class="pca-harmony-badge-wrap">
+        <span class="pca-harmony-badge">COLOUR ANALYSIS = HARMONY</span>
+      </div>
+
+      <p class="pca-exp-p">
+        This analysis provides valuable insights into the colours that suit you best and how to mix and match them to achieve a harmonious look.
+      </p>
+
+      <div style="margin-top: 28px;">
+        <a href="book" class="btn btn-solid" style="padding: 12px 32px; font-size: 10px;">
+          Book Now
+        </a>
+      </div>
+    </div>
+
+    <div class="pca-exp-media">
+      <img src="assets/media/pca_explanation.jpg" 
+           alt="Personal Colour Analysis consultation at Colourist Studio" 
+           class="pca-exp-img" 
+           loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- Catatan: butuh export penuh Page 11 untuk bagian bawah -->
 <?php include __DIR__ . '/includes/footer.php'; ?>

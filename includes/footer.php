@@ -11,9 +11,14 @@ if (!defined('APP_INIT')) {
 
   <footer class="site-footer">
     <div class="footer-logo"><img src="<?= e($media['brand.logo_black'] ?? 'assets/media/logos/logo_colourist.png') ?>" alt="Colourist" height="20" style="display:inline-block;"></div>
-    <p style="margin: 0 auto 12px; max-width: 500px;">
+    <p style="margin: 0 auto 8px; max-width: 500px;">
       Asia &amp; Indonesia's No. 1 Color Expert.<br>
       <?= e($site['studio_address']) ?>
+    </p>
+    <p style="margin: 0 auto 12px; font-size: 11px;">
+      <a href="https://wa.me/<?= e($site['whatsapp']) ?>" target="_blank" rel="noopener" style="color: var(--mut); text-decoration: underline;">
+        WhatsApp Concierge: <?= e($site['whatsapp_display']) ?>
+      </a>
     </p>
 
     <div class="footer-links">

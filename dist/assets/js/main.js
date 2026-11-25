@@ -898,14 +898,19 @@
   const celebsTrack = document.getElementById('celebsTrack');
   const celebPrev = document.getElementById('celebPrev');
   const celebNext = document.getElementById('celebNext');
+  const celebsFadeLeft = document.getElementById('celebsFadeLeft');
   const celebsFadeRight = document.getElementById('celebsFadeRight');
 
   if (celebsTrack) {
     function updateCelebsFade() {
-      if (!celebsFadeRight) return;
       const scrollLeft = celebsTrack.scrollLeft;
       const maxScroll = celebsTrack.scrollWidth - celebsTrack.clientWidth;
-      celebsFadeRight.style.opacity = (maxScroll - scrollLeft) > 15 ? '1' : '0';
+      if (celebsFadeLeft) {
+        celebsFadeLeft.style.opacity = scrollLeft > 10 ? '1' : '0';
+      }
+      if (celebsFadeRight) {
+        celebsFadeRight.style.opacity = (maxScroll - scrollLeft) > 15 ? '1' : '0';
+      }
     }
 
     celebsTrack.addEventListener('scroll', updateCelebsFade, { passive: true });
@@ -923,12 +928,28 @@
     }
   }
 
-  // 6. Workshop Student Carousel Arrows
+  // 6. Workshop Student Carousel Arrows & Fade
   const studentTrack = document.getElementById('studentTrack');
   const studentPrev = document.getElementById('studentPrev');
   const studentNext = document.getElementById('studentNext');
+  const studentFadeLeft = document.getElementById('studentFadeLeft');
+  const studentFadeRight = document.getElementById('studentFadeRight');
 
   if (studentTrack) {
+    function updateStudentFade() {
+      const scrollLeft = studentTrack.scrollLeft;
+      const maxScroll = studentTrack.scrollWidth - studentTrack.clientWidth;
+      if (studentFadeLeft) {
+        studentFadeLeft.style.opacity = scrollLeft > 10 ? '1' : '0';
+      }
+      if (studentFadeRight) {
+        studentFadeRight.style.opacity = (maxScroll - scrollLeft) > 15 ? '1' : '0';
+      }
+    }
+
+    studentTrack.addEventListener('scroll', updateStudentFade, { passive: true });
+    updateStudentFade();
+
     if (studentPrev) {
       studentPrev.addEventListener('click', function () {
         studentTrack.scrollBy({ left: -240, behavior: 'smooth' });

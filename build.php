@@ -31,7 +31,9 @@ function remove_directory($dir) {
 }
 
 remove_directory($dist_dir);
-mkdir($dist_dir, 0755, true);
+if (!is_dir($dist_dir)) {
+    mkdir($dist_dir, 0755, true);
+}
 
 // Helper to copy directory recursively
 function copy_directory($src, $dst) {

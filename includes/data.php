@@ -40,16 +40,18 @@ $media = [
     'journey.seal_empty' => 'assets/media/journey/journey_seal_empty.svg',
 
     // Journey Icons
-    'journey.icon_color' => 'assets/media/journey/journey_icon_color.svg',
-    'journey.icon_styling' => 'assets/media/journey/journey_icon_styling.svg',
-    'journey.icon_makeup' => 'assets/media/journey/journey_icon_makeup.svg',
-    'journey.icon_lipstick' => 'assets/media/journey/journey_icon_lipstick.svg',
+    'journey.icon_color' => 'assets/media/journey/journey_icon_color.png',
+    'journey.icon_styling' => 'assets/media/journey/journey_icon_styling.png',
+    'journey.icon_makeup' => 'assets/media/journey/journey_icon_makeup.png',
+    'journey.icon_lipstick' => 'assets/media/journey/journey_icon_lipstick.png',
 
     // Home
     'hero.home' => 'assets/media/hero_full.mp4',
     'hero.home_poster' => 'assets/media/hero_full_poster.jpg',
     'home.leader_bg' => 'assets/media/leader_bg.jpg',
+    'home.leader_video' => 'assets/media/leader_banner_video.mp4',
     'home.cta_bg' => 'assets/media/cta_bg.jpg',
+    'home.transformations_collage' => 'assets/media/transformations_collage.jpg',
 
     // Services (Cards & Detail)
     'service.color-analysis' => 'assets/media/service_color_analysis.mp4',
@@ -63,12 +65,11 @@ $media = [
     'service.custom-lipstick' => 'assets/media/service_custom_lipstick.mp4',
     'service.custom-lipstick_poster' => 'assets/media/service_custom_lipstick_poster.jpg',
 
-    // Story 1..3 Photos & Before/After
-    'story.she-spent-12-years' => 'assets/media/story_she_spent_12_years.jpg',
-    'story.six-years-in-black' => 'assets/media/story_six_years_in_black.jpg',
-    'story.finding-confidence' => 'assets/media/story_finding_confidence.jpg',
-    'story.rediscovering-herself' => '',
-    'story.felt-invisible' => '',
+    // Story 1..4 Photos & Before/After
+    'story.she-spent-12-years' => 'assets/media/stories/story_1.jpg',
+    'story.six-years-in-black' => 'assets/media/stories/story_2.jpg',
+    'story.finding-confidence' => 'assets/media/stories/story_3.jpg',
+    'story.rediscovering-herself' => 'assets/media/stories/story_4.jpg',
 
     'story.1.before' => 'assets/media/story_1_before.jpg',
     'story.1.after'  => '',
@@ -222,7 +223,7 @@ $journey_steps = [
         'title_line1' => 'PERSONAL',
         'title_line2' => 'COLOR ANALYSIS',
         'sublabel' => '',
-        'icon' => 'assets/media/journey/journey_icon_color.svg',
+        'icon' => 'assets/media/journey/journey_icon_color.png',
         'seal' => 'assets/media/journey/journey_seal_gold.png',
         'is_gold' => true,
         'alt' => 'Personal Color Analysis'
@@ -232,7 +233,7 @@ $journey_steps = [
         'title_line1' => 'PRIVATE',
         'title_line2' => 'STYLING',
         'sublabel' => '',
-        'icon' => 'assets/media/journey/journey_icon_styling.svg',
+        'icon' => 'assets/media/journey/journey_icon_styling.png',
         'seal' => 'assets/media/journey/journey_seal_empty.svg',
         'is_gold' => false,
         'alt' => 'Private Styling'
@@ -242,7 +243,7 @@ $journey_steps = [
         'title_line1' => 'MAKEUP',
         'title_line2' => 'MASTERCLASS',
         'sublabel' => '',
-        'icon' => 'assets/media/journey/journey_icon_makeup.svg',
+        'icon' => 'assets/media/journey/journey_icon_makeup.png',
         'seal' => 'assets/media/journey/journey_seal_empty.svg',
         'is_gold' => false,
         'alt' => 'Makeup Masterclass'
@@ -252,7 +253,7 @@ $journey_steps = [
         'title_line1' => 'CUSTOM',
         'title_line2' => 'LIPSTICK',
         'sublabel' => '(LIP BAR EXPERIENCE)',
-        'icon' => 'assets/media/journey/journey_icon_lipstick.svg',
+        'icon' => 'assets/media/journey/journey_icon_lipstick.png',
         'seal' => 'assets/media/journey/journey_seal_empty.svg',
         'is_gold' => false,
         'alt' => 'Custom Lipstick'
@@ -569,13 +570,13 @@ $stories = [
 
 // Partner Brands (Tab 5 - 8 Luxury Brands)
 $partner_brands = [
-    ['name' => 'Ferragamo', 'logo' => 'assets/media/partners/ferragamo.svg'],
+    ['name' => 'Ferragamo', 'logo' => 'assets/media/logos/logo_ferragamo.png'],
     ['name' => 'The Langham Jakarta', 'logo' => 'assets/media/partners/the_langham.svg'],
     ['name' => 'Dior', 'logo' => 'assets/media/partners/dior.svg'],
     ['name' => 'Burberry', 'logo' => 'assets/media/partners/burberry.svg'],
     ['name' => 'Miss World', 'logo' => 'assets/media/partners/miss_world.svg'],
     ['name' => 'Miss Indonesia', 'logo' => 'assets/media/partners/miss_indonesia.svg'],
-    ['name' => 'Plaza Indonesia', 'logo' => 'assets/media/partners/plaza_indonesia.svg'],
+    ['name' => 'Plaza Indonesia', 'logo' => 'assets/media/logos/logo_plaza_indonesia.png'],
     ['name' => 'Laura Mercier', 'logo' => 'assets/media/partners/laura_mercier.svg']
 ];
 
