@@ -65,18 +65,26 @@ $media = [
     'service.custom-lipstick' => 'assets/media/service_custom_lipstick.mp4',
     'service.custom-lipstick_poster' => 'assets/media/service_custom_lipstick_poster.jpg',
 
-    // Story 1..4 Photos & Before/After
-    'story.she-spent-12-years' => 'assets/media/stories/story_1.jpg',
-    'story.six-years-in-black' => 'assets/media/stories/story_2.jpg',
-    'story.finding-confidence' => 'assets/media/stories/story_3.jpg',
-    'story.rediscovering-herself' => 'assets/media/stories/story_4.jpg',
+    // Transformation Stories (Photos, Hero, OG)
+    'story.she-spent-12-years' => 'assets/media/transformation/transformation.jpg',
+    'story.she-spent-12-years.image' => 'assets/media/transformation/transformation.jpg',
+    'story.she-spent-12-years.hero' => 'assets/media/transformation/transformation.jpg',
+    'story.she-spent-12-years.og' => 'assets/media/transformation/transformation.jpg',
 
-    'story.1.before' => 'assets/media/story_1_before.jpg',
-    'story.1.after'  => '',
-    'story.2.before' => '',
-    'story.2.after'  => '',
-    'story.3.before' => '',
-    'story.3.after'  => '',
+    'story.six-years-in-black' => 'assets/media/transformation/transformation (2).jpg',
+    'story.six-years-in-black.image' => 'assets/media/transformation/transformation (2).jpg',
+    'story.six-years-in-black.hero' => 'assets/media/transformation/transformation (2).jpg',
+    'story.six-years-in-black.og' => 'assets/media/transformation/transformation (2).jpg',
+
+    'story.finding-confidence' => 'assets/media/transformation/transformation (3).jpg',
+    'story.finding-confidence.image' => 'assets/media/transformation/transformation (3).jpg',
+    'story.finding-confidence.hero' => 'assets/media/transformation/transformation (3).jpg',
+    'story.finding-confidence.og' => 'assets/media/transformation/transformation (3).jpg',
+
+    'story.rediscovering-herself' => 'assets/media/transformation/transformation (4).jpg',
+    'story.rediscovering-herself.image' => 'assets/media/transformation/transformation (4).jpg',
+    'story.rediscovering-herself.hero' => 'assets/media/transformation/transformation (4).jpg',
+    'story.rediscovering-herself.og' => 'assets/media/transformation/transformation (4).jpg',
 
     // Transformations (Legacy Videos)
     'transformation.1' => 'assets/media/trans_1.mp4',
@@ -370,8 +378,9 @@ $stories = [
         'category_label' => 'Real Clients',
         'subtitle' => 'Insecurity may change the way you see yourself. But so does confidence.',
         'media_slot' => 'story.she-spent-12-years',
-        'before_slot' => 'story.1.before',
-        'after_slot' => 'story.1.after',
+        'image_slot' => 'story.she-spent-12-years.image',
+        'hero_slot' => 'story.she-spent-12-years.hero',
+        'og_slot' => 'story.she-spent-12-years.og',
         'has_content' => true,
         'content' => [
             [
@@ -412,8 +421,9 @@ $stories = [
         'category_label' => 'Real Clients',
         'subtitle' => 'A Colourist Client Story',
         'media_slot' => 'story.six-years-in-black',
-        'before_slot' => 'story.2.before',
-        'after_slot' => 'story.2.after',
+        'image_slot' => 'story.six-years-in-black.image',
+        'hero_slot' => 'story.six-years-in-black.hero',
+        'og_slot' => 'story.six-years-in-black.og',
         'has_content' => true,
         'content' => [
             [
@@ -472,8 +482,9 @@ $stories = [
         'category_label' => 'Real Clients',
         'subtitle' => 'A Colourist Client Story',
         'media_slot' => 'story.finding-confidence',
-        'before_slot' => 'story.3.before',
-        'after_slot' => 'story.3.after',
+        'image_slot' => 'story.finding-confidence.image',
+        'hero_slot' => 'story.finding-confidence.hero',
+        'og_slot' => 'story.finding-confidence.og',
         'has_content' => true,
         'content' => [
             [
@@ -527,8 +538,9 @@ $stories = [
         'category_label' => 'Real Clients',
         'subtitle' => 'A Colourist Client Story',
         'media_slot' => 'story.rediscovering-herself',
-        'before_slot' => '',
-        'after_slot' => '',
+        'image_slot' => 'story.rediscovering-herself.image',
+        'hero_slot' => 'story.rediscovering-herself.hero',
+        'og_slot' => 'story.rediscovering-herself.og',
         'has_content' => true,
         'content' => [
             [

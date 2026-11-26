@@ -96,7 +96,7 @@ function media($slot, $opts = [])
   $heightAttr = !empty($opts['height']) ? ' height="' . intval($opts['height']) . '"' : '';
 
   return sprintf(
-    '<img src="%s" alt="%s" loading="lazy" class="%s" style="%s"%s%s onerror="this.onerror=null;this.classList.add(\'img-err\');">',
+    '<img src="%s" alt="%s" loading="lazy" decoding="async" class="%s" style="%s"%s%s onerror="this.onerror=null;this.classList.add(\'img-err\');">',
     e($src),
     e($alt),
     e($imageClasses),

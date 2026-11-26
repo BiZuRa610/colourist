@@ -37,12 +37,18 @@ include __DIR__ . '/includes/header.php';
         $st = $stories[$s_slug] ?? null;
         if (!$st) continue;
         $is_alt = ($idx % 2 === 1);
-        $story_img = $media[$st['media_slot']] ?? "assets/media/stories/story_" . ($idx + 1) . ".jpg";
+        $story_slot = $st['image_slot'] ?? ($st['media_slot'] ?? "story.{$s_slug}.image");
       ?>
       <article class="trans-story-row <?= $is_alt ? 'is-alt-bg' : '' ?>">
         <div class="trans-story-media">
           <a href="transformation/<?= e($st['slug']) ?>" aria-label="<?= e($st['title']) ?>">
-            <img src="<?= e($story_img) ?>" alt="<?= e($st['title']) ?>" class="trans-row-img" loading="lazy">
+            <?= media($story_slot, [
+                'alt'    => $st['title'] . ' — Colourist Transformation Story',
+                'class'  => 'trans-row-img',
+                'aspect' => '16/9',
+                'width'  => 484,
+                'height' => 281
+            ]) ?>
           </a>
         </div>
 

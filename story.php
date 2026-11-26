@@ -23,6 +23,13 @@ $current_idx = array_search($slug, $story_slugs);
 $prev_slug = ($current_idx > 0) ? $story_slugs[$current_idx - 1] : null;
 $next_slug = ($current_idx < count($story_slugs) - 1) ? $story_slugs[$current_idx + 1] : null;
 
+$hero_slot = $story['hero_slot'] ?? ($story['media_slot'] ?? "story.{$slug}.hero");
+$og_slot = $story['og_slot'] ?? ($story['media_slot'] ?? "story.{$slug}.og");
+$og_img_path = $media[$og_slot] ?? ($media[$hero_slot] ?? '');
+if (!empty($og_img_path)) {
+    $og_image = $site['url'] . '/' . $og_img_path;
+}
+
 $page_title = $story['title'] . ' — Colourist Transformation Story';
 $page_description = $story['quote'] ?? 'Read the full transformation story at Colourist.';
 
@@ -31,11 +38,13 @@ include __DIR__ . '/includes/header.php';
 
 <!-- 1. Hero Image / Media -->
 <div class="story-hero-wrapper" aria-label="Transformation Hero">
-  <?php if (!empty($story['media_slot']) && !empty($media[$story['media_slot']])): ?>
-    <?= media($story['media_slot'], [
-        'aspect' => '16/9',
-        'alt'    => $story['title'],
-        'class'  => 'story-hero-img'
+  <?php if (!empty($media[$hero_slot])): ?>
+    <?= media($hero_slot, [
+        'aspect' => '',
+        'alt'    => $story['title'] . ' — Colourist Transformation Hero',
+        'class'  => 'story-hero-img',
+        'width'  => 1600,
+        'height' => 900
     ]) ?>
   <?php else: ?>
     <div class="ph story-hero-ph" role="img" aria-label="Transformation Story Photo">
