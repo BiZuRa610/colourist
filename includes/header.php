@@ -67,7 +67,7 @@ $canonical_url = $site['url'] . '/' . ($current_page === 'index.php' ? '' : str_
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="<?= ($clean_current === 'index' || empty($clean_current)) ? 'is-home' : '' ?>">
+<body class="<?= ($clean_current === 'index' || empty($clean_current)) ? 'is-home' : ($clean_current === 'workshop' ? 'is-workshop' : '') ?>">
 
   <!-- Backdrop overlay for mega menu -->
   <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>

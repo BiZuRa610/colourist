@@ -94,10 +94,11 @@ $media = [
     'about.studio.4' => 'assets/media/1c528e59-624d-4e95-bd54-f92ff7a03c77.png',
 
     // Workshop
-    'workshop.hero' => 'assets/media/workshop_hero.jpg',
+    'workshop.hero' => 'assets/media/workshop/workshop_hero_collage.jpg',
     'workshop.video' => 'assets/media/workshop_video.mp4',
-    'workshop.video_poster' => 'assets/media/workshop_video_poster.jpg',
-    'workshop.group' => 'assets/media/workshop_group.jpg',
+    'workshop.video_poster' => 'assets/media/workshop/workshop_video_poster.jpg',
+    'workshop.group' => 'assets/media/workshop/workshop_group.jpg',
+    'workshop.cta_bg' => 'assets/media/workshop/workshop_cta_bg.jpg',
 
     // Collaboration & Partners
     'collab.hero' => 'assets/media/colourist_official.jpg',

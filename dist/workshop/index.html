@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="">
+<body class="is-workshop">
 
   <!-- Backdrop overlay for mega menu -->
   <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
@@ -156,28 +156,34 @@
   <!-- Page Wrapper Container -->
   <main class="site-wrapper" id="mainContent">
 
-<!-- 1. Workshop Hero Section (2 Columns) -->
-<section class="wk-hero-sec" aria-labelledby="wkHeroTitle">
-  <div class="wk-hero-inner">
-    <div class="wk-hero-text">
-      <h1 id="wkHeroTitle" class="wk-hero-title">Workshop</h1>
-      <p class="wk-hero-sub">
-        Professional Colour Analyst Certification - Korean and Japanese Method by Colourist's Expert
-      </p>
-    </div>
-    <div class="wk-hero-media">
-      <img src="assets/media/workshop_hero.jpg" alt="Colourist Workshop Certification Ceremony" loading="lazy" class="media-img wk-hero-img" style="aspect-ratio: 4/3; object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">    </div>
+<!-- 1. Hero Kolase Foto (full-bleed, tanpa padding) -->
+<section class="wk-hero-full-sec" aria-labelledby="wkHeroTitle">
+  <div class="wk-hero-collage-wrap">
+    <img src="assets/media/workshop/workshop_hero_collage.jpg" 
+         alt="Colourist Workshop Session Collage" 
+         class="wk-hero-collage-img" 
+         width="916" height="345">
+    <div class="wk-hero-collage-fade" aria-hidden="true"></div>
+  </div>
+
+  <div class="wk-hero-title-wrap">
+    <h1 id="wkHeroTitle" class="wk-hero-main-title">Workshop</h1>
+    <p class="wk-hero-main-sub">
+      Professional Colour Analyst Certification - Korean and Japanese Method by Colourist's Expert
+    </p>
   </div>
 </section>
 
-<!-- 2. Centered Video Section (9:16) -->
+<!-- 2. Video Tengah (9:16, lebar ±270px desktop, 62% mobile, jarak 60px atas-bawah) -->
 <section class="sec wk-video-sec" aria-label="Workshop Overview Video">
   <div class="wk-video-wrap">
     <div class="wk-autoplay-player" data-workshop-autoplay>
-      <video autoplay muted loop playsinline preload="auto" poster="assets/media/workshop_video_poster.jpg" class="wk-autoplay-video">
+      <video autoplay muted loop playsinline preload="auto" poster="assets/media/workshop/workshop_video_poster.jpg" class="wk-autoplay-video">
         <source src="assets/media/workshop_video.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
       </video>
+
+      <!-- Small Mute/Unmute Toggle in bottom right -->
       <button type="button" class="wk-mute-btn" aria-label="Mute or unmute">
         <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -194,42 +200,58 @@
   </div>
 </section>
 
-<!-- 3. Beige Fullwidth Section (#f5f3f1) -->
+<!-- 3. Section Beige (#f5f3f1, full-bleed, padding 60px 8vw) -->
 <section class="wk-beige-sec" aria-label="Why Join and What You Get">
   <div class="wk-beige-inner">
-    <!-- Why Join? (2 Columns) -->
-    <div class="why-join-grid">
-      <div class="why-join-text">
-        <h2 class="why-join-title">Why join?</h2>
-        <p class="why-join-p">The beauty and fashion world is shifting— personalization is the new luxury.</p>
-        <p class="why-join-p">Searches for “personal color” in Asia are up 350%. Top pros are using color analysis, and
-          70% of clients will pay more for it.</p>
+    <!-- Baris Atas 2 Kolom: Why join? + Foto Grup -->
+    <div class="wk-why-grid">
+      <div class="wk-why-text">
+        <h2 class="wk-why-title">Why join?</h2>
+        <p class="wk-why-p">
+          The beauty and fashion world is shifting— personalization is the new luxury.
+        </p>
+        <p class="wk-why-p">
+          Searches for “personal color” in Asia are up 350%. Top pros are using color analysis, and 70% of clients will pay more for it.
+        </p>
       </div>
-      <div class="why-join-media">
-        <img src="assets/media/workshop_group.jpg" alt="Colourist Workshop Group Alumni" loading="lazy" class="media-img why-join-img" style="object-fit: cover;" onerror="this.onerror=null;this.classList.add('img-err');">      </div>
+      <div class="wk-why-media">
+        <img src="assets/media/workshop/workshop_group.jpg" 
+             alt="Colourist Workshop Certification Alumni Group" 
+             class="wk-why-img" 
+             loading="lazy">
+      </div>
     </div>
 
-    <!-- What You Get (4 Columns) -->
-    <div class="what-get-block">
-      <h2 class="what-get-main-title">What you get</h2>
-      <div class="what-get-grid">
-        <div class="what-get-item">
-          <h3 class="what-get-heading">International Certification</h3>
-          <p class="what-get-desc">Get international certificate by Japanese mentor for Japanese Color Analysis Method
+    <!-- What You Get: Judul + 4 Kolom -->
+    <div class="wk-what-block">
+      <h2 class="wk-what-title">What you get</h2>
+      <div class="wk-what-grid">
+        <div class="wk-what-col">
+          <h3 class="wk-what-heading">International Certification</h3>
+          <p class="wk-what-desc">
+            Get international certificate by Japanese mentor for Japanese Color Analysis Method
           </p>
         </div>
-        <div class="what-get-item">
-          <h3 class="what-get-heading">Real Client Practice</h3>
-          <p class="what-get-desc">Learn exactly how to turn theory into results through real client practice.</p>
+
+        <div class="wk-what-col">
+          <h3 class="wk-what-heading">Real Client Practice</h3>
+          <p class="wk-what-desc">
+            Learn exactly how to turn theory into results through real client practice.
+          </p>
         </div>
-        <div class="what-get-item">
-          <h3 class="what-get-heading">Direct Mentorship</h3>
-          <p class="what-get-desc">Get personal feedback from Colourist Expert Mentors. Ask anything. Level up fast.</p>
+
+        <div class="wk-what-col">
+          <h3 class="wk-what-heading">Direct Mentorship</h3>
+          <p class="wk-what-desc">
+            Get personal feedback from Ms. Zerlinda. Ask anything. Level up fast.
+          </p>
         </div>
-        <div class="what-get-item">
-          <h3 class="what-get-heading">Exclusive Workshop &amp; Hands-On Training</h3>
-          <p class="what-get-desc">Train with Japanese color expert. Learn to drape, analyze, and classify tones with
-            expert guidance.</p>
+
+        <div class="wk-what-col">
+          <h3 class="wk-what-heading">Exclusive Workshop &amp; Hands-On Training</h3>
+          <p class="wk-what-desc">
+            Train with Japanese color expert. Learn to drape, analyze, and classify tones with expert guidance.
+          </p>
         </div>
       </div>
     </div>
@@ -237,55 +259,195 @@
 </section>
 
 <!-- 4. Colourist Student Section -->
-<section class="sec student-sec" aria-labelledby="studentHeading">
-  <h2 id="studentHeading" style="font-size: 32px; margin-bottom: 28px;">Colourist Student</h2>
+<section class="sec wk-student-sec" aria-labelledby="studentHeading">
+  <h2 id="studentHeading" class="wk-student-main-title">Colourist Student</h2>
 
-  <!-- 9:16 Video / Foto Carousel -->
-  <div class="student-carousel-container">
-    <button type="button" class="student-arrow arrow-prev" id="studentPrev"
-      aria-label="Previous student video">&lt;</button>
-    <div class="student-track-wrap">
-      <div class="carousel-fade fade-left" id="studentFadeLeft" aria-hidden="true"></div>
-      <div class="student-track" id="studentTrack">
-                  <div class="student-card">
-            <img src="assets/media/students/student_1.jpg" alt="Colourist Student 1" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-                  <div class="student-card">
-            <img src="assets/media/students/student_2.jpg" alt="Colourist Student 2" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-                  <div class="student-card">
-            <img src="assets/media/students/student_3.jpg" alt="Colourist Student 3" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-                  <div class="student-card">
-            <img src="assets/media/students/student_4.jpg" alt="Colourist Student 4" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-                  <div class="student-card">
-            <img src="assets/media/students/student_5.jpg" alt="Colourist Student 5" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-                  <div class="student-card">
-            <img src="assets/media/students/student_6.jpg" alt="Colourist Student 6" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-                  <div class="student-card">
-            <img src="assets/media/students/student_7.jpg" alt="Colourist Student 7" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-                  <div class="student-card">
-            <img src="assets/media/students/student_8.jpg" alt="Colourist Student 8" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-              </div>
-      <div class="carousel-fade fade-right" id="studentFadeRight" aria-hidden="true"></div>
+  <!-- Carousel Foto Student 9:16 (Infinite Loop & Draggable) -->
+  <div class="wk-student-carousel-wrap">
+    <button type="button" class="wk-student-arrow arrow-prev" id="studentPrev" aria-label="Previous student photo">&lt;</button>
+
+    <div class="wk-student-track-container">
+      <div class="wk-student-fade fade-left" aria-hidden="true"></div>
+      <div class="wk-student-track" id="studentTrack" tabindex="0" role="region" aria-label="Colourist Student Carousel">
+                              <div class="wk-student-card" data-student-card data-index="0" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_1.jpg" alt="Colourist Student Graduate 1" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="1" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_2.jpg" alt="Colourist Student Graduate 2" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="2" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_3.jpg" alt="Colourist Student Graduate 3" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="3" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_4.jpg" alt="Colourist Student Graduate 4" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="4" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_5.jpg" alt="Colourist Student Graduate 5" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="5" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_6.jpg" alt="Colourist Student Graduate 6" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="6" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_7.jpg" alt="Colourist Student Graduate 7" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="7" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_8.jpg" alt="Colourist Student Graduate 8" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="8" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_9.jpg" alt="Colourist Student Graduate 9" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="9" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_10.jpg" alt="Colourist Student Graduate 10" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="10" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_11.jpg" alt="Colourist Student Graduate 11" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="11" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_12.jpg" alt="Colourist Student Graduate 12" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="12" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_13.jpg" alt="Colourist Student Graduate 13" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="13" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_14.jpg" alt="Colourist Student Graduate 14" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="14" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_15.jpg" alt="Colourist Student Graduate 15" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="15" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_16.jpg" alt="Colourist Student Graduate 16" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="16" data-clone="prev" aria-hidden="true">
+              <img src="assets/media/students/student_17.jpg" alt="Colourist Student Graduate 17" loading="lazy" class="wk-student-img">
+            </div>
+                                        <div class="wk-student-card" data-student-card data-index="0" data-clone="none">
+              <img src="assets/media/students/student_1.jpg" alt="Colourist Student Graduate 1" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="1" data-clone="none">
+              <img src="assets/media/students/student_2.jpg" alt="Colourist Student Graduate 2" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="2" data-clone="none">
+              <img src="assets/media/students/student_3.jpg" alt="Colourist Student Graduate 3" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="3" data-clone="none">
+              <img src="assets/media/students/student_4.jpg" alt="Colourist Student Graduate 4" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="4" data-clone="none">
+              <img src="assets/media/students/student_5.jpg" alt="Colourist Student Graduate 5" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="5" data-clone="none">
+              <img src="assets/media/students/student_6.jpg" alt="Colourist Student Graduate 6" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="6" data-clone="none">
+              <img src="assets/media/students/student_7.jpg" alt="Colourist Student Graduate 7" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="7" data-clone="none">
+              <img src="assets/media/students/student_8.jpg" alt="Colourist Student Graduate 8" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="8" data-clone="none">
+              <img src="assets/media/students/student_9.jpg" alt="Colourist Student Graduate 9" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="9" data-clone="none">
+              <img src="assets/media/students/student_10.jpg" alt="Colourist Student Graduate 10" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="10" data-clone="none">
+              <img src="assets/media/students/student_11.jpg" alt="Colourist Student Graduate 11" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="11" data-clone="none">
+              <img src="assets/media/students/student_12.jpg" alt="Colourist Student Graduate 12" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="12" data-clone="none">
+              <img src="assets/media/students/student_13.jpg" alt="Colourist Student Graduate 13" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="13" data-clone="none">
+              <img src="assets/media/students/student_14.jpg" alt="Colourist Student Graduate 14" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="14" data-clone="none">
+              <img src="assets/media/students/student_15.jpg" alt="Colourist Student Graduate 15" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="15" data-clone="none">
+              <img src="assets/media/students/student_16.jpg" alt="Colourist Student Graduate 16" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="16" data-clone="none">
+              <img src="assets/media/students/student_17.jpg" alt="Colourist Student Graduate 17" loading="lazy" class="wk-student-img">
+            </div>
+                                        <div class="wk-student-card" data-student-card data-index="0" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_1.jpg" alt="Colourist Student Graduate 1" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="1" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_2.jpg" alt="Colourist Student Graduate 2" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="2" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_3.jpg" alt="Colourist Student Graduate 3" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="3" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_4.jpg" alt="Colourist Student Graduate 4" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="4" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_5.jpg" alt="Colourist Student Graduate 5" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="5" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_6.jpg" alt="Colourist Student Graduate 6" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="6" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_7.jpg" alt="Colourist Student Graduate 7" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="7" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_8.jpg" alt="Colourist Student Graduate 8" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="8" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_9.jpg" alt="Colourist Student Graduate 9" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="9" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_10.jpg" alt="Colourist Student Graduate 10" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="10" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_11.jpg" alt="Colourist Student Graduate 11" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="11" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_12.jpg" alt="Colourist Student Graduate 12" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="12" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_13.jpg" alt="Colourist Student Graduate 13" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="13" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_14.jpg" alt="Colourist Student Graduate 14" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="14" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_15.jpg" alt="Colourist Student Graduate 15" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="15" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_16.jpg" alt="Colourist Student Graduate 16" loading="lazy" class="wk-student-img">
+            </div>
+                      <div class="wk-student-card" data-student-card data-index="16" data-clone="next" aria-hidden="true">
+              <img src="assets/media/students/student_17.jpg" alt="Colourist Student Graduate 17" loading="lazy" class="wk-student-img">
+            </div>
+                        </div>
+      <div class="wk-student-fade fade-right" aria-hidden="true"></div>
     </div>
-    <button type="button" class="student-arrow arrow-next" id="studentNext"
-      aria-label="Next student video">&gt;</button>
+
+    <button type="button" class="wk-student-arrow arrow-next" id="studentNext" aria-label="Next student photo">&gt;</button>
   </div>
 
-  <p class="student-stats-text">
-    Trained 60+ Colour Analysts from Indonesia, Brunei, Malaysia, Singapore, Australia, and Thailand through
-    professional Korean and Japanese colour analysis certification programmes.
+  <p class="wk-student-stats">
+    Trained 60+ Colour Analysts from Indonesia, Brunei, Malaysia, Singapore, Australia, and Thailand through professional Korean and Japanese colour analysis certification programmes.
   </p>
+</section>
 
-  <div style="margin-top: 32px;">
-    <a href="book?type=workshop" class="btn btn-student-cta">
-      BECOME A CERTIFIED COLOUR ANALYST
+<!-- 5. CTA dengan Foto Background (full-bleed, tinggi ±520px desktop / 360px mobile) -->
+<section class="wk-cta-sec" aria-label="Become a Certified Colour Analyst">
+  <div class="wk-cta-bg-wrap">
+    <img src="assets/media/workshop/workshop_cta_bg.jpg" 
+         alt="" 
+         class="wk-cta-bg-img" 
+         loading="lazy">
+    <div class="wk-cta-overlay"></div>
+    <div class="wk-cta-fade"></div>
+  </div>
+
+  <div class="wk-cta-content">
+    <a href="book?type=workshop" class="btn-wk-cta">
+      BECOME A CERTIFIED<br>COLOUR ANALYST
     </a>
   </div>
 </section>

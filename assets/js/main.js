@@ -962,38 +962,173 @@
     }
   }
 
-  // 6. Workshop Student Carousel Arrows & Fade
+  // 6. Workshop Student Carousel Infinite Loop & Drag
   const studentTrack = document.getElementById('studentTrack');
   const studentPrev = document.getElementById('studentPrev');
   const studentNext = document.getElementById('studentNext');
-  const studentFadeLeft = document.getElementById('studentFadeLeft');
-  const studentFadeRight = document.getElementById('studentFadeRight');
 
   if (studentTrack) {
-    function updateStudentFade() {
-      const scrollLeft = studentTrack.scrollLeft;
-      const maxScroll = studentTrack.scrollWidth - studentTrack.clientWidth;
-      if (studentFadeLeft) {
-        studentFadeLeft.style.opacity = scrollLeft > 10 ? '1' : '0';
+    const studentCards = studentTrack.querySelectorAll('[data-student-card]');
+    const origStudentCards = studentTrack.querySelectorAll('[data-clone="none"]');
+    const studentN = origStudentCards.length || 17;
+
+    // Prevent native drag on images
+    studentTrack.querySelectorAll('img').forEach(function (img) {
+      img.setAttribute('draggable', 'false');
+      img.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    });
+
+    function getStudentSetWidth() {
+      const firstB = studentCards[studentN];
+      const firstC = studentCards[2 * studentN];
+      if (firstB && firstC) {
+        return firstC.offsetLeft - firstB.offsetLeft;
       }
-      if (studentFadeRight) {
-        studentFadeRight.style.opacity = (maxScroll - scrollLeft) > 15 ? '1' : '0';
+      return 0;
+    }
+
+    function initStudentPosition() {
+      const middleIdx = studentN + Math.floor(studentN / 2);
+      const middleCard = studentCards[middleIdx] || studentCards[0];
+      if (!middleCard) return;
+
+      const centerOffset = middleCard.offsetLeft - (studentTrack.clientWidth - middleCard.offsetWidth) / 2;
+      studentTrack.style.scrollSnapType = 'none';
+      studentTrack.style.scrollBehavior = 'auto';
+      studentTrack.scrollLeft = centerOffset;
+
+      requestAnimationFrame(function () {
+        studentTrack.style.scrollSnapType = '';
+        studentTrack.style.scrollBehavior = '';
+      });
+    }
+
+    initStudentPosition();
+    setTimeout(initStudentPosition, 60);
+    window.addEventListener('load', initStudentPosition);
+
+    let isStudentJumping = false;
+
+    function jumpStudentSilent(delta) {
+      if (isStudentJumping || delta === 0) return;
+      isStudentJumping = true;
+      studentTrack.style.scrollSnapType = 'none';
+      studentTrack.style.scrollBehavior = 'auto';
+      studentTrack.scrollLeft += delta;
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          studentTrack.style.scrollSnapType = '';
+          studentTrack.style.scrollBehavior = '';
+          isStudentJumping = false;
+        });
+      });
+    }
+
+    function checkStudentJump() {
+      if (isStudentDown || isStudentJumping) return;
+      const setWidth = getStudentSetWidth();
+      if (setWidth <= 0) return;
+
+      const trackCenter = studentTrack.scrollLeft + studentTrack.clientWidth / 2;
+      let closestCard = null;
+      let minDiff = Infinity;
+
+      for (let i = 0; i < studentCards.length; i++) {
+        const card = studentCards[i];
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const diff = Math.abs(trackCenter - cardCenter);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestCard = card;
+        }
+      }
+
+      if (closestCard) {
+        const cloneType = closestCard.getAttribute('data-clone');
+        if (cloneType === 'prev') {
+          jumpStudentSilent(+setWidth);
+        } else if (cloneType === 'next') {
+          jumpStudentSilent(-setWidth);
+        }
       }
     }
 
-    studentTrack.addEventListener('scroll', updateStudentFade, { passive: true });
-    updateStudentFade();
+    let studentScrollTimer = null;
+    studentTrack.addEventListener('scroll', function () {
+      clearTimeout(studentScrollTimer);
+      studentScrollTimer = setTimeout(checkStudentJump, 80);
+    }, { passive: true });
 
+    if ('onscrollend' in window) {
+      studentTrack.addEventListener('scrollend', checkStudentJump);
+    }
+
+    // Arrows
     if (studentPrev) {
       studentPrev.addEventListener('click', function () {
-        studentTrack.scrollBy({ left: -240, behavior: 'smooth' });
+        const cardWidth = studentCards[0] ? studentCards[0].offsetWidth : 185;
+        studentTrack.scrollBy({ left: -(cardWidth + 14), behavior: 'smooth' });
       });
     }
     if (studentNext) {
       studentNext.addEventListener('click', function () {
-        studentTrack.scrollBy({ left: 240, behavior: 'smooth' });
+        const cardWidth = studentCards[0] ? studentCards[0].offsetWidth : 185;
+        studentTrack.scrollBy({ left: (cardWidth + 14), behavior: 'smooth' });
       });
     }
+
+    // Pointer Drag (Mouse & Touch) with >5px threshold
+    let isStudentDown = false;
+    let studentStartX = 0;
+    let studentScrollStart = 0;
+    let hasStudentDragged = false;
+    let activeStudentPointerId = null;
+
+    studentTrack.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      isStudentDown = true;
+      hasStudentDragged = false;
+      studentStartX = e.clientX;
+      studentScrollStart = studentTrack.scrollLeft;
+      activeStudentPointerId = e.pointerId;
+    });
+
+    studentTrack.addEventListener('pointermove', function (e) {
+      if (!isStudentDown) return;
+      const dx = e.clientX - studentStartX;
+
+      if (!hasStudentDragged && Math.abs(dx) > 5) {
+        hasStudentDragged = true;
+        studentTrack.classList.add('is-dragging');
+        if (activeStudentPointerId !== null && studentTrack.setPointerCapture) {
+          try {
+            studentTrack.setPointerCapture(activeStudentPointerId);
+          } catch (err) {}
+        }
+      }
+
+      if (hasStudentDragged) {
+        e.preventDefault();
+        studentTrack.scrollLeft = studentScrollStart - dx;
+      }
+    });
+
+    function endStudentDrag() {
+      if (!isStudentDown) return;
+      isStudentDown = false;
+      studentTrack.classList.remove('is-dragging');
+      if (activeStudentPointerId !== null && studentTrack.releasePointerCapture) {
+        try {
+          studentTrack.releasePointerCapture(activeStudentPointerId);
+        } catch (err) {}
+      }
+      activeStudentPointerId = null;
+      setTimeout(checkStudentJump, 60);
+    }
+
+    studentTrack.addEventListener('pointerup', endStudentDrag);
+    studentTrack.addEventListener('pointercancel', endStudentDrag);
   }
 
   // 7. Booking Page Interaction (book.php)
