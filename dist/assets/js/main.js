@@ -401,7 +401,7 @@
         hasDragged = true;
         try {
           expTrack.setPointerCapture(activePointerId);
-        } catch (err) {}
+        } catch (err) { }
         expTrack.classList.add('is-dragging');
       }
 
@@ -438,7 +438,7 @@
       if (dragStarted && activePointerId !== null) {
         try {
           expTrack.releasePointerCapture(activePointerId);
-        } catch (err) {}
+        } catch (err) { }
       }
       activePointerId = null;
       dragStarted = false;
@@ -746,7 +746,7 @@
             }
             const playPromise = video.play();
             if (playPromise !== undefined) {
-              playPromise.catch(function () {});
+              playPromise.catch(function () { });
             }
           } else {
             if (!video.paused) {
@@ -785,7 +785,7 @@
               if (entry.isIntersecting) {
                 const playPromise = wkVideo.play();
                 if (playPromise !== undefined) {
-                  playPromise.catch(function () {});
+                  playPromise.catch(function () { });
                 }
               } else {
                 if (!wkVideo.paused) {
@@ -799,7 +799,7 @@
         wkObserver.observe(wkAutoplay);
       } else {
         const p = wkVideo.play();
-        if (p !== undefined) p.catch(function () {});
+        if (p !== undefined) p.catch(function () { });
       }
 
       if (wkMuteBtn) {
@@ -1104,7 +1104,7 @@
         if (activeStudentPointerId !== null && studentTrack.setPointerCapture) {
           try {
             studentTrack.setPointerCapture(activeStudentPointerId);
-          } catch (err) {}
+          } catch (err) { }
         }
       }
 
@@ -1121,7 +1121,7 @@
       if (activeStudentPointerId !== null && studentTrack.releasePointerCapture) {
         try {
           studentTrack.releasePointerCapture(activeStudentPointerId);
-        } catch (err) {}
+        } catch (err) { }
       }
       activeStudentPointerId = null;
       setTimeout(checkStudentJump, 60);
@@ -1174,7 +1174,7 @@
         "\nMohon info ketersediaan jadwal. Terima kasih.";
 
       const url = "https://wa.me/" + waNumber.replace(/[^0-9]/g, '') + "?text=" + encodeURIComponent(text);
-      
+
       window.open(url, '_blank');
       e.preventDefault();
     });
